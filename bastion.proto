@@ -1,0 +1,200 @@
+syntax = "proto3";
+
+option go_package = ".;pb";
+//option java_multiple_files = true;
+//option java_package = "github.com.mojocn.bastionp";
+//option java_outer_classname = "Bastionp";
+
+package bastion;
+
+// The greeting service definition.
+service Bastion {
+  rpc AuthPw (ReqAuthPassword) returns (User) {}                              //sshd-auth-password
+  rpc AuthPk (ReqAuthPublicKey) returns (User) {}                             //sshd-auth-public-key
+  rpc AuthKb (ReqSshUser) returns (UserKb) {}                                 //sshd-auth-keyboard
+  rpc FetchAsset(ReqAssetsQuery)returns(AssetList){}                          //根据用户获取用户的资产
+  rpc FetchAssetSshConfig(ReqAssetUser)returns(AssetSshAccount){}             //查询资产的ssh管理帐号
+  rpc SshShellExec(ReqSshExec)returns(ResStatus){}                            //ssh-远程执行-shell-script
+
+  rpc PushSshSessionLog(ReqSshLog)returns(ResStatus){}
+  rpc PushSshCmd(ReqSshCmd)returns(ResStatus){}
+  rpc PushAuthLog(ReqAuthLog)returns(ResStatus){}  //sshd-用户认证日志
+  rpc RemoteExec(ReqAssetCmd)returns(ResStatus){}
+
+}
+
+//使用ssh-remote-shell 执行script,POST 执行日志到callbackURL
+message ReqSshExec {
+  string addr = 1;
+  string user = 2;
+  string password = 3;
+  string privateKey = 4;
+  string script = 5;
+  string callbackURL = 6;
+}
+
+message ReqAuthLog {
+  string user = 1;
+}
+
+message ReqAssetCmd {
+  string user_id = 1;
+  string asset_id = 2;
+  string script_cmd = 3;
+}
+
+//sshd-密码认证
+message ReqAuthPassword {
+  ReqSshUser user = 1;
+  bytes password = 2;
+}
+
+//查询资产的ssh帐号
+message ReqAssetUser {
+  string assetId = 1;
+  string userId = 2;
+}
+
+message AssetSshAccount {
+  string addr = 1;
+  string user = 2;
+  string password = 3;
+  string privateKey = 4;//可选
+}
+
+//sshd-键盘认证
+message ReqAuthKeyboard {
+  string user = 1;
+  string sessionId = 2;
+  string clientVersion = 3;
+  string serverVersion = 4;
+  string remoteAddr = 5;
+  string localAddr = 6;
+}
+
+message ReqSshUser {
+  string account = 1;
+  bytes sessionId = 2;
+  bytes clientVersion = 3;
+  bytes serverVersion = 4;
+  string remoteAddr = 5;
+  string localAddr = 6;
+}
+
+//sshd-公钥认证
+message ReqAuthPublicKey {
+  ReqSshUser user = 1;
+  bytes publicKey = 2;
+}
+
+
+message UserKb {
+  string user = 1;
+  string instruction = 2;
+  repeated string questions = 3;
+  repeated string answers = 4;
+  repeated bool echos = 5;
+  User resUser = 6;
+}
+
+
+//sshd-auth 认证之后用户信息
+message User {
+  string id = 1;
+  string name = 2;
+  string account = 3;
+  string email = 4;
+  string phone = 5;
+  UserRole role = 6;
+}
+enum UserRole {
+  Admin = 0;
+  Maintainer = 1;
+  Developer = 2;
+  Reporter = 3;
+}
+
+//sshd-auth 认证之后用户信息
+message Group {
+  string id = 1;
+  string name = 2;
+  string desc = 3;
+}
+
+// bastion search and show assets list
+message ReqAssetsQuery {
+  string userId = 1; //user uuid
+  string query = 2;// full text search keyword
+}
+
+//堡垒机-资产信息
+message Asset {
+  string id = 1;
+  string hostname = 2;
+  string alias = 3;
+  string remark = 4;
+  string shhAddr = 5; //资产的ssh-manage-addr
+  string ip = 6;
+}
+
+message AssetList {
+  repeated Asset list = 1;
+}
+
+//堡垒机-资产SSH管理帐号
+message ResSshAuthConfig {
+  string user = 1;
+  string addr = 2;
+  string password = 3; //密码
+  string privatek = 4; //私钥
+}
+
+//堡垒机-资产SSH管理帐号-查询
+message ReqSshAdminQuery {
+  string asset_id = 1;
+  string asset_ip = 2;
+  string asset_host_name = 3;
+}
+
+//堡垒机-资产SSH管理帐号-查询
+message ReqSshUserQuery {
+  string asset_id = 1;
+  string asset_ip = 2;
+  string asset_host_name = 3;
+}
+
+//堡垒机-资产SSH管理帐号-查询
+message ReqAssetSsh {
+  string assetId = 1;
+  string userId = 2;
+}
+
+
+//堡垒机-资产ssh-日志
+message ReqSshLog {
+  bytes data = 1;
+  string user_id = 2;
+  string asset_id = 3;
+}
+
+message ReqSshCmd {
+  string userId = 1;
+  string assetId = 2;
+  string command = 3;
+}
+
+//rpc 相应状态
+message ResStatus {
+  int32 status = 1;
+  string msg = 2;
+  string data = 3;
+}
+
+//执行远程命令
+message ReqExecCmd {
+  string addr = 1;
+  string user = 2;
+  string password = 3;
+  string privatek = 4;
+  string script = 5;   //shell command or script
+}
