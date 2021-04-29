@@ -24,7 +24,9 @@ type BastionClient interface {
 	FetchAsset(ctx context.Context, in *ReqAssetsQuery, opts ...grpc.CallOption) (*AssetList, error)
 	FetchAssetSshConfig(ctx context.Context, in *ReqAssetUser, opts ...grpc.CallOption) (*AssetSshAccount, error)
 	SshShellExec(ctx context.Context, in *ReqSshExec, opts ...grpc.CallOption) (*ResStatus, error)
-	PushSshSessionLog(ctx context.Context, in *ReqSshLog, opts ...grpc.CallOption) (*ResStatus, error)
+	WebXtermSsh(ctx context.Context, in *ReqWebXterm, opts ...grpc.CallOption) (*ResWebXterm, error)
+	WebXtermPod(ctx context.Context, in *ReqWebXterm, opts ...grpc.CallOption) (*ResWebXterm, error)
+	CollectSshdLog(ctx context.Context, in *ReqSshdData, opts ...grpc.CallOption) (*ResStatus, error)
 	PushSshCmd(ctx context.Context, in *ReqSshCmd, opts ...grpc.CallOption) (*ResStatus, error)
 	PushAuthLog(ctx context.Context, in *ReqAuthLog, opts ...grpc.CallOption) (*ResStatus, error)
 	RemoteExec(ctx context.Context, in *ReqAssetCmd, opts ...grpc.CallOption) (*ResStatus, error)
@@ -92,9 +94,27 @@ func (c *bastionClient) SshShellExec(ctx context.Context, in *ReqSshExec, opts .
 	return out, nil
 }
 
-func (c *bastionClient) PushSshSessionLog(ctx context.Context, in *ReqSshLog, opts ...grpc.CallOption) (*ResStatus, error) {
+func (c *bastionClient) WebXtermSsh(ctx context.Context, in *ReqWebXterm, opts ...grpc.CallOption) (*ResWebXterm, error) {
+	out := new(ResWebXterm)
+	err := c.cc.Invoke(ctx, "/bastion.Bastion/WebXtermSsh", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bastionClient) WebXtermPod(ctx context.Context, in *ReqWebXterm, opts ...grpc.CallOption) (*ResWebXterm, error) {
+	out := new(ResWebXterm)
+	err := c.cc.Invoke(ctx, "/bastion.Bastion/WebXtermPod", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bastionClient) CollectSshdLog(ctx context.Context, in *ReqSshdData, opts ...grpc.CallOption) (*ResStatus, error) {
 	out := new(ResStatus)
-	err := c.cc.Invoke(ctx, "/bastion.Bastion/PushSshSessionLog", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bastion.Bastion/CollectSshdLog", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -138,7 +158,9 @@ type BastionServer interface {
 	FetchAsset(context.Context, *ReqAssetsQuery) (*AssetList, error)
 	FetchAssetSshConfig(context.Context, *ReqAssetUser) (*AssetSshAccount, error)
 	SshShellExec(context.Context, *ReqSshExec) (*ResStatus, error)
-	PushSshSessionLog(context.Context, *ReqSshLog) (*ResStatus, error)
+	WebXtermSsh(context.Context, *ReqWebXterm) (*ResWebXterm, error)
+	WebXtermPod(context.Context, *ReqWebXterm) (*ResWebXterm, error)
+	CollectSshdLog(context.Context, *ReqSshdData) (*ResStatus, error)
 	PushSshCmd(context.Context, *ReqSshCmd) (*ResStatus, error)
 	PushAuthLog(context.Context, *ReqAuthLog) (*ResStatus, error)
 	RemoteExec(context.Context, *ReqAssetCmd) (*ResStatus, error)
@@ -167,8 +189,14 @@ func (UnimplementedBastionServer) FetchAssetSshConfig(context.Context, *ReqAsset
 func (UnimplementedBastionServer) SshShellExec(context.Context, *ReqSshExec) (*ResStatus, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SshShellExec not implemented")
 }
-func (UnimplementedBastionServer) PushSshSessionLog(context.Context, *ReqSshLog) (*ResStatus, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PushSshSessionLog not implemented")
+func (UnimplementedBastionServer) WebXtermSsh(context.Context, *ReqWebXterm) (*ResWebXterm, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method WebXtermSsh not implemented")
+}
+func (UnimplementedBastionServer) WebXtermPod(context.Context, *ReqWebXterm) (*ResWebXterm, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method WebXtermPod not implemented")
+}
+func (UnimplementedBastionServer) CollectSshdLog(context.Context, *ReqSshdData) (*ResStatus, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CollectSshdLog not implemented")
 }
 func (UnimplementedBastionServer) PushSshCmd(context.Context, *ReqSshCmd) (*ResStatus, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PushSshCmd not implemented")
@@ -300,20 +328,56 @@ func _Bastion_SshShellExec_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Bastion_PushSshSessionLog_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReqSshLog)
+func _Bastion_WebXtermSsh_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReqWebXterm)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BastionServer).PushSshSessionLog(ctx, in)
+		return srv.(BastionServer).WebXtermSsh(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bastion.Bastion/PushSshSessionLog",
+		FullMethod: "/bastion.Bastion/WebXtermSsh",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BastionServer).PushSshSessionLog(ctx, req.(*ReqSshLog))
+		return srv.(BastionServer).WebXtermSsh(ctx, req.(*ReqWebXterm))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Bastion_WebXtermPod_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReqWebXterm)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BastionServer).WebXtermPod(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bastion.Bastion/WebXtermPod",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BastionServer).WebXtermPod(ctx, req.(*ReqWebXterm))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Bastion_CollectSshdLog_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReqSshdData)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BastionServer).CollectSshdLog(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bastion.Bastion/CollectSshdLog",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BastionServer).CollectSshdLog(ctx, req.(*ReqSshdData))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -404,8 +468,16 @@ var Bastion_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Bastion_SshShellExec_Handler,
 		},
 		{
-			MethodName: "PushSshSessionLog",
-			Handler:    _Bastion_PushSshSessionLog_Handler,
+			MethodName: "WebXtermSsh",
+			Handler:    _Bastion_WebXtermSsh_Handler,
+		},
+		{
+			MethodName: "WebXtermPod",
+			Handler:    _Bastion_WebXtermPod_Handler,
+		},
+		{
+			MethodName: "CollectSshdLog",
+			Handler:    _Bastion_CollectSshdLog_Handler,
 		},
 		{
 			MethodName: "PushSshCmd",
