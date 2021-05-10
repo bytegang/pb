@@ -29,7 +29,6 @@ type CmdbClient interface {
 	CollectSshdLog(ctx context.Context, in *ReqSshdData, opts ...grpc.CallOption) (*ResStatus, error)
 	PushSshCmd(ctx context.Context, in *ReqSshCmd, opts ...grpc.CallOption) (*ResStatus, error)
 	PushAuthLog(ctx context.Context, in *ReqAuthLog, opts ...grpc.CallOption) (*ResStatus, error)
-	RemoteExec(ctx context.Context, in *ReqAssetCmd, opts ...grpc.CallOption) (*ResStatus, error)
 }
 
 type cmdbClient struct {
@@ -42,7 +41,7 @@ func NewCmdbClient(cc grpc.ClientConnInterface) CmdbClient {
 
 func (c *cmdbClient) AuthPw(ctx context.Context, in *ReqAuthPassword, opts ...grpc.CallOption) (*User, error) {
 	out := new(User)
-	err := c.cc.Invoke(ctx, "/bastion.Cmdb/AuthPw", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/AuthPw", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +50,7 @@ func (c *cmdbClient) AuthPw(ctx context.Context, in *ReqAuthPassword, opts ...gr
 
 func (c *cmdbClient) AuthPk(ctx context.Context, in *ReqAuthPublicKey, opts ...grpc.CallOption) (*User, error) {
 	out := new(User)
-	err := c.cc.Invoke(ctx, "/bastion.Cmdb/AuthPk", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/AuthPk", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +59,7 @@ func (c *cmdbClient) AuthPk(ctx context.Context, in *ReqAuthPublicKey, opts ...g
 
 func (c *cmdbClient) AuthKb(ctx context.Context, in *ReqSshUser, opts ...grpc.CallOption) (*UserKb, error) {
 	out := new(UserKb)
-	err := c.cc.Invoke(ctx, "/bastion.Cmdb/AuthKb", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/AuthKb", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -69,7 +68,7 @@ func (c *cmdbClient) AuthKb(ctx context.Context, in *ReqSshUser, opts ...grpc.Ca
 
 func (c *cmdbClient) FetchAsset(ctx context.Context, in *ReqAssetsQuery, opts ...grpc.CallOption) (*AssetList, error) {
 	out := new(AssetList)
-	err := c.cc.Invoke(ctx, "/bastion.Cmdb/FetchAsset", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/FetchAsset", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -78,7 +77,7 @@ func (c *cmdbClient) FetchAsset(ctx context.Context, in *ReqAssetsQuery, opts ..
 
 func (c *cmdbClient) FetchAssetSshConfig(ctx context.Context, in *ReqAssetUser, opts ...grpc.CallOption) (*AssetSshAccount, error) {
 	out := new(AssetSshAccount)
-	err := c.cc.Invoke(ctx, "/bastion.Cmdb/FetchAssetSshConfig", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/FetchAssetSshConfig", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -87,7 +86,7 @@ func (c *cmdbClient) FetchAssetSshConfig(ctx context.Context, in *ReqAssetUser, 
 
 func (c *cmdbClient) SshShellExec(ctx context.Context, in *ReqSshExec, opts ...grpc.CallOption) (*ResStatus, error) {
 	out := new(ResStatus)
-	err := c.cc.Invoke(ctx, "/bastion.Cmdb/SshShellExec", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/SshShellExec", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -96,7 +95,7 @@ func (c *cmdbClient) SshShellExec(ctx context.Context, in *ReqSshExec, opts ...g
 
 func (c *cmdbClient) WebXtermSsh(ctx context.Context, in *ReqWebXterm, opts ...grpc.CallOption) (*ResWebXterm, error) {
 	out := new(ResWebXterm)
-	err := c.cc.Invoke(ctx, "/bastion.Cmdb/WebXtermSsh", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/WebXtermSsh", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -105,7 +104,7 @@ func (c *cmdbClient) WebXtermSsh(ctx context.Context, in *ReqWebXterm, opts ...g
 
 func (c *cmdbClient) WebXtermPod(ctx context.Context, in *ReqWebXterm, opts ...grpc.CallOption) (*ResWebXterm, error) {
 	out := new(ResWebXterm)
-	err := c.cc.Invoke(ctx, "/bastion.Cmdb/WebXtermPod", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/WebXtermPod", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -114,7 +113,7 @@ func (c *cmdbClient) WebXtermPod(ctx context.Context, in *ReqWebXterm, opts ...g
 
 func (c *cmdbClient) CollectSshdLog(ctx context.Context, in *ReqSshdData, opts ...grpc.CallOption) (*ResStatus, error) {
 	out := new(ResStatus)
-	err := c.cc.Invoke(ctx, "/bastion.Cmdb/CollectSshdLog", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/CollectSshdLog", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -123,7 +122,7 @@ func (c *cmdbClient) CollectSshdLog(ctx context.Context, in *ReqSshdData, opts .
 
 func (c *cmdbClient) PushSshCmd(ctx context.Context, in *ReqSshCmd, opts ...grpc.CallOption) (*ResStatus, error) {
 	out := new(ResStatus)
-	err := c.cc.Invoke(ctx, "/bastion.Cmdb/PushSshCmd", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/PushSshCmd", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -132,16 +131,7 @@ func (c *cmdbClient) PushSshCmd(ctx context.Context, in *ReqSshCmd, opts ...grpc
 
 func (c *cmdbClient) PushAuthLog(ctx context.Context, in *ReqAuthLog, opts ...grpc.CallOption) (*ResStatus, error) {
 	out := new(ResStatus)
-	err := c.cc.Invoke(ctx, "/bastion.Cmdb/PushAuthLog", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *cmdbClient) RemoteExec(ctx context.Context, in *ReqAssetCmd, opts ...grpc.CallOption) (*ResStatus, error) {
-	out := new(ResStatus)
-	err := c.cc.Invoke(ctx, "/bastion.Cmdb/RemoteExec", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/PushAuthLog", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -163,7 +153,6 @@ type CmdbServer interface {
 	CollectSshdLog(context.Context, *ReqSshdData) (*ResStatus, error)
 	PushSshCmd(context.Context, *ReqSshCmd) (*ResStatus, error)
 	PushAuthLog(context.Context, *ReqAuthLog) (*ResStatus, error)
-	RemoteExec(context.Context, *ReqAssetCmd) (*ResStatus, error)
 	mustEmbedUnimplementedCmdbServer()
 }
 
@@ -204,9 +193,6 @@ func (UnimplementedCmdbServer) PushSshCmd(context.Context, *ReqSshCmd) (*ResStat
 func (UnimplementedCmdbServer) PushAuthLog(context.Context, *ReqAuthLog) (*ResStatus, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PushAuthLog not implemented")
 }
-func (UnimplementedCmdbServer) RemoteExec(context.Context, *ReqAssetCmd) (*ResStatus, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RemoteExec not implemented")
-}
 func (UnimplementedCmdbServer) mustEmbedUnimplementedCmdbServer() {}
 
 // UnsafeCmdbServer may be embedded to opt out of forward compatibility for this service.
@@ -230,7 +216,7 @@ func _Cmdb_AuthPw_Handler(srv interface{}, ctx context.Context, dec func(interfa
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bastion.Cmdb/AuthPw",
+		FullMethod: "/bytegang.Cmdb/AuthPw",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CmdbServer).AuthPw(ctx, req.(*ReqAuthPassword))
@@ -248,7 +234,7 @@ func _Cmdb_AuthPk_Handler(srv interface{}, ctx context.Context, dec func(interfa
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bastion.Cmdb/AuthPk",
+		FullMethod: "/bytegang.Cmdb/AuthPk",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CmdbServer).AuthPk(ctx, req.(*ReqAuthPublicKey))
@@ -266,7 +252,7 @@ func _Cmdb_AuthKb_Handler(srv interface{}, ctx context.Context, dec func(interfa
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bastion.Cmdb/AuthKb",
+		FullMethod: "/bytegang.Cmdb/AuthKb",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CmdbServer).AuthKb(ctx, req.(*ReqSshUser))
@@ -284,7 +270,7 @@ func _Cmdb_FetchAsset_Handler(srv interface{}, ctx context.Context, dec func(int
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bastion.Cmdb/FetchAsset",
+		FullMethod: "/bytegang.Cmdb/FetchAsset",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CmdbServer).FetchAsset(ctx, req.(*ReqAssetsQuery))
@@ -302,7 +288,7 @@ func _Cmdb_FetchAssetSshConfig_Handler(srv interface{}, ctx context.Context, dec
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bastion.Cmdb/FetchAssetSshConfig",
+		FullMethod: "/bytegang.Cmdb/FetchAssetSshConfig",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CmdbServer).FetchAssetSshConfig(ctx, req.(*ReqAssetUser))
@@ -320,7 +306,7 @@ func _Cmdb_SshShellExec_Handler(srv interface{}, ctx context.Context, dec func(i
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bastion.Cmdb/SshShellExec",
+		FullMethod: "/bytegang.Cmdb/SshShellExec",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CmdbServer).SshShellExec(ctx, req.(*ReqSshExec))
@@ -338,7 +324,7 @@ func _Cmdb_WebXtermSsh_Handler(srv interface{}, ctx context.Context, dec func(in
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bastion.Cmdb/WebXtermSsh",
+		FullMethod: "/bytegang.Cmdb/WebXtermSsh",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CmdbServer).WebXtermSsh(ctx, req.(*ReqWebXterm))
@@ -356,7 +342,7 @@ func _Cmdb_WebXtermPod_Handler(srv interface{}, ctx context.Context, dec func(in
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bastion.Cmdb/WebXtermPod",
+		FullMethod: "/bytegang.Cmdb/WebXtermPod",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CmdbServer).WebXtermPod(ctx, req.(*ReqWebXterm))
@@ -374,7 +360,7 @@ func _Cmdb_CollectSshdLog_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bastion.Cmdb/CollectSshdLog",
+		FullMethod: "/bytegang.Cmdb/CollectSshdLog",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CmdbServer).CollectSshdLog(ctx, req.(*ReqSshdData))
@@ -392,7 +378,7 @@ func _Cmdb_PushSshCmd_Handler(srv interface{}, ctx context.Context, dec func(int
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bastion.Cmdb/PushSshCmd",
+		FullMethod: "/bytegang.Cmdb/PushSshCmd",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CmdbServer).PushSshCmd(ctx, req.(*ReqSshCmd))
@@ -410,28 +396,10 @@ func _Cmdb_PushAuthLog_Handler(srv interface{}, ctx context.Context, dec func(in
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bastion.Cmdb/PushAuthLog",
+		FullMethod: "/bytegang.Cmdb/PushAuthLog",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CmdbServer).PushAuthLog(ctx, req.(*ReqAuthLog))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Cmdb_RemoteExec_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReqAssetCmd)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(CmdbServer).RemoteExec(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/bastion.Cmdb/RemoteExec",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CmdbServer).RemoteExec(ctx, req.(*ReqAssetCmd))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -440,7 +408,7 @@ func _Cmdb_RemoteExec_Handler(srv interface{}, ctx context.Context, dec func(int
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Cmdb_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "bastion.Cmdb",
+	ServiceName: "bytegang.Cmdb",
 	HandlerType: (*CmdbServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -487,10 +455,6 @@ var Cmdb_ServiceDesc = grpc.ServiceDesc{
 			MethodName: "PushAuthLog",
 			Handler:    _Cmdb_PushAuthLog_Handler,
 		},
-		{
-			MethodName: "RemoteExec",
-			Handler:    _Cmdb_RemoteExec_Handler,
-		},
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "bastion.proto",
@@ -513,7 +477,7 @@ func NewSshArkClient(cc grpc.ClientConnInterface) SshArkClient {
 
 func (c *sshArkClient) ExecShell(ctx context.Context, in *ReqShellExec, opts ...grpc.CallOption) (*ResShellExec, error) {
 	out := new(ResShellExec)
-	err := c.cc.Invoke(ctx, "/bastion.SshArk/execShell", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bytegang.SshArk/execShell", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -558,7 +522,7 @@ func _SshArk_ExecShell_Handler(srv interface{}, ctx context.Context, dec func(in
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bastion.SshArk/execShell",
+		FullMethod: "/bytegang.SshArk/execShell",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SshArkServer).ExecShell(ctx, req.(*ReqShellExec))
@@ -570,7 +534,7 @@ func _SshArk_ExecShell_Handler(srv interface{}, ctx context.Context, dec func(in
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var SshArk_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "bastion.SshArk",
+	ServiceName: "bytegang.SshArk",
 	HandlerType: (*SshArkServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

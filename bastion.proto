@@ -5,7 +5,7 @@ option go_package = ".;pb";
 //option java_package = "github.com.mojocn.bastionp";
 //option java_outer_classname = "Bastionp";
 
-package bastion;
+package bytegang;
 
 // The greeting service definition.
 service Cmdb {
@@ -20,7 +20,6 @@ service Cmdb {
   rpc CollectSshdLog(ReqSshdData)returns(ResStatus){}                         //收集 sshd ssh session log
   rpc PushSshCmd(ReqSshCmd)returns(ResStatus){}
   rpc PushAuthLog(ReqAuthLog)returns(ResStatus){}  //sshd-用户认证日志
-  rpc RemoteExec(ReqAssetCmd)returns(ResStatus){}
 }
 
 message ReqWebXterm {
@@ -252,6 +251,7 @@ message ResShellExec {
   string output = 2;
   uint64 startAt = 3;
   uint64 doneAt = 4;
+  bool ok = 5;
 }
 
 

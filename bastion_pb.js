@@ -842,7 +842,8 @@ proto.bastion.sshConn.toObject = function(includeInstance, msg) {
     addr: jspb.Message.getFieldWithDefault(msg, 1, ""),
     user: jspb.Message.getFieldWithDefault(msg, 2, ""),
     password: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    privatekey: jspb.Message.getFieldWithDefault(msg, 4, "")
+    privatekey: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    privatekeypassword: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -894,6 +895,10 @@ proto.bastion.sshConn.deserializeBinaryFromReader = function(msg, reader) {
     case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setPrivatekey(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPrivatekeypassword(value);
       break;
     default:
       reader.skipField();
@@ -949,6 +954,13 @@ proto.bastion.sshConn.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(
       4,
+      f
+    );
+  }
+  f = message.getPrivatekeypassword();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -1024,6 +1036,24 @@ proto.bastion.sshConn.prototype.getPrivatekey = function() {
  */
 proto.bastion.sshConn.prototype.setPrivatekey = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional string privateKeyPassword = 5;
+ * @return {string}
+ */
+proto.bastion.sshConn.prototype.getPrivatekeypassword = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.bastion.sshConn} returns this
+ */
+proto.bastion.sshConn.prototype.setPrivatekeypassword = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
@@ -6795,10 +6825,10 @@ proto.bastion.ResShellExec.prototype.toObject = function(opt_includeInstance) {
 proto.bastion.ResShellExec.toObject = function(includeInstance, msg) {
   var f, obj = {
     uuid: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    code: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    output: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    startat: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    doneat: jspb.Message.getFieldWithDefault(msg, 5, 0)
+    output: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    startat: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    doneat: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    ok: jspb.Message.getBooleanFieldWithDefault(msg, 5, false)
   };
 
   if (includeInstance) {
@@ -6840,20 +6870,20 @@ proto.bastion.ResShellExec.deserializeBinaryFromReader = function(msg, reader) {
       msg.setUuid(value);
       break;
     case 2:
-      var value = /** @type {number} */ (reader.readUint64());
-      msg.setCode(value);
-      break;
-    case 3:
       var value = /** @type {string} */ (reader.readString());
       msg.setOutput(value);
       break;
-    case 4:
+    case 3:
       var value = /** @type {number} */ (reader.readUint64());
       msg.setStartat(value);
       break;
-    case 5:
+    case 4:
       var value = /** @type {number} */ (reader.readUint64());
       msg.setDoneat(value);
+      break;
+    case 5:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setOk(value);
       break;
     default:
       reader.skipField();
@@ -6891,30 +6921,30 @@ proto.bastion.ResShellExec.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getCode();
-  if (f !== 0) {
-    writer.writeUint64(
-      2,
-      f
-    );
-  }
   f = message.getOutput();
   if (f.length > 0) {
     writer.writeString(
-      3,
+      2,
       f
     );
   }
   f = message.getStartat();
   if (f !== 0) {
     writer.writeUint64(
-      4,
+      3,
       f
     );
   }
   f = message.getDoneat();
   if (f !== 0) {
     writer.writeUint64(
+      4,
+      f
+    );
+  }
+  f = message.getOk();
+  if (f) {
+    writer.writeBool(
       5,
       f
     );
@@ -6941,29 +6971,11 @@ proto.bastion.ResShellExec.prototype.setUuid = function(value) {
 
 
 /**
- * optional uint64 code = 2;
- * @return {number}
- */
-proto.bastion.ResShellExec.prototype.getCode = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
-
-/**
- * @param {number} value
- * @return {!proto.bastion.ResShellExec} returns this
- */
-proto.bastion.ResShellExec.prototype.setCode = function(value) {
-  return jspb.Message.setProto3IntField(this, 2, value);
-};
-
-
-/**
- * optional string output = 3;
+ * optional string output = 2;
  * @return {string}
  */
 proto.bastion.ResShellExec.prototype.getOutput = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
@@ -6972,16 +6984,16 @@ proto.bastion.ResShellExec.prototype.getOutput = function() {
  * @return {!proto.bastion.ResShellExec} returns this
  */
 proto.bastion.ResShellExec.prototype.setOutput = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
 /**
- * optional uint64 startAt = 4;
+ * optional uint64 startAt = 3;
  * @return {number}
  */
 proto.bastion.ResShellExec.prototype.getStartat = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
@@ -6990,16 +7002,16 @@ proto.bastion.ResShellExec.prototype.getStartat = function() {
  * @return {!proto.bastion.ResShellExec} returns this
  */
 proto.bastion.ResShellExec.prototype.setStartat = function(value) {
-  return jspb.Message.setProto3IntField(this, 4, value);
+  return jspb.Message.setProto3IntField(this, 3, value);
 };
 
 
 /**
- * optional uint64 doneAt = 5;
+ * optional uint64 doneAt = 4;
  * @return {number}
  */
 proto.bastion.ResShellExec.prototype.getDoneat = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
 
@@ -7008,7 +7020,25 @@ proto.bastion.ResShellExec.prototype.getDoneat = function() {
  * @return {!proto.bastion.ResShellExec} returns this
  */
 proto.bastion.ResShellExec.prototype.setDoneat = function(value) {
-  return jspb.Message.setProto3IntField(this, 5, value);
+  return jspb.Message.setProto3IntField(this, 4, value);
+};
+
+
+/**
+ * optional bool ok = 5;
+ * @return {boolean}
+ */
+proto.bastion.ResShellExec.prototype.getOk = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 5, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.bastion.ResShellExec} returns this
+ */
+proto.bastion.ResShellExec.prototype.setOk = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 5, value);
 };
 
 
@@ -7044,13 +7074,12 @@ proto.bastion.ReqShellExec.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bastion.ReqShellExec.toObject = function(includeInstance, msg) {
   var f, obj = {
-    sshaddr: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    sshuser: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    sshpassword: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    sshprivatekey: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    sshprivatekeypassword: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    shellscript: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    uuid: jspb.Message.getFieldWithDefault(msg, 7, "")
+    target: (f = msg.getTarget()) && proto.bastion.sshConn.toObject(includeInstance, f),
+    proxy: (f = msg.getProxy()) && proto.bastion.sshConn.toObject(includeInstance, f),
+    shellscript: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    uuid: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    timeoutconnsec: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    timeoutexecsec: jspb.Message.getFieldWithDefault(msg, 6, 0)
   };
 
   if (includeInstance) {
@@ -7088,32 +7117,30 @@ proto.bastion.ReqShellExec.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setSshaddr(value);
+      var value = new proto.bastion.sshConn;
+      reader.readMessage(value,proto.bastion.sshConn.deserializeBinaryFromReader);
+      msg.setTarget(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setSshuser(value);
+      var value = new proto.bastion.sshConn;
+      reader.readMessage(value,proto.bastion.sshConn.deserializeBinaryFromReader);
+      msg.setProxy(value);
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setSshpassword(value);
+      msg.setShellscript(value);
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
-      msg.setSshprivatekey(value);
+      msg.setUuid(value);
       break;
     case 5:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setSshprivatekeypassword(value);
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setTimeoutconnsec(value);
       break;
     case 6:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setShellscript(value);
-      break;
-    case 7:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setUuid(value);
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setTimeoutexecsec(value);
       break;
     default:
       reader.skipField();
@@ -7144,99 +7171,132 @@ proto.bastion.ReqShellExec.prototype.serializeBinary = function() {
  */
 proto.bastion.ReqShellExec.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getSshaddr();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getTarget();
+  if (f != null) {
+    writer.writeMessage(
       1,
-      f
+      f,
+      proto.bastion.sshConn.serializeBinaryToWriter
     );
   }
-  f = message.getSshuser();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getProxy();
+  if (f != null) {
+    writer.writeMessage(
       2,
-      f
+      f,
+      proto.bastion.sshConn.serializeBinaryToWriter
     );
   }
-  f = message.getSshpassword();
+  f = message.getShellscript();
   if (f.length > 0) {
     writer.writeString(
       3,
       f
     );
   }
-  f = message.getSshprivatekey();
+  f = message.getUuid();
   if (f.length > 0) {
     writer.writeString(
       4,
       f
     );
   }
-  f = message.getSshprivatekeypassword();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getTimeoutconnsec();
+  if (f !== 0) {
+    writer.writeUint64(
       5,
       f
     );
   }
-  f = message.getShellscript();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getTimeoutexecsec();
+  if (f !== 0) {
+    writer.writeUint64(
       6,
       f
     );
   }
-  f = message.getUuid();
-  if (f.length > 0) {
-    writer.writeString(
-      7,
-      f
-    );
-  }
 };
 
 
 /**
- * optional string sshAddr = 1;
- * @return {string}
+ * optional sshConn target = 1;
+ * @return {?proto.bastion.sshConn}
  */
-proto.bastion.ReqShellExec.prototype.getSshaddr = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+proto.bastion.ReqShellExec.prototype.getTarget = function() {
+  return /** @type{?proto.bastion.sshConn} */ (
+    jspb.Message.getWrapperField(this, proto.bastion.sshConn, 1));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.bastion.sshConn|undefined} value
+ * @return {!proto.bastion.ReqShellExec} returns this
+*/
+proto.bastion.ReqShellExec.prototype.setTarget = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.bastion.ReqShellExec} returns this
  */
-proto.bastion.ReqShellExec.prototype.setSshaddr = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
+proto.bastion.ReqShellExec.prototype.clearTarget = function() {
+  return this.setTarget(undefined);
 };
 
 
 /**
- * optional string sshUser = 2;
- * @return {string}
+ * Returns whether this field is set.
+ * @return {boolean}
  */
-proto.bastion.ReqShellExec.prototype.getSshuser = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+proto.bastion.ReqShellExec.prototype.hasTarget = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
 /**
- * @param {string} value
+ * optional sshConn proxy = 2;
+ * @return {?proto.bastion.sshConn}
+ */
+proto.bastion.ReqShellExec.prototype.getProxy = function() {
+  return /** @type{?proto.bastion.sshConn} */ (
+    jspb.Message.getWrapperField(this, proto.bastion.sshConn, 2));
+};
+
+
+/**
+ * @param {?proto.bastion.sshConn|undefined} value
+ * @return {!proto.bastion.ReqShellExec} returns this
+*/
+proto.bastion.ReqShellExec.prototype.setProxy = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.bastion.ReqShellExec} returns this
  */
-proto.bastion.ReqShellExec.prototype.setSshuser = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
+proto.bastion.ReqShellExec.prototype.clearProxy = function() {
+  return this.setProxy(undefined);
 };
 
 
 /**
- * optional string sshPassword = 3;
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.bastion.ReqShellExec.prototype.hasProxy = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional string shellScript = 3;
  * @return {string}
  */
-proto.bastion.ReqShellExec.prototype.getSshpassword = function() {
+proto.bastion.ReqShellExec.prototype.getShellscript = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
@@ -7245,16 +7305,16 @@ proto.bastion.ReqShellExec.prototype.getSshpassword = function() {
  * @param {string} value
  * @return {!proto.bastion.ReqShellExec} returns this
  */
-proto.bastion.ReqShellExec.prototype.setSshpassword = function(value) {
+proto.bastion.ReqShellExec.prototype.setShellscript = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
 /**
- * optional string sshPrivateKey = 4;
+ * optional string uuid = 4;
  * @return {string}
  */
-proto.bastion.ReqShellExec.prototype.getSshprivatekey = function() {
+proto.bastion.ReqShellExec.prototype.getUuid = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
@@ -7263,62 +7323,44 @@ proto.bastion.ReqShellExec.prototype.getSshprivatekey = function() {
  * @param {string} value
  * @return {!proto.bastion.ReqShellExec} returns this
  */
-proto.bastion.ReqShellExec.prototype.setSshprivatekey = function(value) {
+proto.bastion.ReqShellExec.prototype.setUuid = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
 /**
- * optional string sshPrivateKeyPassword = 5;
- * @return {string}
+ * optional uint64 timeoutConnSec = 5;
+ * @return {number}
  */
-proto.bastion.ReqShellExec.prototype.getSshprivatekeypassword = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+proto.bastion.ReqShellExec.prototype.getTimeoutconnsec = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
 };
 
 
 /**
- * @param {string} value
+ * @param {number} value
  * @return {!proto.bastion.ReqShellExec} returns this
  */
-proto.bastion.ReqShellExec.prototype.setSshprivatekeypassword = function(value) {
-  return jspb.Message.setProto3StringField(this, 5, value);
+proto.bastion.ReqShellExec.prototype.setTimeoutconnsec = function(value) {
+  return jspb.Message.setProto3IntField(this, 5, value);
 };
 
 
 /**
- * optional string shellScript = 6;
- * @return {string}
+ * optional uint64 timeoutExecSec = 6;
+ * @return {number}
  */
-proto.bastion.ReqShellExec.prototype.getShellscript = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+proto.bastion.ReqShellExec.prototype.getTimeoutexecsec = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
 };
 
 
 /**
- * @param {string} value
+ * @param {number} value
  * @return {!proto.bastion.ReqShellExec} returns this
  */
-proto.bastion.ReqShellExec.prototype.setShellscript = function(value) {
-  return jspb.Message.setProto3StringField(this, 6, value);
-};
-
-
-/**
- * optional string uuid = 7;
- * @return {string}
- */
-proto.bastion.ReqShellExec.prototype.getUuid = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.bastion.ReqShellExec} returns this
- */
-proto.bastion.ReqShellExec.prototype.setUuid = function(value) {
-  return jspb.Message.setProto3StringField(this, 7, value);
+proto.bastion.ReqShellExec.prototype.setTimeoutexecsec = function(value) {
+  return jspb.Message.setProto3IntField(this, 6, value);
 };
 
 
