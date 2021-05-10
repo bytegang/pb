@@ -14,10 +14,10 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// BastionClient is the client API for Bastion service.
+// CmdbClient is the client API for Cmdb service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type BastionClient interface {
+type CmdbClient interface {
 	AuthPw(ctx context.Context, in *ReqAuthPassword, opts ...grpc.CallOption) (*User, error)
 	AuthPk(ctx context.Context, in *ReqAuthPublicKey, opts ...grpc.CallOption) (*User, error)
 	AuthKb(ctx context.Context, in *ReqSshUser, opts ...grpc.CallOption) (*UserKb, error)
@@ -32,126 +32,126 @@ type BastionClient interface {
 	RemoteExec(ctx context.Context, in *ReqAssetCmd, opts ...grpc.CallOption) (*ResStatus, error)
 }
 
-type bastionClient struct {
+type cmdbClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewBastionClient(cc grpc.ClientConnInterface) BastionClient {
-	return &bastionClient{cc}
+func NewCmdbClient(cc grpc.ClientConnInterface) CmdbClient {
+	return &cmdbClient{cc}
 }
 
-func (c *bastionClient) AuthPw(ctx context.Context, in *ReqAuthPassword, opts ...grpc.CallOption) (*User, error) {
+func (c *cmdbClient) AuthPw(ctx context.Context, in *ReqAuthPassword, opts ...grpc.CallOption) (*User, error) {
 	out := new(User)
-	err := c.cc.Invoke(ctx, "/bastion.Bastion/AuthPw", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bastion.Cmdb/AuthPw", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *bastionClient) AuthPk(ctx context.Context, in *ReqAuthPublicKey, opts ...grpc.CallOption) (*User, error) {
+func (c *cmdbClient) AuthPk(ctx context.Context, in *ReqAuthPublicKey, opts ...grpc.CallOption) (*User, error) {
 	out := new(User)
-	err := c.cc.Invoke(ctx, "/bastion.Bastion/AuthPk", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bastion.Cmdb/AuthPk", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *bastionClient) AuthKb(ctx context.Context, in *ReqSshUser, opts ...grpc.CallOption) (*UserKb, error) {
+func (c *cmdbClient) AuthKb(ctx context.Context, in *ReqSshUser, opts ...grpc.CallOption) (*UserKb, error) {
 	out := new(UserKb)
-	err := c.cc.Invoke(ctx, "/bastion.Bastion/AuthKb", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bastion.Cmdb/AuthKb", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *bastionClient) FetchAsset(ctx context.Context, in *ReqAssetsQuery, opts ...grpc.CallOption) (*AssetList, error) {
+func (c *cmdbClient) FetchAsset(ctx context.Context, in *ReqAssetsQuery, opts ...grpc.CallOption) (*AssetList, error) {
 	out := new(AssetList)
-	err := c.cc.Invoke(ctx, "/bastion.Bastion/FetchAsset", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bastion.Cmdb/FetchAsset", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *bastionClient) FetchAssetSshConfig(ctx context.Context, in *ReqAssetUser, opts ...grpc.CallOption) (*AssetSshAccount, error) {
+func (c *cmdbClient) FetchAssetSshConfig(ctx context.Context, in *ReqAssetUser, opts ...grpc.CallOption) (*AssetSshAccount, error) {
 	out := new(AssetSshAccount)
-	err := c.cc.Invoke(ctx, "/bastion.Bastion/FetchAssetSshConfig", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bastion.Cmdb/FetchAssetSshConfig", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *bastionClient) SshShellExec(ctx context.Context, in *ReqSshExec, opts ...grpc.CallOption) (*ResStatus, error) {
+func (c *cmdbClient) SshShellExec(ctx context.Context, in *ReqSshExec, opts ...grpc.CallOption) (*ResStatus, error) {
 	out := new(ResStatus)
-	err := c.cc.Invoke(ctx, "/bastion.Bastion/SshShellExec", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bastion.Cmdb/SshShellExec", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *bastionClient) WebXtermSsh(ctx context.Context, in *ReqWebXterm, opts ...grpc.CallOption) (*ResWebXterm, error) {
+func (c *cmdbClient) WebXtermSsh(ctx context.Context, in *ReqWebXterm, opts ...grpc.CallOption) (*ResWebXterm, error) {
 	out := new(ResWebXterm)
-	err := c.cc.Invoke(ctx, "/bastion.Bastion/WebXtermSsh", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bastion.Cmdb/WebXtermSsh", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *bastionClient) WebXtermPod(ctx context.Context, in *ReqWebXterm, opts ...grpc.CallOption) (*ResWebXterm, error) {
+func (c *cmdbClient) WebXtermPod(ctx context.Context, in *ReqWebXterm, opts ...grpc.CallOption) (*ResWebXterm, error) {
 	out := new(ResWebXterm)
-	err := c.cc.Invoke(ctx, "/bastion.Bastion/WebXtermPod", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bastion.Cmdb/WebXtermPod", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *bastionClient) CollectSshdLog(ctx context.Context, in *ReqSshdData, opts ...grpc.CallOption) (*ResStatus, error) {
+func (c *cmdbClient) CollectSshdLog(ctx context.Context, in *ReqSshdData, opts ...grpc.CallOption) (*ResStatus, error) {
 	out := new(ResStatus)
-	err := c.cc.Invoke(ctx, "/bastion.Bastion/CollectSshdLog", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bastion.Cmdb/CollectSshdLog", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *bastionClient) PushSshCmd(ctx context.Context, in *ReqSshCmd, opts ...grpc.CallOption) (*ResStatus, error) {
+func (c *cmdbClient) PushSshCmd(ctx context.Context, in *ReqSshCmd, opts ...grpc.CallOption) (*ResStatus, error) {
 	out := new(ResStatus)
-	err := c.cc.Invoke(ctx, "/bastion.Bastion/PushSshCmd", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bastion.Cmdb/PushSshCmd", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *bastionClient) PushAuthLog(ctx context.Context, in *ReqAuthLog, opts ...grpc.CallOption) (*ResStatus, error) {
+func (c *cmdbClient) PushAuthLog(ctx context.Context, in *ReqAuthLog, opts ...grpc.CallOption) (*ResStatus, error) {
 	out := new(ResStatus)
-	err := c.cc.Invoke(ctx, "/bastion.Bastion/PushAuthLog", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bastion.Cmdb/PushAuthLog", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *bastionClient) RemoteExec(ctx context.Context, in *ReqAssetCmd, opts ...grpc.CallOption) (*ResStatus, error) {
+func (c *cmdbClient) RemoteExec(ctx context.Context, in *ReqAssetCmd, opts ...grpc.CallOption) (*ResStatus, error) {
 	out := new(ResStatus)
-	err := c.cc.Invoke(ctx, "/bastion.Bastion/RemoteExec", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bastion.Cmdb/RemoteExec", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// BastionServer is the server API for Bastion service.
-// All implementations must embed UnimplementedBastionServer
+// CmdbServer is the server API for Cmdb service.
+// All implementations must embed UnimplementedCmdbServer
 // for forward compatibility
-type BastionServer interface {
+type CmdbServer interface {
 	AuthPw(context.Context, *ReqAuthPassword) (*User, error)
 	AuthPk(context.Context, *ReqAuthPublicKey) (*User, error)
 	AuthKb(context.Context, *ReqSshUser) (*UserKb, error)
@@ -164,332 +164,418 @@ type BastionServer interface {
 	PushSshCmd(context.Context, *ReqSshCmd) (*ResStatus, error)
 	PushAuthLog(context.Context, *ReqAuthLog) (*ResStatus, error)
 	RemoteExec(context.Context, *ReqAssetCmd) (*ResStatus, error)
-	mustEmbedUnimplementedBastionServer()
+	mustEmbedUnimplementedCmdbServer()
 }
 
-// UnimplementedBastionServer must be embedded to have forward compatible implementations.
-type UnimplementedBastionServer struct {
+// UnimplementedCmdbServer must be embedded to have forward compatible implementations.
+type UnimplementedCmdbServer struct {
 }
 
-func (UnimplementedBastionServer) AuthPw(context.Context, *ReqAuthPassword) (*User, error) {
+func (UnimplementedCmdbServer) AuthPw(context.Context, *ReqAuthPassword) (*User, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AuthPw not implemented")
 }
-func (UnimplementedBastionServer) AuthPk(context.Context, *ReqAuthPublicKey) (*User, error) {
+func (UnimplementedCmdbServer) AuthPk(context.Context, *ReqAuthPublicKey) (*User, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AuthPk not implemented")
 }
-func (UnimplementedBastionServer) AuthKb(context.Context, *ReqSshUser) (*UserKb, error) {
+func (UnimplementedCmdbServer) AuthKb(context.Context, *ReqSshUser) (*UserKb, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AuthKb not implemented")
 }
-func (UnimplementedBastionServer) FetchAsset(context.Context, *ReqAssetsQuery) (*AssetList, error) {
+func (UnimplementedCmdbServer) FetchAsset(context.Context, *ReqAssetsQuery) (*AssetList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FetchAsset not implemented")
 }
-func (UnimplementedBastionServer) FetchAssetSshConfig(context.Context, *ReqAssetUser) (*AssetSshAccount, error) {
+func (UnimplementedCmdbServer) FetchAssetSshConfig(context.Context, *ReqAssetUser) (*AssetSshAccount, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FetchAssetSshConfig not implemented")
 }
-func (UnimplementedBastionServer) SshShellExec(context.Context, *ReqSshExec) (*ResStatus, error) {
+func (UnimplementedCmdbServer) SshShellExec(context.Context, *ReqSshExec) (*ResStatus, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SshShellExec not implemented")
 }
-func (UnimplementedBastionServer) WebXtermSsh(context.Context, *ReqWebXterm) (*ResWebXterm, error) {
+func (UnimplementedCmdbServer) WebXtermSsh(context.Context, *ReqWebXterm) (*ResWebXterm, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method WebXtermSsh not implemented")
 }
-func (UnimplementedBastionServer) WebXtermPod(context.Context, *ReqWebXterm) (*ResWebXterm, error) {
+func (UnimplementedCmdbServer) WebXtermPod(context.Context, *ReqWebXterm) (*ResWebXterm, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method WebXtermPod not implemented")
 }
-func (UnimplementedBastionServer) CollectSshdLog(context.Context, *ReqSshdData) (*ResStatus, error) {
+func (UnimplementedCmdbServer) CollectSshdLog(context.Context, *ReqSshdData) (*ResStatus, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CollectSshdLog not implemented")
 }
-func (UnimplementedBastionServer) PushSshCmd(context.Context, *ReqSshCmd) (*ResStatus, error) {
+func (UnimplementedCmdbServer) PushSshCmd(context.Context, *ReqSshCmd) (*ResStatus, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PushSshCmd not implemented")
 }
-func (UnimplementedBastionServer) PushAuthLog(context.Context, *ReqAuthLog) (*ResStatus, error) {
+func (UnimplementedCmdbServer) PushAuthLog(context.Context, *ReqAuthLog) (*ResStatus, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PushAuthLog not implemented")
 }
-func (UnimplementedBastionServer) RemoteExec(context.Context, *ReqAssetCmd) (*ResStatus, error) {
+func (UnimplementedCmdbServer) RemoteExec(context.Context, *ReqAssetCmd) (*ResStatus, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoteExec not implemented")
 }
-func (UnimplementedBastionServer) mustEmbedUnimplementedBastionServer() {}
+func (UnimplementedCmdbServer) mustEmbedUnimplementedCmdbServer() {}
 
-// UnsafeBastionServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to BastionServer will
+// UnsafeCmdbServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to CmdbServer will
 // result in compilation errors.
-type UnsafeBastionServer interface {
-	mustEmbedUnimplementedBastionServer()
+type UnsafeCmdbServer interface {
+	mustEmbedUnimplementedCmdbServer()
 }
 
-func RegisterBastionServer(s grpc.ServiceRegistrar, srv BastionServer) {
-	s.RegisterService(&Bastion_ServiceDesc, srv)
+func RegisterCmdbServer(s grpc.ServiceRegistrar, srv CmdbServer) {
+	s.RegisterService(&Cmdb_ServiceDesc, srv)
 }
 
-func _Bastion_AuthPw_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Cmdb_AuthPw_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReqAuthPassword)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BastionServer).AuthPw(ctx, in)
+		return srv.(CmdbServer).AuthPw(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bastion.Bastion/AuthPw",
+		FullMethod: "/bastion.Cmdb/AuthPw",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BastionServer).AuthPw(ctx, req.(*ReqAuthPassword))
+		return srv.(CmdbServer).AuthPw(ctx, req.(*ReqAuthPassword))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Bastion_AuthPk_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Cmdb_AuthPk_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReqAuthPublicKey)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BastionServer).AuthPk(ctx, in)
+		return srv.(CmdbServer).AuthPk(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bastion.Bastion/AuthPk",
+		FullMethod: "/bastion.Cmdb/AuthPk",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BastionServer).AuthPk(ctx, req.(*ReqAuthPublicKey))
+		return srv.(CmdbServer).AuthPk(ctx, req.(*ReqAuthPublicKey))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Bastion_AuthKb_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Cmdb_AuthKb_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReqSshUser)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BastionServer).AuthKb(ctx, in)
+		return srv.(CmdbServer).AuthKb(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bastion.Bastion/AuthKb",
+		FullMethod: "/bastion.Cmdb/AuthKb",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BastionServer).AuthKb(ctx, req.(*ReqSshUser))
+		return srv.(CmdbServer).AuthKb(ctx, req.(*ReqSshUser))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Bastion_FetchAsset_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Cmdb_FetchAsset_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReqAssetsQuery)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BastionServer).FetchAsset(ctx, in)
+		return srv.(CmdbServer).FetchAsset(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bastion.Bastion/FetchAsset",
+		FullMethod: "/bastion.Cmdb/FetchAsset",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BastionServer).FetchAsset(ctx, req.(*ReqAssetsQuery))
+		return srv.(CmdbServer).FetchAsset(ctx, req.(*ReqAssetsQuery))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Bastion_FetchAssetSshConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Cmdb_FetchAssetSshConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReqAssetUser)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BastionServer).FetchAssetSshConfig(ctx, in)
+		return srv.(CmdbServer).FetchAssetSshConfig(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bastion.Bastion/FetchAssetSshConfig",
+		FullMethod: "/bastion.Cmdb/FetchAssetSshConfig",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BastionServer).FetchAssetSshConfig(ctx, req.(*ReqAssetUser))
+		return srv.(CmdbServer).FetchAssetSshConfig(ctx, req.(*ReqAssetUser))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Bastion_SshShellExec_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Cmdb_SshShellExec_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReqSshExec)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BastionServer).SshShellExec(ctx, in)
+		return srv.(CmdbServer).SshShellExec(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bastion.Bastion/SshShellExec",
+		FullMethod: "/bastion.Cmdb/SshShellExec",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BastionServer).SshShellExec(ctx, req.(*ReqSshExec))
+		return srv.(CmdbServer).SshShellExec(ctx, req.(*ReqSshExec))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Bastion_WebXtermSsh_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Cmdb_WebXtermSsh_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReqWebXterm)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BastionServer).WebXtermSsh(ctx, in)
+		return srv.(CmdbServer).WebXtermSsh(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bastion.Bastion/WebXtermSsh",
+		FullMethod: "/bastion.Cmdb/WebXtermSsh",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BastionServer).WebXtermSsh(ctx, req.(*ReqWebXterm))
+		return srv.(CmdbServer).WebXtermSsh(ctx, req.(*ReqWebXterm))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Bastion_WebXtermPod_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Cmdb_WebXtermPod_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReqWebXterm)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BastionServer).WebXtermPod(ctx, in)
+		return srv.(CmdbServer).WebXtermPod(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bastion.Bastion/WebXtermPod",
+		FullMethod: "/bastion.Cmdb/WebXtermPod",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BastionServer).WebXtermPod(ctx, req.(*ReqWebXterm))
+		return srv.(CmdbServer).WebXtermPod(ctx, req.(*ReqWebXterm))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Bastion_CollectSshdLog_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Cmdb_CollectSshdLog_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReqSshdData)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BastionServer).CollectSshdLog(ctx, in)
+		return srv.(CmdbServer).CollectSshdLog(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bastion.Bastion/CollectSshdLog",
+		FullMethod: "/bastion.Cmdb/CollectSshdLog",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BastionServer).CollectSshdLog(ctx, req.(*ReqSshdData))
+		return srv.(CmdbServer).CollectSshdLog(ctx, req.(*ReqSshdData))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Bastion_PushSshCmd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Cmdb_PushSshCmd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReqSshCmd)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BastionServer).PushSshCmd(ctx, in)
+		return srv.(CmdbServer).PushSshCmd(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bastion.Bastion/PushSshCmd",
+		FullMethod: "/bastion.Cmdb/PushSshCmd",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BastionServer).PushSshCmd(ctx, req.(*ReqSshCmd))
+		return srv.(CmdbServer).PushSshCmd(ctx, req.(*ReqSshCmd))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Bastion_PushAuthLog_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Cmdb_PushAuthLog_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReqAuthLog)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BastionServer).PushAuthLog(ctx, in)
+		return srv.(CmdbServer).PushAuthLog(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bastion.Bastion/PushAuthLog",
+		FullMethod: "/bastion.Cmdb/PushAuthLog",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BastionServer).PushAuthLog(ctx, req.(*ReqAuthLog))
+		return srv.(CmdbServer).PushAuthLog(ctx, req.(*ReqAuthLog))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Bastion_RemoteExec_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Cmdb_RemoteExec_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReqAssetCmd)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BastionServer).RemoteExec(ctx, in)
+		return srv.(CmdbServer).RemoteExec(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bastion.Bastion/RemoteExec",
+		FullMethod: "/bastion.Cmdb/RemoteExec",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BastionServer).RemoteExec(ctx, req.(*ReqAssetCmd))
+		return srv.(CmdbServer).RemoteExec(ctx, req.(*ReqAssetCmd))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// Bastion_ServiceDesc is the grpc.ServiceDesc for Bastion service.
+// Cmdb_ServiceDesc is the grpc.ServiceDesc for Cmdb service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var Bastion_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "bastion.Bastion",
-	HandlerType: (*BastionServer)(nil),
+var Cmdb_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "bastion.Cmdb",
+	HandlerType: (*CmdbServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "AuthPw",
-			Handler:    _Bastion_AuthPw_Handler,
+			Handler:    _Cmdb_AuthPw_Handler,
 		},
 		{
 			MethodName: "AuthPk",
-			Handler:    _Bastion_AuthPk_Handler,
+			Handler:    _Cmdb_AuthPk_Handler,
 		},
 		{
 			MethodName: "AuthKb",
-			Handler:    _Bastion_AuthKb_Handler,
+			Handler:    _Cmdb_AuthKb_Handler,
 		},
 		{
 			MethodName: "FetchAsset",
-			Handler:    _Bastion_FetchAsset_Handler,
+			Handler:    _Cmdb_FetchAsset_Handler,
 		},
 		{
 			MethodName: "FetchAssetSshConfig",
-			Handler:    _Bastion_FetchAssetSshConfig_Handler,
+			Handler:    _Cmdb_FetchAssetSshConfig_Handler,
 		},
 		{
 			MethodName: "SshShellExec",
-			Handler:    _Bastion_SshShellExec_Handler,
+			Handler:    _Cmdb_SshShellExec_Handler,
 		},
 		{
 			MethodName: "WebXtermSsh",
-			Handler:    _Bastion_WebXtermSsh_Handler,
+			Handler:    _Cmdb_WebXtermSsh_Handler,
 		},
 		{
 			MethodName: "WebXtermPod",
-			Handler:    _Bastion_WebXtermPod_Handler,
+			Handler:    _Cmdb_WebXtermPod_Handler,
 		},
 		{
 			MethodName: "CollectSshdLog",
-			Handler:    _Bastion_CollectSshdLog_Handler,
+			Handler:    _Cmdb_CollectSshdLog_Handler,
 		},
 		{
 			MethodName: "PushSshCmd",
-			Handler:    _Bastion_PushSshCmd_Handler,
+			Handler:    _Cmdb_PushSshCmd_Handler,
 		},
 		{
 			MethodName: "PushAuthLog",
-			Handler:    _Bastion_PushAuthLog_Handler,
+			Handler:    _Cmdb_PushAuthLog_Handler,
 		},
 		{
 			MethodName: "RemoteExec",
-			Handler:    _Bastion_RemoteExec_Handler,
+			Handler:    _Cmdb_RemoteExec_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "bastion.proto",
+}
+
+// SshArkClient is the client API for SshArk service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type SshArkClient interface {
+	ExecShell(ctx context.Context, in *ReqShellExec, opts ...grpc.CallOption) (*ResShellExec, error)
+}
+
+type sshArkClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewSshArkClient(cc grpc.ClientConnInterface) SshArkClient {
+	return &sshArkClient{cc}
+}
+
+func (c *sshArkClient) ExecShell(ctx context.Context, in *ReqShellExec, opts ...grpc.CallOption) (*ResShellExec, error) {
+	out := new(ResShellExec)
+	err := c.cc.Invoke(ctx, "/bastion.SshArk/execShell", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// SshArkServer is the server API for SshArk service.
+// All implementations must embed UnimplementedSshArkServer
+// for forward compatibility
+type SshArkServer interface {
+	ExecShell(context.Context, *ReqShellExec) (*ResShellExec, error)
+	mustEmbedUnimplementedSshArkServer()
+}
+
+// UnimplementedSshArkServer must be embedded to have forward compatible implementations.
+type UnimplementedSshArkServer struct {
+}
+
+func (UnimplementedSshArkServer) ExecShell(context.Context, *ReqShellExec) (*ResShellExec, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ExecShell not implemented")
+}
+func (UnimplementedSshArkServer) mustEmbedUnimplementedSshArkServer() {}
+
+// UnsafeSshArkServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to SshArkServer will
+// result in compilation errors.
+type UnsafeSshArkServer interface {
+	mustEmbedUnimplementedSshArkServer()
+}
+
+func RegisterSshArkServer(s grpc.ServiceRegistrar, srv SshArkServer) {
+	s.RegisterService(&SshArk_ServiceDesc, srv)
+}
+
+func _SshArk_ExecShell_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReqShellExec)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SshArkServer).ExecShell(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bastion.SshArk/execShell",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SshArkServer).ExecShell(ctx, req.(*ReqShellExec))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// SshArk_ServiceDesc is the grpc.ServiceDesc for SshArk service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var SshArk_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "bastion.SshArk",
+	HandlerType: (*SshArkServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "execShell",
+			Handler:    _SshArk_ExecShell_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

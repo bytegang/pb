@@ -26,7 +26,7 @@ proto.bastion = require('./bastion_pb.js');
  * @struct
  * @final
  */
-proto.bastion.BastionClient =
+proto.bastion.CmdbClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -52,7 +52,7 @@ proto.bastion.BastionClient =
  * @struct
  * @final
  */
-proto.bastion.BastionPromiseClient =
+proto.bastion.CmdbPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -76,8 +76,8 @@ proto.bastion.BastionPromiseClient =
  *   !proto.bastion.ReqAuthPassword,
  *   !proto.bastion.User>}
  */
-const methodDescriptor_Bastion_AuthPw = new grpc.web.MethodDescriptor(
-  '/bastion.Bastion/AuthPw',
+const methodDescriptor_Cmdb_AuthPw = new grpc.web.MethodDescriptor(
+  '/bastion.Cmdb/AuthPw',
   grpc.web.MethodType.UNARY,
   proto.bastion.ReqAuthPassword,
   proto.bastion.User,
@@ -98,7 +98,7 @@ const methodDescriptor_Bastion_AuthPw = new grpc.web.MethodDescriptor(
  *   !proto.bastion.ReqAuthPassword,
  *   !proto.bastion.User>}
  */
-const methodInfo_Bastion_AuthPw = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_Cmdb_AuthPw = new grpc.web.AbstractClientBase.MethodInfo(
   proto.bastion.User,
   /**
    * @param {!proto.bastion.ReqAuthPassword} request
@@ -121,13 +121,13 @@ const methodInfo_Bastion_AuthPw = new grpc.web.AbstractClientBase.MethodInfo(
  * @return {!grpc.web.ClientReadableStream<!proto.bastion.User>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bastion.BastionClient.prototype.authPw =
+proto.bastion.CmdbClient.prototype.authPw =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bastion.Bastion/AuthPw',
+      '/bastion.Cmdb/AuthPw',
       request,
       metadata || {},
-      methodDescriptor_Bastion_AuthPw,
+      methodDescriptor_Cmdb_AuthPw,
       callback);
 };
 
@@ -140,13 +140,13 @@ proto.bastion.BastionClient.prototype.authPw =
  * @return {!Promise<!proto.bastion.User>}
  *     Promise that resolves to the response
  */
-proto.bastion.BastionPromiseClient.prototype.authPw =
+proto.bastion.CmdbPromiseClient.prototype.authPw =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bastion.Bastion/AuthPw',
+      '/bastion.Cmdb/AuthPw',
       request,
       metadata || {},
-      methodDescriptor_Bastion_AuthPw);
+      methodDescriptor_Cmdb_AuthPw);
 };
 
 
@@ -156,8 +156,8 @@ proto.bastion.BastionPromiseClient.prototype.authPw =
  *   !proto.bastion.ReqAuthPublicKey,
  *   !proto.bastion.User>}
  */
-const methodDescriptor_Bastion_AuthPk = new grpc.web.MethodDescriptor(
-  '/bastion.Bastion/AuthPk',
+const methodDescriptor_Cmdb_AuthPk = new grpc.web.MethodDescriptor(
+  '/bastion.Cmdb/AuthPk',
   grpc.web.MethodType.UNARY,
   proto.bastion.ReqAuthPublicKey,
   proto.bastion.User,
@@ -178,7 +178,7 @@ const methodDescriptor_Bastion_AuthPk = new grpc.web.MethodDescriptor(
  *   !proto.bastion.ReqAuthPublicKey,
  *   !proto.bastion.User>}
  */
-const methodInfo_Bastion_AuthPk = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_Cmdb_AuthPk = new grpc.web.AbstractClientBase.MethodInfo(
   proto.bastion.User,
   /**
    * @param {!proto.bastion.ReqAuthPublicKey} request
@@ -201,13 +201,13 @@ const methodInfo_Bastion_AuthPk = new grpc.web.AbstractClientBase.MethodInfo(
  * @return {!grpc.web.ClientReadableStream<!proto.bastion.User>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bastion.BastionClient.prototype.authPk =
+proto.bastion.CmdbClient.prototype.authPk =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bastion.Bastion/AuthPk',
+      '/bastion.Cmdb/AuthPk',
       request,
       metadata || {},
-      methodDescriptor_Bastion_AuthPk,
+      methodDescriptor_Cmdb_AuthPk,
       callback);
 };
 
@@ -220,13 +220,13 @@ proto.bastion.BastionClient.prototype.authPk =
  * @return {!Promise<!proto.bastion.User>}
  *     Promise that resolves to the response
  */
-proto.bastion.BastionPromiseClient.prototype.authPk =
+proto.bastion.CmdbPromiseClient.prototype.authPk =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bastion.Bastion/AuthPk',
+      '/bastion.Cmdb/AuthPk',
       request,
       metadata || {},
-      methodDescriptor_Bastion_AuthPk);
+      methodDescriptor_Cmdb_AuthPk);
 };
 
 
@@ -236,8 +236,8 @@ proto.bastion.BastionPromiseClient.prototype.authPk =
  *   !proto.bastion.ReqSshUser,
  *   !proto.bastion.UserKb>}
  */
-const methodDescriptor_Bastion_AuthKb = new grpc.web.MethodDescriptor(
-  '/bastion.Bastion/AuthKb',
+const methodDescriptor_Cmdb_AuthKb = new grpc.web.MethodDescriptor(
+  '/bastion.Cmdb/AuthKb',
   grpc.web.MethodType.UNARY,
   proto.bastion.ReqSshUser,
   proto.bastion.UserKb,
@@ -258,7 +258,7 @@ const methodDescriptor_Bastion_AuthKb = new grpc.web.MethodDescriptor(
  *   !proto.bastion.ReqSshUser,
  *   !proto.bastion.UserKb>}
  */
-const methodInfo_Bastion_AuthKb = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_Cmdb_AuthKb = new grpc.web.AbstractClientBase.MethodInfo(
   proto.bastion.UserKb,
   /**
    * @param {!proto.bastion.ReqSshUser} request
@@ -281,13 +281,13 @@ const methodInfo_Bastion_AuthKb = new grpc.web.AbstractClientBase.MethodInfo(
  * @return {!grpc.web.ClientReadableStream<!proto.bastion.UserKb>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bastion.BastionClient.prototype.authKb =
+proto.bastion.CmdbClient.prototype.authKb =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bastion.Bastion/AuthKb',
+      '/bastion.Cmdb/AuthKb',
       request,
       metadata || {},
-      methodDescriptor_Bastion_AuthKb,
+      methodDescriptor_Cmdb_AuthKb,
       callback);
 };
 
@@ -300,13 +300,13 @@ proto.bastion.BastionClient.prototype.authKb =
  * @return {!Promise<!proto.bastion.UserKb>}
  *     Promise that resolves to the response
  */
-proto.bastion.BastionPromiseClient.prototype.authKb =
+proto.bastion.CmdbPromiseClient.prototype.authKb =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bastion.Bastion/AuthKb',
+      '/bastion.Cmdb/AuthKb',
       request,
       metadata || {},
-      methodDescriptor_Bastion_AuthKb);
+      methodDescriptor_Cmdb_AuthKb);
 };
 
 
@@ -316,8 +316,8 @@ proto.bastion.BastionPromiseClient.prototype.authKb =
  *   !proto.bastion.ReqAssetsQuery,
  *   !proto.bastion.AssetList>}
  */
-const methodDescriptor_Bastion_FetchAsset = new grpc.web.MethodDescriptor(
-  '/bastion.Bastion/FetchAsset',
+const methodDescriptor_Cmdb_FetchAsset = new grpc.web.MethodDescriptor(
+  '/bastion.Cmdb/FetchAsset',
   grpc.web.MethodType.UNARY,
   proto.bastion.ReqAssetsQuery,
   proto.bastion.AssetList,
@@ -338,7 +338,7 @@ const methodDescriptor_Bastion_FetchAsset = new grpc.web.MethodDescriptor(
  *   !proto.bastion.ReqAssetsQuery,
  *   !proto.bastion.AssetList>}
  */
-const methodInfo_Bastion_FetchAsset = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_Cmdb_FetchAsset = new grpc.web.AbstractClientBase.MethodInfo(
   proto.bastion.AssetList,
   /**
    * @param {!proto.bastion.ReqAssetsQuery} request
@@ -361,13 +361,13 @@ const methodInfo_Bastion_FetchAsset = new grpc.web.AbstractClientBase.MethodInfo
  * @return {!grpc.web.ClientReadableStream<!proto.bastion.AssetList>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bastion.BastionClient.prototype.fetchAsset =
+proto.bastion.CmdbClient.prototype.fetchAsset =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bastion.Bastion/FetchAsset',
+      '/bastion.Cmdb/FetchAsset',
       request,
       metadata || {},
-      methodDescriptor_Bastion_FetchAsset,
+      methodDescriptor_Cmdb_FetchAsset,
       callback);
 };
 
@@ -380,13 +380,13 @@ proto.bastion.BastionClient.prototype.fetchAsset =
  * @return {!Promise<!proto.bastion.AssetList>}
  *     Promise that resolves to the response
  */
-proto.bastion.BastionPromiseClient.prototype.fetchAsset =
+proto.bastion.CmdbPromiseClient.prototype.fetchAsset =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bastion.Bastion/FetchAsset',
+      '/bastion.Cmdb/FetchAsset',
       request,
       metadata || {},
-      methodDescriptor_Bastion_FetchAsset);
+      methodDescriptor_Cmdb_FetchAsset);
 };
 
 
@@ -396,8 +396,8 @@ proto.bastion.BastionPromiseClient.prototype.fetchAsset =
  *   !proto.bastion.ReqAssetUser,
  *   !proto.bastion.AssetSshAccount>}
  */
-const methodDescriptor_Bastion_FetchAssetSshConfig = new grpc.web.MethodDescriptor(
-  '/bastion.Bastion/FetchAssetSshConfig',
+const methodDescriptor_Cmdb_FetchAssetSshConfig = new grpc.web.MethodDescriptor(
+  '/bastion.Cmdb/FetchAssetSshConfig',
   grpc.web.MethodType.UNARY,
   proto.bastion.ReqAssetUser,
   proto.bastion.AssetSshAccount,
@@ -418,7 +418,7 @@ const methodDescriptor_Bastion_FetchAssetSshConfig = new grpc.web.MethodDescript
  *   !proto.bastion.ReqAssetUser,
  *   !proto.bastion.AssetSshAccount>}
  */
-const methodInfo_Bastion_FetchAssetSshConfig = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_Cmdb_FetchAssetSshConfig = new grpc.web.AbstractClientBase.MethodInfo(
   proto.bastion.AssetSshAccount,
   /**
    * @param {!proto.bastion.ReqAssetUser} request
@@ -441,13 +441,13 @@ const methodInfo_Bastion_FetchAssetSshConfig = new grpc.web.AbstractClientBase.M
  * @return {!grpc.web.ClientReadableStream<!proto.bastion.AssetSshAccount>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bastion.BastionClient.prototype.fetchAssetSshConfig =
+proto.bastion.CmdbClient.prototype.fetchAssetSshConfig =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bastion.Bastion/FetchAssetSshConfig',
+      '/bastion.Cmdb/FetchAssetSshConfig',
       request,
       metadata || {},
-      methodDescriptor_Bastion_FetchAssetSshConfig,
+      methodDescriptor_Cmdb_FetchAssetSshConfig,
       callback);
 };
 
@@ -460,13 +460,13 @@ proto.bastion.BastionClient.prototype.fetchAssetSshConfig =
  * @return {!Promise<!proto.bastion.AssetSshAccount>}
  *     Promise that resolves to the response
  */
-proto.bastion.BastionPromiseClient.prototype.fetchAssetSshConfig =
+proto.bastion.CmdbPromiseClient.prototype.fetchAssetSshConfig =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bastion.Bastion/FetchAssetSshConfig',
+      '/bastion.Cmdb/FetchAssetSshConfig',
       request,
       metadata || {},
-      methodDescriptor_Bastion_FetchAssetSshConfig);
+      methodDescriptor_Cmdb_FetchAssetSshConfig);
 };
 
 
@@ -476,8 +476,8 @@ proto.bastion.BastionPromiseClient.prototype.fetchAssetSshConfig =
  *   !proto.bastion.ReqSshExec,
  *   !proto.bastion.ResStatus>}
  */
-const methodDescriptor_Bastion_SshShellExec = new grpc.web.MethodDescriptor(
-  '/bastion.Bastion/SshShellExec',
+const methodDescriptor_Cmdb_SshShellExec = new grpc.web.MethodDescriptor(
+  '/bastion.Cmdb/SshShellExec',
   grpc.web.MethodType.UNARY,
   proto.bastion.ReqSshExec,
   proto.bastion.ResStatus,
@@ -498,7 +498,7 @@ const methodDescriptor_Bastion_SshShellExec = new grpc.web.MethodDescriptor(
  *   !proto.bastion.ReqSshExec,
  *   !proto.bastion.ResStatus>}
  */
-const methodInfo_Bastion_SshShellExec = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_Cmdb_SshShellExec = new grpc.web.AbstractClientBase.MethodInfo(
   proto.bastion.ResStatus,
   /**
    * @param {!proto.bastion.ReqSshExec} request
@@ -521,13 +521,13 @@ const methodInfo_Bastion_SshShellExec = new grpc.web.AbstractClientBase.MethodIn
  * @return {!grpc.web.ClientReadableStream<!proto.bastion.ResStatus>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bastion.BastionClient.prototype.sshShellExec =
+proto.bastion.CmdbClient.prototype.sshShellExec =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bastion.Bastion/SshShellExec',
+      '/bastion.Cmdb/SshShellExec',
       request,
       metadata || {},
-      methodDescriptor_Bastion_SshShellExec,
+      methodDescriptor_Cmdb_SshShellExec,
       callback);
 };
 
@@ -540,13 +540,13 @@ proto.bastion.BastionClient.prototype.sshShellExec =
  * @return {!Promise<!proto.bastion.ResStatus>}
  *     Promise that resolves to the response
  */
-proto.bastion.BastionPromiseClient.prototype.sshShellExec =
+proto.bastion.CmdbPromiseClient.prototype.sshShellExec =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bastion.Bastion/SshShellExec',
+      '/bastion.Cmdb/SshShellExec',
       request,
       metadata || {},
-      methodDescriptor_Bastion_SshShellExec);
+      methodDescriptor_Cmdb_SshShellExec);
 };
 
 
@@ -556,8 +556,8 @@ proto.bastion.BastionPromiseClient.prototype.sshShellExec =
  *   !proto.bastion.ReqWebXterm,
  *   !proto.bastion.ResWebXterm>}
  */
-const methodDescriptor_Bastion_WebXtermSsh = new grpc.web.MethodDescriptor(
-  '/bastion.Bastion/WebXtermSsh',
+const methodDescriptor_Cmdb_WebXtermSsh = new grpc.web.MethodDescriptor(
+  '/bastion.Cmdb/WebXtermSsh',
   grpc.web.MethodType.UNARY,
   proto.bastion.ReqWebXterm,
   proto.bastion.ResWebXterm,
@@ -578,7 +578,7 @@ const methodDescriptor_Bastion_WebXtermSsh = new grpc.web.MethodDescriptor(
  *   !proto.bastion.ReqWebXterm,
  *   !proto.bastion.ResWebXterm>}
  */
-const methodInfo_Bastion_WebXtermSsh = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_Cmdb_WebXtermSsh = new grpc.web.AbstractClientBase.MethodInfo(
   proto.bastion.ResWebXterm,
   /**
    * @param {!proto.bastion.ReqWebXterm} request
@@ -601,13 +601,13 @@ const methodInfo_Bastion_WebXtermSsh = new grpc.web.AbstractClientBase.MethodInf
  * @return {!grpc.web.ClientReadableStream<!proto.bastion.ResWebXterm>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bastion.BastionClient.prototype.webXtermSsh =
+proto.bastion.CmdbClient.prototype.webXtermSsh =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bastion.Bastion/WebXtermSsh',
+      '/bastion.Cmdb/WebXtermSsh',
       request,
       metadata || {},
-      methodDescriptor_Bastion_WebXtermSsh,
+      methodDescriptor_Cmdb_WebXtermSsh,
       callback);
 };
 
@@ -620,13 +620,13 @@ proto.bastion.BastionClient.prototype.webXtermSsh =
  * @return {!Promise<!proto.bastion.ResWebXterm>}
  *     Promise that resolves to the response
  */
-proto.bastion.BastionPromiseClient.prototype.webXtermSsh =
+proto.bastion.CmdbPromiseClient.prototype.webXtermSsh =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bastion.Bastion/WebXtermSsh',
+      '/bastion.Cmdb/WebXtermSsh',
       request,
       metadata || {},
-      methodDescriptor_Bastion_WebXtermSsh);
+      methodDescriptor_Cmdb_WebXtermSsh);
 };
 
 
@@ -636,8 +636,8 @@ proto.bastion.BastionPromiseClient.prototype.webXtermSsh =
  *   !proto.bastion.ReqWebXterm,
  *   !proto.bastion.ResWebXterm>}
  */
-const methodDescriptor_Bastion_WebXtermPod = new grpc.web.MethodDescriptor(
-  '/bastion.Bastion/WebXtermPod',
+const methodDescriptor_Cmdb_WebXtermPod = new grpc.web.MethodDescriptor(
+  '/bastion.Cmdb/WebXtermPod',
   grpc.web.MethodType.UNARY,
   proto.bastion.ReqWebXterm,
   proto.bastion.ResWebXterm,
@@ -658,7 +658,7 @@ const methodDescriptor_Bastion_WebXtermPod = new grpc.web.MethodDescriptor(
  *   !proto.bastion.ReqWebXterm,
  *   !proto.bastion.ResWebXterm>}
  */
-const methodInfo_Bastion_WebXtermPod = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_Cmdb_WebXtermPod = new grpc.web.AbstractClientBase.MethodInfo(
   proto.bastion.ResWebXterm,
   /**
    * @param {!proto.bastion.ReqWebXterm} request
@@ -681,13 +681,13 @@ const methodInfo_Bastion_WebXtermPod = new grpc.web.AbstractClientBase.MethodInf
  * @return {!grpc.web.ClientReadableStream<!proto.bastion.ResWebXterm>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bastion.BastionClient.prototype.webXtermPod =
+proto.bastion.CmdbClient.prototype.webXtermPod =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bastion.Bastion/WebXtermPod',
+      '/bastion.Cmdb/WebXtermPod',
       request,
       metadata || {},
-      methodDescriptor_Bastion_WebXtermPod,
+      methodDescriptor_Cmdb_WebXtermPod,
       callback);
 };
 
@@ -700,13 +700,13 @@ proto.bastion.BastionClient.prototype.webXtermPod =
  * @return {!Promise<!proto.bastion.ResWebXterm>}
  *     Promise that resolves to the response
  */
-proto.bastion.BastionPromiseClient.prototype.webXtermPod =
+proto.bastion.CmdbPromiseClient.prototype.webXtermPod =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bastion.Bastion/WebXtermPod',
+      '/bastion.Cmdb/WebXtermPod',
       request,
       metadata || {},
-      methodDescriptor_Bastion_WebXtermPod);
+      methodDescriptor_Cmdb_WebXtermPod);
 };
 
 
@@ -716,8 +716,8 @@ proto.bastion.BastionPromiseClient.prototype.webXtermPod =
  *   !proto.bastion.ReqSshdData,
  *   !proto.bastion.ResStatus>}
  */
-const methodDescriptor_Bastion_CollectSshdLog = new grpc.web.MethodDescriptor(
-  '/bastion.Bastion/CollectSshdLog',
+const methodDescriptor_Cmdb_CollectSshdLog = new grpc.web.MethodDescriptor(
+  '/bastion.Cmdb/CollectSshdLog',
   grpc.web.MethodType.UNARY,
   proto.bastion.ReqSshdData,
   proto.bastion.ResStatus,
@@ -738,7 +738,7 @@ const methodDescriptor_Bastion_CollectSshdLog = new grpc.web.MethodDescriptor(
  *   !proto.bastion.ReqSshdData,
  *   !proto.bastion.ResStatus>}
  */
-const methodInfo_Bastion_CollectSshdLog = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_Cmdb_CollectSshdLog = new grpc.web.AbstractClientBase.MethodInfo(
   proto.bastion.ResStatus,
   /**
    * @param {!proto.bastion.ReqSshdData} request
@@ -761,13 +761,13 @@ const methodInfo_Bastion_CollectSshdLog = new grpc.web.AbstractClientBase.Method
  * @return {!grpc.web.ClientReadableStream<!proto.bastion.ResStatus>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bastion.BastionClient.prototype.collectSshdLog =
+proto.bastion.CmdbClient.prototype.collectSshdLog =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bastion.Bastion/CollectSshdLog',
+      '/bastion.Cmdb/CollectSshdLog',
       request,
       metadata || {},
-      methodDescriptor_Bastion_CollectSshdLog,
+      methodDescriptor_Cmdb_CollectSshdLog,
       callback);
 };
 
@@ -780,13 +780,13 @@ proto.bastion.BastionClient.prototype.collectSshdLog =
  * @return {!Promise<!proto.bastion.ResStatus>}
  *     Promise that resolves to the response
  */
-proto.bastion.BastionPromiseClient.prototype.collectSshdLog =
+proto.bastion.CmdbPromiseClient.prototype.collectSshdLog =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bastion.Bastion/CollectSshdLog',
+      '/bastion.Cmdb/CollectSshdLog',
       request,
       metadata || {},
-      methodDescriptor_Bastion_CollectSshdLog);
+      methodDescriptor_Cmdb_CollectSshdLog);
 };
 
 
@@ -796,8 +796,8 @@ proto.bastion.BastionPromiseClient.prototype.collectSshdLog =
  *   !proto.bastion.ReqSshCmd,
  *   !proto.bastion.ResStatus>}
  */
-const methodDescriptor_Bastion_PushSshCmd = new grpc.web.MethodDescriptor(
-  '/bastion.Bastion/PushSshCmd',
+const methodDescriptor_Cmdb_PushSshCmd = new grpc.web.MethodDescriptor(
+  '/bastion.Cmdb/PushSshCmd',
   grpc.web.MethodType.UNARY,
   proto.bastion.ReqSshCmd,
   proto.bastion.ResStatus,
@@ -818,7 +818,7 @@ const methodDescriptor_Bastion_PushSshCmd = new grpc.web.MethodDescriptor(
  *   !proto.bastion.ReqSshCmd,
  *   !proto.bastion.ResStatus>}
  */
-const methodInfo_Bastion_PushSshCmd = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_Cmdb_PushSshCmd = new grpc.web.AbstractClientBase.MethodInfo(
   proto.bastion.ResStatus,
   /**
    * @param {!proto.bastion.ReqSshCmd} request
@@ -841,13 +841,13 @@ const methodInfo_Bastion_PushSshCmd = new grpc.web.AbstractClientBase.MethodInfo
  * @return {!grpc.web.ClientReadableStream<!proto.bastion.ResStatus>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bastion.BastionClient.prototype.pushSshCmd =
+proto.bastion.CmdbClient.prototype.pushSshCmd =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bastion.Bastion/PushSshCmd',
+      '/bastion.Cmdb/PushSshCmd',
       request,
       metadata || {},
-      methodDescriptor_Bastion_PushSshCmd,
+      methodDescriptor_Cmdb_PushSshCmd,
       callback);
 };
 
@@ -860,13 +860,13 @@ proto.bastion.BastionClient.prototype.pushSshCmd =
  * @return {!Promise<!proto.bastion.ResStatus>}
  *     Promise that resolves to the response
  */
-proto.bastion.BastionPromiseClient.prototype.pushSshCmd =
+proto.bastion.CmdbPromiseClient.prototype.pushSshCmd =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bastion.Bastion/PushSshCmd',
+      '/bastion.Cmdb/PushSshCmd',
       request,
       metadata || {},
-      methodDescriptor_Bastion_PushSshCmd);
+      methodDescriptor_Cmdb_PushSshCmd);
 };
 
 
@@ -876,8 +876,8 @@ proto.bastion.BastionPromiseClient.prototype.pushSshCmd =
  *   !proto.bastion.ReqAuthLog,
  *   !proto.bastion.ResStatus>}
  */
-const methodDescriptor_Bastion_PushAuthLog = new grpc.web.MethodDescriptor(
-  '/bastion.Bastion/PushAuthLog',
+const methodDescriptor_Cmdb_PushAuthLog = new grpc.web.MethodDescriptor(
+  '/bastion.Cmdb/PushAuthLog',
   grpc.web.MethodType.UNARY,
   proto.bastion.ReqAuthLog,
   proto.bastion.ResStatus,
@@ -898,7 +898,7 @@ const methodDescriptor_Bastion_PushAuthLog = new grpc.web.MethodDescriptor(
  *   !proto.bastion.ReqAuthLog,
  *   !proto.bastion.ResStatus>}
  */
-const methodInfo_Bastion_PushAuthLog = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_Cmdb_PushAuthLog = new grpc.web.AbstractClientBase.MethodInfo(
   proto.bastion.ResStatus,
   /**
    * @param {!proto.bastion.ReqAuthLog} request
@@ -921,13 +921,13 @@ const methodInfo_Bastion_PushAuthLog = new grpc.web.AbstractClientBase.MethodInf
  * @return {!grpc.web.ClientReadableStream<!proto.bastion.ResStatus>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bastion.BastionClient.prototype.pushAuthLog =
+proto.bastion.CmdbClient.prototype.pushAuthLog =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bastion.Bastion/PushAuthLog',
+      '/bastion.Cmdb/PushAuthLog',
       request,
       metadata || {},
-      methodDescriptor_Bastion_PushAuthLog,
+      methodDescriptor_Cmdb_PushAuthLog,
       callback);
 };
 
@@ -940,13 +940,13 @@ proto.bastion.BastionClient.prototype.pushAuthLog =
  * @return {!Promise<!proto.bastion.ResStatus>}
  *     Promise that resolves to the response
  */
-proto.bastion.BastionPromiseClient.prototype.pushAuthLog =
+proto.bastion.CmdbPromiseClient.prototype.pushAuthLog =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bastion.Bastion/PushAuthLog',
+      '/bastion.Cmdb/PushAuthLog',
       request,
       metadata || {},
-      methodDescriptor_Bastion_PushAuthLog);
+      methodDescriptor_Cmdb_PushAuthLog);
 };
 
 
@@ -956,8 +956,8 @@ proto.bastion.BastionPromiseClient.prototype.pushAuthLog =
  *   !proto.bastion.ReqAssetCmd,
  *   !proto.bastion.ResStatus>}
  */
-const methodDescriptor_Bastion_RemoteExec = new grpc.web.MethodDescriptor(
-  '/bastion.Bastion/RemoteExec',
+const methodDescriptor_Cmdb_RemoteExec = new grpc.web.MethodDescriptor(
+  '/bastion.Cmdb/RemoteExec',
   grpc.web.MethodType.UNARY,
   proto.bastion.ReqAssetCmd,
   proto.bastion.ResStatus,
@@ -978,7 +978,7 @@ const methodDescriptor_Bastion_RemoteExec = new grpc.web.MethodDescriptor(
  *   !proto.bastion.ReqAssetCmd,
  *   !proto.bastion.ResStatus>}
  */
-const methodInfo_Bastion_RemoteExec = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_Cmdb_RemoteExec = new grpc.web.AbstractClientBase.MethodInfo(
   proto.bastion.ResStatus,
   /**
    * @param {!proto.bastion.ReqAssetCmd} request
@@ -1001,13 +1001,13 @@ const methodInfo_Bastion_RemoteExec = new grpc.web.AbstractClientBase.MethodInfo
  * @return {!grpc.web.ClientReadableStream<!proto.bastion.ResStatus>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bastion.BastionClient.prototype.remoteExec =
+proto.bastion.CmdbClient.prototype.remoteExec =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bastion.Bastion/RemoteExec',
+      '/bastion.Cmdb/RemoteExec',
       request,
       metadata || {},
-      methodDescriptor_Bastion_RemoteExec,
+      methodDescriptor_Cmdb_RemoteExec,
       callback);
 };
 
@@ -1020,13 +1020,145 @@ proto.bastion.BastionClient.prototype.remoteExec =
  * @return {!Promise<!proto.bastion.ResStatus>}
  *     Promise that resolves to the response
  */
-proto.bastion.BastionPromiseClient.prototype.remoteExec =
+proto.bastion.CmdbPromiseClient.prototype.remoteExec =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bastion.Bastion/RemoteExec',
+      '/bastion.Cmdb/RemoteExec',
       request,
       metadata || {},
-      methodDescriptor_Bastion_RemoteExec);
+      methodDescriptor_Cmdb_RemoteExec);
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?Object} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.bastion.SshArkClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options['format'] = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?Object} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.bastion.SshArkPromiseClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options['format'] = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.bastion.ReqShellExec,
+ *   !proto.bastion.ResShellExec>}
+ */
+const methodDescriptor_SshArk_execShell = new grpc.web.MethodDescriptor(
+  '/bastion.SshArk/execShell',
+  grpc.web.MethodType.UNARY,
+  proto.bastion.ReqShellExec,
+  proto.bastion.ResShellExec,
+  /**
+   * @param {!proto.bastion.ReqShellExec} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.bastion.ResShellExec.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.bastion.ReqShellExec,
+ *   !proto.bastion.ResShellExec>}
+ */
+const methodInfo_SshArk_execShell = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.bastion.ResShellExec,
+  /**
+   * @param {!proto.bastion.ReqShellExec} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.bastion.ResShellExec.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.bastion.ReqShellExec} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.bastion.ResShellExec)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.bastion.ResShellExec>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.bastion.SshArkClient.prototype.execShell =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/bastion.SshArk/execShell',
+      request,
+      metadata || {},
+      methodDescriptor_SshArk_execShell,
+      callback);
+};
+
+
+/**
+ * @param {!proto.bastion.ReqShellExec} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.bastion.ResShellExec>}
+ *     Promise that resolves to the response
+ */
+proto.bastion.SshArkPromiseClient.prototype.execShell =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/bastion.SshArk/execShell',
+      request,
+      metadata || {},
+      methodDescriptor_SshArk_execShell);
 };
 
 

@@ -8,7 +8,7 @@ option go_package = ".;pb";
 package bastion;
 
 // The greeting service definition.
-service Bastion {
+service Cmdb {
   rpc AuthPw (ReqAuthPassword) returns (User) {}                              //sshd-auth-password
   rpc AuthPk (ReqAuthPublicKey) returns (User) {}                             //sshd-auth-public-key
   rpc AuthKb (ReqSshUser) returns (UserKb) {}                                 //sshd-auth-keyboard
@@ -32,6 +32,7 @@ message sshConn {
   string user = 2;
   string password = 3;
   string privateKey = 4;
+  string privateKeyPassword = 5;
 }
 
 message ResWebXterm {
@@ -243,29 +244,31 @@ message ReqSshdData {
 
 
 
-message ReqShellExec {
-  string sshAddr = 1;
-  string sshUser = 2;
-  string sshPassword = 3;
-  string sshPrivateKey = 4;
-  string sshPrivateKeyPassword=5;
-  string shellScript = 6;
-  string uuid = 7;
-}
-
-
-
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 message ResShellExec {
   string uuid = 1;
-  uint64 code = 2;// linux 0 is ok
-  string output = 3;
-  uint64 startAt = 4;
-  uint64 doneAt = 5;
+  string output = 2;
+  uint64 startAt = 3;
+  uint64 doneAt = 4;
 }
+
+
+
+message ReqShellExec {
+  sshConn target = 1;
+  sshConn proxy = 2;
+  string shellScript = 3;
+  string uuid = 4;
+  uint64 timeoutConnSec = 5;
+  uint64 timeoutExecSec = 6;
+}
+
+
+
 //rpc service of sshd
-service SshCore {
-  rpc execShell(ReqShellExec) returns (ResShellExec){}
+// implement by mojotv.cn:code.sshd.git
+service SshArk {
+  rpc execShell(ReqShellExec) returns (ResShellExec){} //exec shell script
 }
