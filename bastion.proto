@@ -15,9 +15,9 @@ service Cmdb {
   rpc FetchAsset(ReqAssetsQuery)returns(AssetList){}                          //根据用户获取用户的资产
   rpc FetchAssetSshConfig(ReqAssetUser)returns(AssetSshAccount){}             //查询资产的ssh管理帐号
   rpc SshShellExec(ReqSshExec)returns(ResStatus){}                            //ssh-远程执行-shell-script
-  rpc WebXtermSsh(ReqWebXterm)returns(ResWebXterm){}                             //网页版xterm-ssh-terminal链接参数
-  rpc WebXtermPod(ReqWebXterm)returns(ResWebXterm){}                             //网页版xterm-ssh-terminal链接参数
-  rpc CollectSshdLog(ReqSshdData)returns(ResStatus){}                         //收集 sshd ssh session log
+  rpc WebXtermSsh(ReqWebXterm)returns(ResWebXterm){}                           //网页版xterm-ssh-terminal链接参数
+  rpc WebXtermPod(ReqWebXterm)returns(ResWebXterm){}                           //网页版xterm-ssh-terminal链接参数
+  rpc CollectSshdLog(ReqSshdData)returns(ResStatus){}                          //收集 sshd ssh session log
   rpc PushSshCmd(ReqSshCmd)returns(ResStatus){}
   rpc PushAuthLog(ReqAuthLog)returns(ResStatus){}  //sshd-用户认证日志
 }
@@ -36,9 +36,8 @@ message sshConn {
 
 message ResWebXterm {
   string uuid = 1;       //设置会话的uuid,方便和callback日志做好一一对应
-  string callback = 2;   //会话结束,发送ssh-session给调用者,    curl --location --request POST '$callback' --form 'uuid="$UUID"' --form '=@"{$ssh-session日志文件路径}"'
-  sshConn assetConn = 3; //资产ssh连接配置信息
-  sshConn proxyConn = 4; //代理跳板ssh配置,主要用于不同集群网络不通的问题,可以为nil
+  sshConn assetConn = 2; //资产ssh连接配置信息
+  sshConn proxyConn = 3; //代理跳板ssh配置,主要用于不同集群网络不通的问题,可以为nil
 }
 
 
