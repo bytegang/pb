@@ -23,12 +23,10 @@ type CmdbClient interface {
 	AuthKb(ctx context.Context, in *ReqSshUser, opts ...grpc.CallOption) (*UserKb, error)
 	FetchAsset(ctx context.Context, in *ReqAssetsQuery, opts ...grpc.CallOption) (*AssetList, error)
 	FetchAssetSshConfig(ctx context.Context, in *ReqAssetUser, opts ...grpc.CallOption) (*AssetSshAccount, error)
-	SshShellExec(ctx context.Context, in *ReqSshExec, opts ...grpc.CallOption) (*ResStatus, error)
 	WebXtermSsh(ctx context.Context, in *ReqWebXterm, opts ...grpc.CallOption) (*ResWebXterm, error)
 	WebXtermPod(ctx context.Context, in *ReqWebXterm, opts ...grpc.CallOption) (*ResWebXterm, error)
-	CollectSshdLog(ctx context.Context, in *ReqSshdData, opts ...grpc.CallOption) (*ResStatus, error)
-	PushSshCmd(ctx context.Context, in *ReqSshCmd, opts ...grpc.CallOption) (*ResStatus, error)
-	PushAuthLog(ctx context.Context, in *ReqAuthLog, opts ...grpc.CallOption) (*ResStatus, error)
+	SaveLogSshSession(ctx context.Context, in *ReqSshdData, opts ...grpc.CallOption) (*ResStatus, error)
+	SaveLogAuth(ctx context.Context, in *ReqAuthLog, opts ...grpc.CallOption) (*ResStatus, error)
 }
 
 type cmdbClient struct {
@@ -84,15 +82,6 @@ func (c *cmdbClient) FetchAssetSshConfig(ctx context.Context, in *ReqAssetUser, 
 	return out, nil
 }
 
-func (c *cmdbClient) SshShellExec(ctx context.Context, in *ReqSshExec, opts ...grpc.CallOption) (*ResStatus, error) {
-	out := new(ResStatus)
-	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/SshShellExec", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *cmdbClient) WebXtermSsh(ctx context.Context, in *ReqWebXterm, opts ...grpc.CallOption) (*ResWebXterm, error) {
 	out := new(ResWebXterm)
 	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/WebXtermSsh", in, out, opts...)
@@ -111,27 +100,18 @@ func (c *cmdbClient) WebXtermPod(ctx context.Context, in *ReqWebXterm, opts ...g
 	return out, nil
 }
 
-func (c *cmdbClient) CollectSshdLog(ctx context.Context, in *ReqSshdData, opts ...grpc.CallOption) (*ResStatus, error) {
+func (c *cmdbClient) SaveLogSshSession(ctx context.Context, in *ReqSshdData, opts ...grpc.CallOption) (*ResStatus, error) {
 	out := new(ResStatus)
-	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/CollectSshdLog", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/SaveLogSshSession", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *cmdbClient) PushSshCmd(ctx context.Context, in *ReqSshCmd, opts ...grpc.CallOption) (*ResStatus, error) {
+func (c *cmdbClient) SaveLogAuth(ctx context.Context, in *ReqAuthLog, opts ...grpc.CallOption) (*ResStatus, error) {
 	out := new(ResStatus)
-	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/PushSshCmd", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *cmdbClient) PushAuthLog(ctx context.Context, in *ReqAuthLog, opts ...grpc.CallOption) (*ResStatus, error) {
-	out := new(ResStatus)
-	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/PushAuthLog", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/SaveLogAuth", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -147,12 +127,10 @@ type CmdbServer interface {
 	AuthKb(context.Context, *ReqSshUser) (*UserKb, error)
 	FetchAsset(context.Context, *ReqAssetsQuery) (*AssetList, error)
 	FetchAssetSshConfig(context.Context, *ReqAssetUser) (*AssetSshAccount, error)
-	SshShellExec(context.Context, *ReqSshExec) (*ResStatus, error)
 	WebXtermSsh(context.Context, *ReqWebXterm) (*ResWebXterm, error)
 	WebXtermPod(context.Context, *ReqWebXterm) (*ResWebXterm, error)
-	CollectSshdLog(context.Context, *ReqSshdData) (*ResStatus, error)
-	PushSshCmd(context.Context, *ReqSshCmd) (*ResStatus, error)
-	PushAuthLog(context.Context, *ReqAuthLog) (*ResStatus, error)
+	SaveLogSshSession(context.Context, *ReqSshdData) (*ResStatus, error)
+	SaveLogAuth(context.Context, *ReqAuthLog) (*ResStatus, error)
 	mustEmbedUnimplementedCmdbServer()
 }
 
@@ -175,23 +153,17 @@ func (UnimplementedCmdbServer) FetchAsset(context.Context, *ReqAssetsQuery) (*As
 func (UnimplementedCmdbServer) FetchAssetSshConfig(context.Context, *ReqAssetUser) (*AssetSshAccount, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FetchAssetSshConfig not implemented")
 }
-func (UnimplementedCmdbServer) SshShellExec(context.Context, *ReqSshExec) (*ResStatus, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SshShellExec not implemented")
-}
 func (UnimplementedCmdbServer) WebXtermSsh(context.Context, *ReqWebXterm) (*ResWebXterm, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method WebXtermSsh not implemented")
 }
 func (UnimplementedCmdbServer) WebXtermPod(context.Context, *ReqWebXterm) (*ResWebXterm, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method WebXtermPod not implemented")
 }
-func (UnimplementedCmdbServer) CollectSshdLog(context.Context, *ReqSshdData) (*ResStatus, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CollectSshdLog not implemented")
+func (UnimplementedCmdbServer) SaveLogSshSession(context.Context, *ReqSshdData) (*ResStatus, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SaveLogSshSession not implemented")
 }
-func (UnimplementedCmdbServer) PushSshCmd(context.Context, *ReqSshCmd) (*ResStatus, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PushSshCmd not implemented")
-}
-func (UnimplementedCmdbServer) PushAuthLog(context.Context, *ReqAuthLog) (*ResStatus, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PushAuthLog not implemented")
+func (UnimplementedCmdbServer) SaveLogAuth(context.Context, *ReqAuthLog) (*ResStatus, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SaveLogAuth not implemented")
 }
 func (UnimplementedCmdbServer) mustEmbedUnimplementedCmdbServer() {}
 
@@ -296,24 +268,6 @@ func _Cmdb_FetchAssetSshConfig_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Cmdb_SshShellExec_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReqSshExec)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(CmdbServer).SshShellExec(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/bytegang.Cmdb/SshShellExec",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CmdbServer).SshShellExec(ctx, req.(*ReqSshExec))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _Cmdb_WebXtermSsh_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReqWebXterm)
 	if err := dec(in); err != nil {
@@ -350,56 +304,38 @@ func _Cmdb_WebXtermPod_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Cmdb_CollectSshdLog_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Cmdb_SaveLogSshSession_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReqSshdData)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CmdbServer).CollectSshdLog(ctx, in)
+		return srv.(CmdbServer).SaveLogSshSession(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bytegang.Cmdb/CollectSshdLog",
+		FullMethod: "/bytegang.Cmdb/SaveLogSshSession",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CmdbServer).CollectSshdLog(ctx, req.(*ReqSshdData))
+		return srv.(CmdbServer).SaveLogSshSession(ctx, req.(*ReqSshdData))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Cmdb_PushSshCmd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReqSshCmd)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(CmdbServer).PushSshCmd(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/bytegang.Cmdb/PushSshCmd",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CmdbServer).PushSshCmd(ctx, req.(*ReqSshCmd))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Cmdb_PushAuthLog_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Cmdb_SaveLogAuth_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReqAuthLog)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CmdbServer).PushAuthLog(ctx, in)
+		return srv.(CmdbServer).SaveLogAuth(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bytegang.Cmdb/PushAuthLog",
+		FullMethod: "/bytegang.Cmdb/SaveLogAuth",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CmdbServer).PushAuthLog(ctx, req.(*ReqAuthLog))
+		return srv.(CmdbServer).SaveLogAuth(ctx, req.(*ReqAuthLog))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -432,10 +368,6 @@ var Cmdb_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Cmdb_FetchAssetSshConfig_Handler,
 		},
 		{
-			MethodName: "SshShellExec",
-			Handler:    _Cmdb_SshShellExec_Handler,
-		},
-		{
 			MethodName: "WebXtermSsh",
 			Handler:    _Cmdb_WebXtermSsh_Handler,
 		},
@@ -444,16 +376,12 @@ var Cmdb_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Cmdb_WebXtermPod_Handler,
 		},
 		{
-			MethodName: "CollectSshdLog",
-			Handler:    _Cmdb_CollectSshdLog_Handler,
+			MethodName: "SaveLogSshSession",
+			Handler:    _Cmdb_SaveLogSshSession_Handler,
 		},
 		{
-			MethodName: "PushSshCmd",
-			Handler:    _Cmdb_PushSshCmd_Handler,
-		},
-		{
-			MethodName: "PushAuthLog",
-			Handler:    _Cmdb_PushAuthLog_Handler,
+			MethodName: "SaveLogAuth",
+			Handler:    _Cmdb_SaveLogAuth_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

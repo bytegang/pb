@@ -9,17 +9,15 @@ package bytegang;
 
 // The greeting service definition.
 service Cmdb {
-  rpc AuthPw (ReqAuthPassword) returns (User) {}                              //sshd-auth-password
-  rpc AuthPk (ReqAuthPublicKey) returns (User) {}                             //sshd-auth-public-key
-  rpc AuthKb (ReqSshUser) returns (UserKb) {}                                 //sshd-auth-keyboard
-  rpc FetchAsset(ReqAssetsQuery)returns(AssetList){}                          //根据用户获取用户的资产
-  rpc FetchAssetSshConfig(ReqAssetUser)returns(AssetSshAccount){}             //查询资产的ssh管理帐号
-  rpc SshShellExec(ReqSshExec)returns(ResStatus){}                            //ssh-远程执行-shell-script
+  rpc AuthPw (ReqAuthPassword) returns (User) {}                               //sshd-auth-password
+  rpc AuthPk (ReqAuthPublicKey) returns (User) {}                              //sshd-auth-public-key
+  rpc AuthKb (ReqSshUser) returns (UserKb) {}                                  //sshd-auth-keyboard
+  rpc FetchAsset(ReqAssetsQuery)returns(AssetList){}                           //根据用户获取用户的资产
+  rpc FetchAssetSshConfig(ReqAssetUser)returns(AssetSshAccount){}              //查询资产的ssh管理帐号
   rpc WebXtermSsh(ReqWebXterm)returns(ResWebXterm){}                           //网页版xterm-ssh-terminal链接参数
   rpc WebXtermPod(ReqWebXterm)returns(ResWebXterm){}                           //网页版xterm-ssh-terminal链接参数
-  rpc CollectSshdLog(ReqSshdData)returns(ResStatus){}                          //收集 sshd ssh session log
-  rpc PushSshCmd(ReqSshCmd)returns(ResStatus){}
-  rpc PushAuthLog(ReqAuthLog)returns(ResStatus){}  //sshd-用户认证日志
+  rpc SaveLogSshSession(ReqSshdData)returns(ResStatus){}                       //保存 sshd ssh session log
+  rpc SaveLogAuth(ReqAuthLog)returns(ResStatus){}                              //sshd-用户认证日志 todo:::::
 }
 
 message ReqWebXterm {

@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for bastion
+ * @fileoverview gRPC-Web generated client stub for bytegang
  * @enhanceable
  * @public
  */
@@ -16,7 +16,7 @@ const grpc = {};
 grpc.web = require('grpc-web');
 
 const proto = {};
-proto.bastion = require('./bastion_pb.js');
+proto.bytegang = require('./bastion_pb.js');
 
 /**
  * @param {string} hostname
@@ -26,7 +26,7 @@ proto.bastion = require('./bastion_pb.js');
  * @struct
  * @final
  */
-proto.bastion.CmdbClient =
+proto.bytegang.CmdbClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -52,7 +52,7 @@ proto.bastion.CmdbClient =
  * @struct
  * @final
  */
-proto.bastion.CmdbPromiseClient =
+proto.bytegang.CmdbPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -73,58 +73,58 @@ proto.bastion.CmdbPromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.bastion.ReqAuthPassword,
- *   !proto.bastion.User>}
+ *   !proto.bytegang.ReqAuthPassword,
+ *   !proto.bytegang.User>}
  */
 const methodDescriptor_Cmdb_AuthPw = new grpc.web.MethodDescriptor(
-  '/bastion.Cmdb/AuthPw',
+  '/bytegang.Cmdb/AuthPw',
   grpc.web.MethodType.UNARY,
-  proto.bastion.ReqAuthPassword,
-  proto.bastion.User,
+  proto.bytegang.ReqAuthPassword,
+  proto.bytegang.User,
   /**
-   * @param {!proto.bastion.ReqAuthPassword} request
+   * @param {!proto.bytegang.ReqAuthPassword} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bastion.User.deserializeBinary
+  proto.bytegang.User.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.bastion.ReqAuthPassword,
- *   !proto.bastion.User>}
+ *   !proto.bytegang.ReqAuthPassword,
+ *   !proto.bytegang.User>}
  */
 const methodInfo_Cmdb_AuthPw = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.bastion.User,
+  proto.bytegang.User,
   /**
-   * @param {!proto.bastion.ReqAuthPassword} request
+   * @param {!proto.bytegang.ReqAuthPassword} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bastion.User.deserializeBinary
+  proto.bytegang.User.deserializeBinary
 );
 
 
 /**
- * @param {!proto.bastion.ReqAuthPassword} request The
+ * @param {!proto.bytegang.ReqAuthPassword} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.bastion.User)}
+ * @param {function(?grpc.web.Error, ?proto.bytegang.User)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.bastion.User>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.bytegang.User>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bastion.CmdbClient.prototype.authPw =
+proto.bytegang.CmdbClient.prototype.authPw =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bastion.Cmdb/AuthPw',
+      '/bytegang.Cmdb/AuthPw',
       request,
       metadata || {},
       methodDescriptor_Cmdb_AuthPw,
@@ -133,17 +133,17 @@ proto.bastion.CmdbClient.prototype.authPw =
 
 
 /**
- * @param {!proto.bastion.ReqAuthPassword} request The
+ * @param {!proto.bytegang.ReqAuthPassword} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.bastion.User>}
+ * @return {!Promise<!proto.bytegang.User>}
  *     Promise that resolves to the response
  */
-proto.bastion.CmdbPromiseClient.prototype.authPw =
+proto.bytegang.CmdbPromiseClient.prototype.authPw =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bastion.Cmdb/AuthPw',
+      '/bytegang.Cmdb/AuthPw',
       request,
       metadata || {},
       methodDescriptor_Cmdb_AuthPw);
@@ -153,58 +153,58 @@ proto.bastion.CmdbPromiseClient.prototype.authPw =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.bastion.ReqAuthPublicKey,
- *   !proto.bastion.User>}
+ *   !proto.bytegang.ReqAuthPublicKey,
+ *   !proto.bytegang.User>}
  */
 const methodDescriptor_Cmdb_AuthPk = new grpc.web.MethodDescriptor(
-  '/bastion.Cmdb/AuthPk',
+  '/bytegang.Cmdb/AuthPk',
   grpc.web.MethodType.UNARY,
-  proto.bastion.ReqAuthPublicKey,
-  proto.bastion.User,
+  proto.bytegang.ReqAuthPublicKey,
+  proto.bytegang.User,
   /**
-   * @param {!proto.bastion.ReqAuthPublicKey} request
+   * @param {!proto.bytegang.ReqAuthPublicKey} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bastion.User.deserializeBinary
+  proto.bytegang.User.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.bastion.ReqAuthPublicKey,
- *   !proto.bastion.User>}
+ *   !proto.bytegang.ReqAuthPublicKey,
+ *   !proto.bytegang.User>}
  */
 const methodInfo_Cmdb_AuthPk = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.bastion.User,
+  proto.bytegang.User,
   /**
-   * @param {!proto.bastion.ReqAuthPublicKey} request
+   * @param {!proto.bytegang.ReqAuthPublicKey} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bastion.User.deserializeBinary
+  proto.bytegang.User.deserializeBinary
 );
 
 
 /**
- * @param {!proto.bastion.ReqAuthPublicKey} request The
+ * @param {!proto.bytegang.ReqAuthPublicKey} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.bastion.User)}
+ * @param {function(?grpc.web.Error, ?proto.bytegang.User)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.bastion.User>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.bytegang.User>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bastion.CmdbClient.prototype.authPk =
+proto.bytegang.CmdbClient.prototype.authPk =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bastion.Cmdb/AuthPk',
+      '/bytegang.Cmdb/AuthPk',
       request,
       metadata || {},
       methodDescriptor_Cmdb_AuthPk,
@@ -213,17 +213,17 @@ proto.bastion.CmdbClient.prototype.authPk =
 
 
 /**
- * @param {!proto.bastion.ReqAuthPublicKey} request The
+ * @param {!proto.bytegang.ReqAuthPublicKey} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.bastion.User>}
+ * @return {!Promise<!proto.bytegang.User>}
  *     Promise that resolves to the response
  */
-proto.bastion.CmdbPromiseClient.prototype.authPk =
+proto.bytegang.CmdbPromiseClient.prototype.authPk =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bastion.Cmdb/AuthPk',
+      '/bytegang.Cmdb/AuthPk',
       request,
       metadata || {},
       methodDescriptor_Cmdb_AuthPk);
@@ -233,58 +233,58 @@ proto.bastion.CmdbPromiseClient.prototype.authPk =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.bastion.ReqSshUser,
- *   !proto.bastion.UserKb>}
+ *   !proto.bytegang.ReqSshUser,
+ *   !proto.bytegang.UserKb>}
  */
 const methodDescriptor_Cmdb_AuthKb = new grpc.web.MethodDescriptor(
-  '/bastion.Cmdb/AuthKb',
+  '/bytegang.Cmdb/AuthKb',
   grpc.web.MethodType.UNARY,
-  proto.bastion.ReqSshUser,
-  proto.bastion.UserKb,
+  proto.bytegang.ReqSshUser,
+  proto.bytegang.UserKb,
   /**
-   * @param {!proto.bastion.ReqSshUser} request
+   * @param {!proto.bytegang.ReqSshUser} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bastion.UserKb.deserializeBinary
+  proto.bytegang.UserKb.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.bastion.ReqSshUser,
- *   !proto.bastion.UserKb>}
+ *   !proto.bytegang.ReqSshUser,
+ *   !proto.bytegang.UserKb>}
  */
 const methodInfo_Cmdb_AuthKb = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.bastion.UserKb,
+  proto.bytegang.UserKb,
   /**
-   * @param {!proto.bastion.ReqSshUser} request
+   * @param {!proto.bytegang.ReqSshUser} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bastion.UserKb.deserializeBinary
+  proto.bytegang.UserKb.deserializeBinary
 );
 
 
 /**
- * @param {!proto.bastion.ReqSshUser} request The
+ * @param {!proto.bytegang.ReqSshUser} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.bastion.UserKb)}
+ * @param {function(?grpc.web.Error, ?proto.bytegang.UserKb)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.bastion.UserKb>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.bytegang.UserKb>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bastion.CmdbClient.prototype.authKb =
+proto.bytegang.CmdbClient.prototype.authKb =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bastion.Cmdb/AuthKb',
+      '/bytegang.Cmdb/AuthKb',
       request,
       metadata || {},
       methodDescriptor_Cmdb_AuthKb,
@@ -293,17 +293,17 @@ proto.bastion.CmdbClient.prototype.authKb =
 
 
 /**
- * @param {!proto.bastion.ReqSshUser} request The
+ * @param {!proto.bytegang.ReqSshUser} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.bastion.UserKb>}
+ * @return {!Promise<!proto.bytegang.UserKb>}
  *     Promise that resolves to the response
  */
-proto.bastion.CmdbPromiseClient.prototype.authKb =
+proto.bytegang.CmdbPromiseClient.prototype.authKb =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bastion.Cmdb/AuthKb',
+      '/bytegang.Cmdb/AuthKb',
       request,
       metadata || {},
       methodDescriptor_Cmdb_AuthKb);
@@ -313,58 +313,58 @@ proto.bastion.CmdbPromiseClient.prototype.authKb =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.bastion.ReqAssetsQuery,
- *   !proto.bastion.AssetList>}
+ *   !proto.bytegang.ReqAssetsQuery,
+ *   !proto.bytegang.AssetList>}
  */
 const methodDescriptor_Cmdb_FetchAsset = new grpc.web.MethodDescriptor(
-  '/bastion.Cmdb/FetchAsset',
+  '/bytegang.Cmdb/FetchAsset',
   grpc.web.MethodType.UNARY,
-  proto.bastion.ReqAssetsQuery,
-  proto.bastion.AssetList,
+  proto.bytegang.ReqAssetsQuery,
+  proto.bytegang.AssetList,
   /**
-   * @param {!proto.bastion.ReqAssetsQuery} request
+   * @param {!proto.bytegang.ReqAssetsQuery} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bastion.AssetList.deserializeBinary
+  proto.bytegang.AssetList.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.bastion.ReqAssetsQuery,
- *   !proto.bastion.AssetList>}
+ *   !proto.bytegang.ReqAssetsQuery,
+ *   !proto.bytegang.AssetList>}
  */
 const methodInfo_Cmdb_FetchAsset = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.bastion.AssetList,
+  proto.bytegang.AssetList,
   /**
-   * @param {!proto.bastion.ReqAssetsQuery} request
+   * @param {!proto.bytegang.ReqAssetsQuery} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bastion.AssetList.deserializeBinary
+  proto.bytegang.AssetList.deserializeBinary
 );
 
 
 /**
- * @param {!proto.bastion.ReqAssetsQuery} request The
+ * @param {!proto.bytegang.ReqAssetsQuery} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.bastion.AssetList)}
+ * @param {function(?grpc.web.Error, ?proto.bytegang.AssetList)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.bastion.AssetList>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.bytegang.AssetList>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bastion.CmdbClient.prototype.fetchAsset =
+proto.bytegang.CmdbClient.prototype.fetchAsset =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bastion.Cmdb/FetchAsset',
+      '/bytegang.Cmdb/FetchAsset',
       request,
       metadata || {},
       methodDescriptor_Cmdb_FetchAsset,
@@ -373,17 +373,17 @@ proto.bastion.CmdbClient.prototype.fetchAsset =
 
 
 /**
- * @param {!proto.bastion.ReqAssetsQuery} request The
+ * @param {!proto.bytegang.ReqAssetsQuery} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.bastion.AssetList>}
+ * @return {!Promise<!proto.bytegang.AssetList>}
  *     Promise that resolves to the response
  */
-proto.bastion.CmdbPromiseClient.prototype.fetchAsset =
+proto.bytegang.CmdbPromiseClient.prototype.fetchAsset =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bastion.Cmdb/FetchAsset',
+      '/bytegang.Cmdb/FetchAsset',
       request,
       metadata || {},
       methodDescriptor_Cmdb_FetchAsset);
@@ -393,58 +393,58 @@ proto.bastion.CmdbPromiseClient.prototype.fetchAsset =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.bastion.ReqAssetUser,
- *   !proto.bastion.AssetSshAccount>}
+ *   !proto.bytegang.ReqAssetUser,
+ *   !proto.bytegang.AssetSshAccount>}
  */
 const methodDescriptor_Cmdb_FetchAssetSshConfig = new grpc.web.MethodDescriptor(
-  '/bastion.Cmdb/FetchAssetSshConfig',
+  '/bytegang.Cmdb/FetchAssetSshConfig',
   grpc.web.MethodType.UNARY,
-  proto.bastion.ReqAssetUser,
-  proto.bastion.AssetSshAccount,
+  proto.bytegang.ReqAssetUser,
+  proto.bytegang.AssetSshAccount,
   /**
-   * @param {!proto.bastion.ReqAssetUser} request
+   * @param {!proto.bytegang.ReqAssetUser} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bastion.AssetSshAccount.deserializeBinary
+  proto.bytegang.AssetSshAccount.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.bastion.ReqAssetUser,
- *   !proto.bastion.AssetSshAccount>}
+ *   !proto.bytegang.ReqAssetUser,
+ *   !proto.bytegang.AssetSshAccount>}
  */
 const methodInfo_Cmdb_FetchAssetSshConfig = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.bastion.AssetSshAccount,
+  proto.bytegang.AssetSshAccount,
   /**
-   * @param {!proto.bastion.ReqAssetUser} request
+   * @param {!proto.bytegang.ReqAssetUser} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bastion.AssetSshAccount.deserializeBinary
+  proto.bytegang.AssetSshAccount.deserializeBinary
 );
 
 
 /**
- * @param {!proto.bastion.ReqAssetUser} request The
+ * @param {!proto.bytegang.ReqAssetUser} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.bastion.AssetSshAccount)}
+ * @param {function(?grpc.web.Error, ?proto.bytegang.AssetSshAccount)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.bastion.AssetSshAccount>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.bytegang.AssetSshAccount>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bastion.CmdbClient.prototype.fetchAssetSshConfig =
+proto.bytegang.CmdbClient.prototype.fetchAssetSshConfig =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bastion.Cmdb/FetchAssetSshConfig',
+      '/bytegang.Cmdb/FetchAssetSshConfig',
       request,
       metadata || {},
       methodDescriptor_Cmdb_FetchAssetSshConfig,
@@ -453,17 +453,17 @@ proto.bastion.CmdbClient.prototype.fetchAssetSshConfig =
 
 
 /**
- * @param {!proto.bastion.ReqAssetUser} request The
+ * @param {!proto.bytegang.ReqAssetUser} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.bastion.AssetSshAccount>}
+ * @return {!Promise<!proto.bytegang.AssetSshAccount>}
  *     Promise that resolves to the response
  */
-proto.bastion.CmdbPromiseClient.prototype.fetchAssetSshConfig =
+proto.bytegang.CmdbPromiseClient.prototype.fetchAssetSshConfig =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bastion.Cmdb/FetchAssetSshConfig',
+      '/bytegang.Cmdb/FetchAssetSshConfig',
       request,
       metadata || {},
       methodDescriptor_Cmdb_FetchAssetSshConfig);
@@ -473,138 +473,58 @@ proto.bastion.CmdbPromiseClient.prototype.fetchAssetSshConfig =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.bastion.ReqSshExec,
- *   !proto.bastion.ResStatus>}
- */
-const methodDescriptor_Cmdb_SshShellExec = new grpc.web.MethodDescriptor(
-  '/bastion.Cmdb/SshShellExec',
-  grpc.web.MethodType.UNARY,
-  proto.bastion.ReqSshExec,
-  proto.bastion.ResStatus,
-  /**
-   * @param {!proto.bastion.ReqSshExec} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.bastion.ResStatus.deserializeBinary
-);
-
-
-/**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.bastion.ReqSshExec,
- *   !proto.bastion.ResStatus>}
- */
-const methodInfo_Cmdb_SshShellExec = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.bastion.ResStatus,
-  /**
-   * @param {!proto.bastion.ReqSshExec} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.bastion.ResStatus.deserializeBinary
-);
-
-
-/**
- * @param {!proto.bastion.ReqSshExec} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @param {function(?grpc.web.Error, ?proto.bastion.ResStatus)}
- *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.bastion.ResStatus>|undefined}
- *     The XHR Node Readable Stream
- */
-proto.bastion.CmdbClient.prototype.sshShellExec =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/bastion.Cmdb/SshShellExec',
-      request,
-      metadata || {},
-      methodDescriptor_Cmdb_SshShellExec,
-      callback);
-};
-
-
-/**
- * @param {!proto.bastion.ReqSshExec} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @return {!Promise<!proto.bastion.ResStatus>}
- *     Promise that resolves to the response
- */
-proto.bastion.CmdbPromiseClient.prototype.sshShellExec =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/bastion.Cmdb/SshShellExec',
-      request,
-      metadata || {},
-      methodDescriptor_Cmdb_SshShellExec);
-};
-
-
-/**
- * @const
- * @type {!grpc.web.MethodDescriptor<
- *   !proto.bastion.ReqWebXterm,
- *   !proto.bastion.ResWebXterm>}
+ *   !proto.bytegang.ReqWebXterm,
+ *   !proto.bytegang.ResWebXterm>}
  */
 const methodDescriptor_Cmdb_WebXtermSsh = new grpc.web.MethodDescriptor(
-  '/bastion.Cmdb/WebXtermSsh',
+  '/bytegang.Cmdb/WebXtermSsh',
   grpc.web.MethodType.UNARY,
-  proto.bastion.ReqWebXterm,
-  proto.bastion.ResWebXterm,
+  proto.bytegang.ReqWebXterm,
+  proto.bytegang.ResWebXterm,
   /**
-   * @param {!proto.bastion.ReqWebXterm} request
+   * @param {!proto.bytegang.ReqWebXterm} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bastion.ResWebXterm.deserializeBinary
+  proto.bytegang.ResWebXterm.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.bastion.ReqWebXterm,
- *   !proto.bastion.ResWebXterm>}
+ *   !proto.bytegang.ReqWebXterm,
+ *   !proto.bytegang.ResWebXterm>}
  */
 const methodInfo_Cmdb_WebXtermSsh = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.bastion.ResWebXterm,
+  proto.bytegang.ResWebXterm,
   /**
-   * @param {!proto.bastion.ReqWebXterm} request
+   * @param {!proto.bytegang.ReqWebXterm} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bastion.ResWebXterm.deserializeBinary
+  proto.bytegang.ResWebXterm.deserializeBinary
 );
 
 
 /**
- * @param {!proto.bastion.ReqWebXterm} request The
+ * @param {!proto.bytegang.ReqWebXterm} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.bastion.ResWebXterm)}
+ * @param {function(?grpc.web.Error, ?proto.bytegang.ResWebXterm)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.bastion.ResWebXterm>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.bytegang.ResWebXterm>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bastion.CmdbClient.prototype.webXtermSsh =
+proto.bytegang.CmdbClient.prototype.webXtermSsh =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bastion.Cmdb/WebXtermSsh',
+      '/bytegang.Cmdb/WebXtermSsh',
       request,
       metadata || {},
       methodDescriptor_Cmdb_WebXtermSsh,
@@ -613,17 +533,17 @@ proto.bastion.CmdbClient.prototype.webXtermSsh =
 
 
 /**
- * @param {!proto.bastion.ReqWebXterm} request The
+ * @param {!proto.bytegang.ReqWebXterm} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.bastion.ResWebXterm>}
+ * @return {!Promise<!proto.bytegang.ResWebXterm>}
  *     Promise that resolves to the response
  */
-proto.bastion.CmdbPromiseClient.prototype.webXtermSsh =
+proto.bytegang.CmdbPromiseClient.prototype.webXtermSsh =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bastion.Cmdb/WebXtermSsh',
+      '/bytegang.Cmdb/WebXtermSsh',
       request,
       metadata || {},
       methodDescriptor_Cmdb_WebXtermSsh);
@@ -633,58 +553,58 @@ proto.bastion.CmdbPromiseClient.prototype.webXtermSsh =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.bastion.ReqWebXterm,
- *   !proto.bastion.ResWebXterm>}
+ *   !proto.bytegang.ReqWebXterm,
+ *   !proto.bytegang.ResWebXterm>}
  */
 const methodDescriptor_Cmdb_WebXtermPod = new grpc.web.MethodDescriptor(
-  '/bastion.Cmdb/WebXtermPod',
+  '/bytegang.Cmdb/WebXtermPod',
   grpc.web.MethodType.UNARY,
-  proto.bastion.ReqWebXterm,
-  proto.bastion.ResWebXterm,
+  proto.bytegang.ReqWebXterm,
+  proto.bytegang.ResWebXterm,
   /**
-   * @param {!proto.bastion.ReqWebXterm} request
+   * @param {!proto.bytegang.ReqWebXterm} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bastion.ResWebXterm.deserializeBinary
+  proto.bytegang.ResWebXterm.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.bastion.ReqWebXterm,
- *   !proto.bastion.ResWebXterm>}
+ *   !proto.bytegang.ReqWebXterm,
+ *   !proto.bytegang.ResWebXterm>}
  */
 const methodInfo_Cmdb_WebXtermPod = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.bastion.ResWebXterm,
+  proto.bytegang.ResWebXterm,
   /**
-   * @param {!proto.bastion.ReqWebXterm} request
+   * @param {!proto.bytegang.ReqWebXterm} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bastion.ResWebXterm.deserializeBinary
+  proto.bytegang.ResWebXterm.deserializeBinary
 );
 
 
 /**
- * @param {!proto.bastion.ReqWebXterm} request The
+ * @param {!proto.bytegang.ReqWebXterm} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.bastion.ResWebXterm)}
+ * @param {function(?grpc.web.Error, ?proto.bytegang.ResWebXterm)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.bastion.ResWebXterm>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.bytegang.ResWebXterm>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bastion.CmdbClient.prototype.webXtermPod =
+proto.bytegang.CmdbClient.prototype.webXtermPod =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bastion.Cmdb/WebXtermPod',
+      '/bytegang.Cmdb/WebXtermPod',
       request,
       metadata || {},
       methodDescriptor_Cmdb_WebXtermPod,
@@ -693,17 +613,17 @@ proto.bastion.CmdbClient.prototype.webXtermPod =
 
 
 /**
- * @param {!proto.bastion.ReqWebXterm} request The
+ * @param {!proto.bytegang.ReqWebXterm} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.bastion.ResWebXterm>}
+ * @return {!Promise<!proto.bytegang.ResWebXterm>}
  *     Promise that resolves to the response
  */
-proto.bastion.CmdbPromiseClient.prototype.webXtermPod =
+proto.bytegang.CmdbPromiseClient.prototype.webXtermPod =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bastion.Cmdb/WebXtermPod',
+      '/bytegang.Cmdb/WebXtermPod',
       request,
       metadata || {},
       methodDescriptor_Cmdb_WebXtermPod);
@@ -713,320 +633,160 @@ proto.bastion.CmdbPromiseClient.prototype.webXtermPod =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.bastion.ReqSshdData,
- *   !proto.bastion.ResStatus>}
+ *   !proto.bytegang.ReqSshdData,
+ *   !proto.bytegang.ResStatus>}
  */
-const methodDescriptor_Cmdb_CollectSshdLog = new grpc.web.MethodDescriptor(
-  '/bastion.Cmdb/CollectSshdLog',
+const methodDescriptor_Cmdb_SaveLogSshSession = new grpc.web.MethodDescriptor(
+  '/bytegang.Cmdb/SaveLogSshSession',
   grpc.web.MethodType.UNARY,
-  proto.bastion.ReqSshdData,
-  proto.bastion.ResStatus,
+  proto.bytegang.ReqSshdData,
+  proto.bytegang.ResStatus,
   /**
-   * @param {!proto.bastion.ReqSshdData} request
+   * @param {!proto.bytegang.ReqSshdData} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bastion.ResStatus.deserializeBinary
+  proto.bytegang.ResStatus.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.bastion.ReqSshdData,
- *   !proto.bastion.ResStatus>}
+ *   !proto.bytegang.ReqSshdData,
+ *   !proto.bytegang.ResStatus>}
  */
-const methodInfo_Cmdb_CollectSshdLog = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.bastion.ResStatus,
+const methodInfo_Cmdb_SaveLogSshSession = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.bytegang.ResStatus,
   /**
-   * @param {!proto.bastion.ReqSshdData} request
+   * @param {!proto.bytegang.ReqSshdData} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bastion.ResStatus.deserializeBinary
+  proto.bytegang.ResStatus.deserializeBinary
 );
 
 
 /**
- * @param {!proto.bastion.ReqSshdData} request The
+ * @param {!proto.bytegang.ReqSshdData} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.bastion.ResStatus)}
+ * @param {function(?grpc.web.Error, ?proto.bytegang.ResStatus)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.bastion.ResStatus>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.bytegang.ResStatus>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bastion.CmdbClient.prototype.collectSshdLog =
+proto.bytegang.CmdbClient.prototype.saveLogSshSession =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bastion.Cmdb/CollectSshdLog',
+      '/bytegang.Cmdb/SaveLogSshSession',
       request,
       metadata || {},
-      methodDescriptor_Cmdb_CollectSshdLog,
+      methodDescriptor_Cmdb_SaveLogSshSession,
       callback);
 };
 
 
 /**
- * @param {!proto.bastion.ReqSshdData} request The
+ * @param {!proto.bytegang.ReqSshdData} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.bastion.ResStatus>}
+ * @return {!Promise<!proto.bytegang.ResStatus>}
  *     Promise that resolves to the response
  */
-proto.bastion.CmdbPromiseClient.prototype.collectSshdLog =
+proto.bytegang.CmdbPromiseClient.prototype.saveLogSshSession =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bastion.Cmdb/CollectSshdLog',
+      '/bytegang.Cmdb/SaveLogSshSession',
       request,
       metadata || {},
-      methodDescriptor_Cmdb_CollectSshdLog);
+      methodDescriptor_Cmdb_SaveLogSshSession);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.bastion.ReqSshCmd,
- *   !proto.bastion.ResStatus>}
+ *   !proto.bytegang.ReqAuthLog,
+ *   !proto.bytegang.ResStatus>}
  */
-const methodDescriptor_Cmdb_PushSshCmd = new grpc.web.MethodDescriptor(
-  '/bastion.Cmdb/PushSshCmd',
+const methodDescriptor_Cmdb_SaveLogAuth = new grpc.web.MethodDescriptor(
+  '/bytegang.Cmdb/SaveLogAuth',
   grpc.web.MethodType.UNARY,
-  proto.bastion.ReqSshCmd,
-  proto.bastion.ResStatus,
+  proto.bytegang.ReqAuthLog,
+  proto.bytegang.ResStatus,
   /**
-   * @param {!proto.bastion.ReqSshCmd} request
+   * @param {!proto.bytegang.ReqAuthLog} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bastion.ResStatus.deserializeBinary
+  proto.bytegang.ResStatus.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.bastion.ReqSshCmd,
- *   !proto.bastion.ResStatus>}
+ *   !proto.bytegang.ReqAuthLog,
+ *   !proto.bytegang.ResStatus>}
  */
-const methodInfo_Cmdb_PushSshCmd = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.bastion.ResStatus,
+const methodInfo_Cmdb_SaveLogAuth = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.bytegang.ResStatus,
   /**
-   * @param {!proto.bastion.ReqSshCmd} request
+   * @param {!proto.bytegang.ReqAuthLog} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bastion.ResStatus.deserializeBinary
+  proto.bytegang.ResStatus.deserializeBinary
 );
 
 
 /**
- * @param {!proto.bastion.ReqSshCmd} request The
+ * @param {!proto.bytegang.ReqAuthLog} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.bastion.ResStatus)}
+ * @param {function(?grpc.web.Error, ?proto.bytegang.ResStatus)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.bastion.ResStatus>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.bytegang.ResStatus>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bastion.CmdbClient.prototype.pushSshCmd =
+proto.bytegang.CmdbClient.prototype.saveLogAuth =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bastion.Cmdb/PushSshCmd',
+      '/bytegang.Cmdb/SaveLogAuth',
       request,
       metadata || {},
-      methodDescriptor_Cmdb_PushSshCmd,
+      methodDescriptor_Cmdb_SaveLogAuth,
       callback);
 };
 
 
 /**
- * @param {!proto.bastion.ReqSshCmd} request The
+ * @param {!proto.bytegang.ReqAuthLog} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.bastion.ResStatus>}
+ * @return {!Promise<!proto.bytegang.ResStatus>}
  *     Promise that resolves to the response
  */
-proto.bastion.CmdbPromiseClient.prototype.pushSshCmd =
+proto.bytegang.CmdbPromiseClient.prototype.saveLogAuth =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bastion.Cmdb/PushSshCmd',
+      '/bytegang.Cmdb/SaveLogAuth',
       request,
       metadata || {},
-      methodDescriptor_Cmdb_PushSshCmd);
-};
-
-
-/**
- * @const
- * @type {!grpc.web.MethodDescriptor<
- *   !proto.bastion.ReqAuthLog,
- *   !proto.bastion.ResStatus>}
- */
-const methodDescriptor_Cmdb_PushAuthLog = new grpc.web.MethodDescriptor(
-  '/bastion.Cmdb/PushAuthLog',
-  grpc.web.MethodType.UNARY,
-  proto.bastion.ReqAuthLog,
-  proto.bastion.ResStatus,
-  /**
-   * @param {!proto.bastion.ReqAuthLog} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.bastion.ResStatus.deserializeBinary
-);
-
-
-/**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.bastion.ReqAuthLog,
- *   !proto.bastion.ResStatus>}
- */
-const methodInfo_Cmdb_PushAuthLog = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.bastion.ResStatus,
-  /**
-   * @param {!proto.bastion.ReqAuthLog} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.bastion.ResStatus.deserializeBinary
-);
-
-
-/**
- * @param {!proto.bastion.ReqAuthLog} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @param {function(?grpc.web.Error, ?proto.bastion.ResStatus)}
- *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.bastion.ResStatus>|undefined}
- *     The XHR Node Readable Stream
- */
-proto.bastion.CmdbClient.prototype.pushAuthLog =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/bastion.Cmdb/PushAuthLog',
-      request,
-      metadata || {},
-      methodDescriptor_Cmdb_PushAuthLog,
-      callback);
-};
-
-
-/**
- * @param {!proto.bastion.ReqAuthLog} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @return {!Promise<!proto.bastion.ResStatus>}
- *     Promise that resolves to the response
- */
-proto.bastion.CmdbPromiseClient.prototype.pushAuthLog =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/bastion.Cmdb/PushAuthLog',
-      request,
-      metadata || {},
-      methodDescriptor_Cmdb_PushAuthLog);
-};
-
-
-/**
- * @const
- * @type {!grpc.web.MethodDescriptor<
- *   !proto.bastion.ReqAssetCmd,
- *   !proto.bastion.ResStatus>}
- */
-const methodDescriptor_Cmdb_RemoteExec = new grpc.web.MethodDescriptor(
-  '/bastion.Cmdb/RemoteExec',
-  grpc.web.MethodType.UNARY,
-  proto.bastion.ReqAssetCmd,
-  proto.bastion.ResStatus,
-  /**
-   * @param {!proto.bastion.ReqAssetCmd} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.bastion.ResStatus.deserializeBinary
-);
-
-
-/**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.bastion.ReqAssetCmd,
- *   !proto.bastion.ResStatus>}
- */
-const methodInfo_Cmdb_RemoteExec = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.bastion.ResStatus,
-  /**
-   * @param {!proto.bastion.ReqAssetCmd} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.bastion.ResStatus.deserializeBinary
-);
-
-
-/**
- * @param {!proto.bastion.ReqAssetCmd} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @param {function(?grpc.web.Error, ?proto.bastion.ResStatus)}
- *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.bastion.ResStatus>|undefined}
- *     The XHR Node Readable Stream
- */
-proto.bastion.CmdbClient.prototype.remoteExec =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/bastion.Cmdb/RemoteExec',
-      request,
-      metadata || {},
-      methodDescriptor_Cmdb_RemoteExec,
-      callback);
-};
-
-
-/**
- * @param {!proto.bastion.ReqAssetCmd} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @return {!Promise<!proto.bastion.ResStatus>}
- *     Promise that resolves to the response
- */
-proto.bastion.CmdbPromiseClient.prototype.remoteExec =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/bastion.Cmdb/RemoteExec',
-      request,
-      metadata || {},
-      methodDescriptor_Cmdb_RemoteExec);
+      methodDescriptor_Cmdb_SaveLogAuth);
 };
 
 
@@ -1038,7 +798,7 @@ proto.bastion.CmdbPromiseClient.prototype.remoteExec =
  * @struct
  * @final
  */
-proto.bastion.SshArkClient =
+proto.bytegang.SshArkClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -1064,7 +824,7 @@ proto.bastion.SshArkClient =
  * @struct
  * @final
  */
-proto.bastion.SshArkPromiseClient =
+proto.bytegang.SshArkPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -1085,58 +845,58 @@ proto.bastion.SshArkPromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.bastion.ReqShellExec,
- *   !proto.bastion.ResShellExec>}
+ *   !proto.bytegang.ReqShellExec,
+ *   !proto.bytegang.ResShellExec>}
  */
 const methodDescriptor_SshArk_execShell = new grpc.web.MethodDescriptor(
-  '/bastion.SshArk/execShell',
+  '/bytegang.SshArk/execShell',
   grpc.web.MethodType.UNARY,
-  proto.bastion.ReqShellExec,
-  proto.bastion.ResShellExec,
+  proto.bytegang.ReqShellExec,
+  proto.bytegang.ResShellExec,
   /**
-   * @param {!proto.bastion.ReqShellExec} request
+   * @param {!proto.bytegang.ReqShellExec} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bastion.ResShellExec.deserializeBinary
+  proto.bytegang.ResShellExec.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.bastion.ReqShellExec,
- *   !proto.bastion.ResShellExec>}
+ *   !proto.bytegang.ReqShellExec,
+ *   !proto.bytegang.ResShellExec>}
  */
 const methodInfo_SshArk_execShell = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.bastion.ResShellExec,
+  proto.bytegang.ResShellExec,
   /**
-   * @param {!proto.bastion.ReqShellExec} request
+   * @param {!proto.bytegang.ReqShellExec} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bastion.ResShellExec.deserializeBinary
+  proto.bytegang.ResShellExec.deserializeBinary
 );
 
 
 /**
- * @param {!proto.bastion.ReqShellExec} request The
+ * @param {!proto.bytegang.ReqShellExec} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.bastion.ResShellExec)}
+ * @param {function(?grpc.web.Error, ?proto.bytegang.ResShellExec)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.bastion.ResShellExec>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.bytegang.ResShellExec>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bastion.SshArkClient.prototype.execShell =
+proto.bytegang.SshArkClient.prototype.execShell =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bastion.SshArk/execShell',
+      '/bytegang.SshArk/execShell',
       request,
       metadata || {},
       methodDescriptor_SshArk_execShell,
@@ -1145,22 +905,22 @@ proto.bastion.SshArkClient.prototype.execShell =
 
 
 /**
- * @param {!proto.bastion.ReqShellExec} request The
+ * @param {!proto.bytegang.ReqShellExec} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.bastion.ResShellExec>}
+ * @return {!Promise<!proto.bytegang.ResShellExec>}
  *     Promise that resolves to the response
  */
-proto.bastion.SshArkPromiseClient.prototype.execShell =
+proto.bytegang.SshArkPromiseClient.prototype.execShell =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bastion.SshArk/execShell',
+      '/bytegang.SshArk/execShell',
       request,
       metadata || {},
       methodDescriptor_SshArk_execShell);
 };
 
 
-module.exports = proto.bastion;
+module.exports = proto.bytegang;
 
