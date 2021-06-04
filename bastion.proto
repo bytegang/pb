@@ -249,6 +249,8 @@ message ResShellExec {
   uint64 startAt = 3;
   uint64 doneAt = 4;
   bool ok = 5;
+  uint64 code = 6;
+  string msg = 7;
 }
 
 
