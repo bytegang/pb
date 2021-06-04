@@ -262,10 +262,3 @@ message ReqShellExec {
   uint64 timeoutExecSec = 6;
 }
 
-
-
-//rpc service of sshd
-// implement by mojotv.cn:code.sshd.git
-service SshArk {
-  rpc execShell(ReqShellExec) returns (ResShellExec){} //exec shell script
-}
