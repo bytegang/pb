@@ -14,10 +14,10 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// CmdbClient is the client API for Cmdb service.
+// ByteGangsterClient is the client API for ByteGangster service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type CmdbClient interface {
+type ByteGangsterClient interface {
 	AuthPw(ctx context.Context, in *ReqAuthPassword, opts ...grpc.CallOption) (*User, error)
 	AuthPk(ctx context.Context, in *ReqAuthPublicKey, opts ...grpc.CallOption) (*User, error)
 	AuthKb(ctx context.Context, in *ReqSshUser, opts ...grpc.CallOption) (*UserKb, error)
@@ -29,99 +29,99 @@ type CmdbClient interface {
 	SaveLogAuth(ctx context.Context, in *ReqAuthLog, opts ...grpc.CallOption) (*ResStatus, error)
 }
 
-type cmdbClient struct {
+type byteGangsterClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewCmdbClient(cc grpc.ClientConnInterface) CmdbClient {
-	return &cmdbClient{cc}
+func NewByteGangsterClient(cc grpc.ClientConnInterface) ByteGangsterClient {
+	return &byteGangsterClient{cc}
 }
 
-func (c *cmdbClient) AuthPw(ctx context.Context, in *ReqAuthPassword, opts ...grpc.CallOption) (*User, error) {
+func (c *byteGangsterClient) AuthPw(ctx context.Context, in *ReqAuthPassword, opts ...grpc.CallOption) (*User, error) {
 	out := new(User)
-	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/AuthPw", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/ByteGangster.ByteGangster/AuthPw", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *cmdbClient) AuthPk(ctx context.Context, in *ReqAuthPublicKey, opts ...grpc.CallOption) (*User, error) {
+func (c *byteGangsterClient) AuthPk(ctx context.Context, in *ReqAuthPublicKey, opts ...grpc.CallOption) (*User, error) {
 	out := new(User)
-	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/AuthPk", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/ByteGangster.ByteGangster/AuthPk", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *cmdbClient) AuthKb(ctx context.Context, in *ReqSshUser, opts ...grpc.CallOption) (*UserKb, error) {
+func (c *byteGangsterClient) AuthKb(ctx context.Context, in *ReqSshUser, opts ...grpc.CallOption) (*UserKb, error) {
 	out := new(UserKb)
-	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/AuthKb", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/ByteGangster.ByteGangster/AuthKb", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *cmdbClient) FetchAsset(ctx context.Context, in *ReqAssetsQuery, opts ...grpc.CallOption) (*AssetList, error) {
+func (c *byteGangsterClient) FetchAsset(ctx context.Context, in *ReqAssetsQuery, opts ...grpc.CallOption) (*AssetList, error) {
 	out := new(AssetList)
-	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/FetchAsset", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/ByteGangster.ByteGangster/FetchAsset", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *cmdbClient) FetchAssetSshConfig(ctx context.Context, in *ReqAssetUser, opts ...grpc.CallOption) (*AssetSshAccount, error) {
+func (c *byteGangsterClient) FetchAssetSshConfig(ctx context.Context, in *ReqAssetUser, opts ...grpc.CallOption) (*AssetSshAccount, error) {
 	out := new(AssetSshAccount)
-	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/FetchAssetSshConfig", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/ByteGangster.ByteGangster/FetchAssetSshConfig", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *cmdbClient) WebXtermSsh(ctx context.Context, in *ReqWebXterm, opts ...grpc.CallOption) (*ResWebXterm, error) {
+func (c *byteGangsterClient) WebXtermSsh(ctx context.Context, in *ReqWebXterm, opts ...grpc.CallOption) (*ResWebXterm, error) {
 	out := new(ResWebXterm)
-	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/WebXtermSsh", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/ByteGangster.ByteGangster/WebXtermSsh", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *cmdbClient) WebXtermPod(ctx context.Context, in *ReqWebXterm, opts ...grpc.CallOption) (*ResWebXterm, error) {
+func (c *byteGangsterClient) WebXtermPod(ctx context.Context, in *ReqWebXterm, opts ...grpc.CallOption) (*ResWebXterm, error) {
 	out := new(ResWebXterm)
-	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/WebXtermPod", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/ByteGangster.ByteGangster/WebXtermPod", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *cmdbClient) SaveLogSshSession(ctx context.Context, in *ReqSshdData, opts ...grpc.CallOption) (*ResStatus, error) {
+func (c *byteGangsterClient) SaveLogSshSession(ctx context.Context, in *ReqSshdData, opts ...grpc.CallOption) (*ResStatus, error) {
 	out := new(ResStatus)
-	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/SaveLogSshSession", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/ByteGangster.ByteGangster/SaveLogSshSession", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *cmdbClient) SaveLogAuth(ctx context.Context, in *ReqAuthLog, opts ...grpc.CallOption) (*ResStatus, error) {
+func (c *byteGangsterClient) SaveLogAuth(ctx context.Context, in *ReqAuthLog, opts ...grpc.CallOption) (*ResStatus, error) {
 	out := new(ResStatus)
-	err := c.cc.Invoke(ctx, "/bytegang.Cmdb/SaveLogAuth", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/ByteGangster.ByteGangster/SaveLogAuth", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// CmdbServer is the server API for Cmdb service.
-// All implementations must embed UnimplementedCmdbServer
+// ByteGangsterServer is the server API for ByteGangster service.
+// All implementations must embed UnimplementedByteGangsterServer
 // for forward compatibility
-type CmdbServer interface {
+type ByteGangsterServer interface {
 	AuthPw(context.Context, *ReqAuthPassword) (*User, error)
 	AuthPk(context.Context, *ReqAuthPublicKey) (*User, error)
 	AuthKb(context.Context, *ReqSshUser) (*UserKb, error)
@@ -131,257 +131,257 @@ type CmdbServer interface {
 	WebXtermPod(context.Context, *ReqWebXterm) (*ResWebXterm, error)
 	SaveLogSshSession(context.Context, *ReqSshdData) (*ResStatus, error)
 	SaveLogAuth(context.Context, *ReqAuthLog) (*ResStatus, error)
-	mustEmbedUnimplementedCmdbServer()
+	mustEmbedUnimplementedByteGangsterServer()
 }
 
-// UnimplementedCmdbServer must be embedded to have forward compatible implementations.
-type UnimplementedCmdbServer struct {
+// UnimplementedByteGangsterServer must be embedded to have forward compatible implementations.
+type UnimplementedByteGangsterServer struct {
 }
 
-func (UnimplementedCmdbServer) AuthPw(context.Context, *ReqAuthPassword) (*User, error) {
+func (UnimplementedByteGangsterServer) AuthPw(context.Context, *ReqAuthPassword) (*User, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AuthPw not implemented")
 }
-func (UnimplementedCmdbServer) AuthPk(context.Context, *ReqAuthPublicKey) (*User, error) {
+func (UnimplementedByteGangsterServer) AuthPk(context.Context, *ReqAuthPublicKey) (*User, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AuthPk not implemented")
 }
-func (UnimplementedCmdbServer) AuthKb(context.Context, *ReqSshUser) (*UserKb, error) {
+func (UnimplementedByteGangsterServer) AuthKb(context.Context, *ReqSshUser) (*UserKb, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AuthKb not implemented")
 }
-func (UnimplementedCmdbServer) FetchAsset(context.Context, *ReqAssetsQuery) (*AssetList, error) {
+func (UnimplementedByteGangsterServer) FetchAsset(context.Context, *ReqAssetsQuery) (*AssetList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FetchAsset not implemented")
 }
-func (UnimplementedCmdbServer) FetchAssetSshConfig(context.Context, *ReqAssetUser) (*AssetSshAccount, error) {
+func (UnimplementedByteGangsterServer) FetchAssetSshConfig(context.Context, *ReqAssetUser) (*AssetSshAccount, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FetchAssetSshConfig not implemented")
 }
-func (UnimplementedCmdbServer) WebXtermSsh(context.Context, *ReqWebXterm) (*ResWebXterm, error) {
+func (UnimplementedByteGangsterServer) WebXtermSsh(context.Context, *ReqWebXterm) (*ResWebXterm, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method WebXtermSsh not implemented")
 }
-func (UnimplementedCmdbServer) WebXtermPod(context.Context, *ReqWebXterm) (*ResWebXterm, error) {
+func (UnimplementedByteGangsterServer) WebXtermPod(context.Context, *ReqWebXterm) (*ResWebXterm, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method WebXtermPod not implemented")
 }
-func (UnimplementedCmdbServer) SaveLogSshSession(context.Context, *ReqSshdData) (*ResStatus, error) {
+func (UnimplementedByteGangsterServer) SaveLogSshSession(context.Context, *ReqSshdData) (*ResStatus, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SaveLogSshSession not implemented")
 }
-func (UnimplementedCmdbServer) SaveLogAuth(context.Context, *ReqAuthLog) (*ResStatus, error) {
+func (UnimplementedByteGangsterServer) SaveLogAuth(context.Context, *ReqAuthLog) (*ResStatus, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SaveLogAuth not implemented")
 }
-func (UnimplementedCmdbServer) mustEmbedUnimplementedCmdbServer() {}
+func (UnimplementedByteGangsterServer) mustEmbedUnimplementedByteGangsterServer() {}
 
-// UnsafeCmdbServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to CmdbServer will
+// UnsafeByteGangsterServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to ByteGangsterServer will
 // result in compilation errors.
-type UnsafeCmdbServer interface {
-	mustEmbedUnimplementedCmdbServer()
+type UnsafeByteGangsterServer interface {
+	mustEmbedUnimplementedByteGangsterServer()
 }
 
-func RegisterCmdbServer(s grpc.ServiceRegistrar, srv CmdbServer) {
-	s.RegisterService(&Cmdb_ServiceDesc, srv)
+func RegisterByteGangsterServer(s grpc.ServiceRegistrar, srv ByteGangsterServer) {
+	s.RegisterService(&ByteGangster_ServiceDesc, srv)
 }
 
-func _Cmdb_AuthPw_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ByteGangster_AuthPw_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReqAuthPassword)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CmdbServer).AuthPw(ctx, in)
+		return srv.(ByteGangsterServer).AuthPw(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bytegang.Cmdb/AuthPw",
+		FullMethod: "/ByteGangster.ByteGangster/AuthPw",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CmdbServer).AuthPw(ctx, req.(*ReqAuthPassword))
+		return srv.(ByteGangsterServer).AuthPw(ctx, req.(*ReqAuthPassword))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Cmdb_AuthPk_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ByteGangster_AuthPk_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReqAuthPublicKey)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CmdbServer).AuthPk(ctx, in)
+		return srv.(ByteGangsterServer).AuthPk(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bytegang.Cmdb/AuthPk",
+		FullMethod: "/ByteGangster.ByteGangster/AuthPk",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CmdbServer).AuthPk(ctx, req.(*ReqAuthPublicKey))
+		return srv.(ByteGangsterServer).AuthPk(ctx, req.(*ReqAuthPublicKey))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Cmdb_AuthKb_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ByteGangster_AuthKb_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReqSshUser)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CmdbServer).AuthKb(ctx, in)
+		return srv.(ByteGangsterServer).AuthKb(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bytegang.Cmdb/AuthKb",
+		FullMethod: "/ByteGangster.ByteGangster/AuthKb",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CmdbServer).AuthKb(ctx, req.(*ReqSshUser))
+		return srv.(ByteGangsterServer).AuthKb(ctx, req.(*ReqSshUser))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Cmdb_FetchAsset_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ByteGangster_FetchAsset_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReqAssetsQuery)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CmdbServer).FetchAsset(ctx, in)
+		return srv.(ByteGangsterServer).FetchAsset(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bytegang.Cmdb/FetchAsset",
+		FullMethod: "/ByteGangster.ByteGangster/FetchAsset",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CmdbServer).FetchAsset(ctx, req.(*ReqAssetsQuery))
+		return srv.(ByteGangsterServer).FetchAsset(ctx, req.(*ReqAssetsQuery))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Cmdb_FetchAssetSshConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ByteGangster_FetchAssetSshConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReqAssetUser)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CmdbServer).FetchAssetSshConfig(ctx, in)
+		return srv.(ByteGangsterServer).FetchAssetSshConfig(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bytegang.Cmdb/FetchAssetSshConfig",
+		FullMethod: "/ByteGangster.ByteGangster/FetchAssetSshConfig",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CmdbServer).FetchAssetSshConfig(ctx, req.(*ReqAssetUser))
+		return srv.(ByteGangsterServer).FetchAssetSshConfig(ctx, req.(*ReqAssetUser))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Cmdb_WebXtermSsh_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ByteGangster_WebXtermSsh_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReqWebXterm)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CmdbServer).WebXtermSsh(ctx, in)
+		return srv.(ByteGangsterServer).WebXtermSsh(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bytegang.Cmdb/WebXtermSsh",
+		FullMethod: "/ByteGangster.ByteGangster/WebXtermSsh",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CmdbServer).WebXtermSsh(ctx, req.(*ReqWebXterm))
+		return srv.(ByteGangsterServer).WebXtermSsh(ctx, req.(*ReqWebXterm))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Cmdb_WebXtermPod_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ByteGangster_WebXtermPod_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReqWebXterm)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CmdbServer).WebXtermPod(ctx, in)
+		return srv.(ByteGangsterServer).WebXtermPod(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bytegang.Cmdb/WebXtermPod",
+		FullMethod: "/ByteGangster.ByteGangster/WebXtermPod",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CmdbServer).WebXtermPod(ctx, req.(*ReqWebXterm))
+		return srv.(ByteGangsterServer).WebXtermPod(ctx, req.(*ReqWebXterm))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Cmdb_SaveLogSshSession_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ByteGangster_SaveLogSshSession_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReqSshdData)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CmdbServer).SaveLogSshSession(ctx, in)
+		return srv.(ByteGangsterServer).SaveLogSshSession(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bytegang.Cmdb/SaveLogSshSession",
+		FullMethod: "/ByteGangster.ByteGangster/SaveLogSshSession",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CmdbServer).SaveLogSshSession(ctx, req.(*ReqSshdData))
+		return srv.(ByteGangsterServer).SaveLogSshSession(ctx, req.(*ReqSshdData))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Cmdb_SaveLogAuth_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ByteGangster_SaveLogAuth_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReqAuthLog)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CmdbServer).SaveLogAuth(ctx, in)
+		return srv.(ByteGangsterServer).SaveLogAuth(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bytegang.Cmdb/SaveLogAuth",
+		FullMethod: "/ByteGangster.ByteGangster/SaveLogAuth",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CmdbServer).SaveLogAuth(ctx, req.(*ReqAuthLog))
+		return srv.(ByteGangsterServer).SaveLogAuth(ctx, req.(*ReqAuthLog))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// Cmdb_ServiceDesc is the grpc.ServiceDesc for Cmdb service.
+// ByteGangster_ServiceDesc is the grpc.ServiceDesc for ByteGangster service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var Cmdb_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "bytegang.Cmdb",
-	HandlerType: (*CmdbServer)(nil),
+var ByteGangster_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "ByteGangster.ByteGangster",
+	HandlerType: (*ByteGangsterServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "AuthPw",
-			Handler:    _Cmdb_AuthPw_Handler,
+			Handler:    _ByteGangster_AuthPw_Handler,
 		},
 		{
 			MethodName: "AuthPk",
-			Handler:    _Cmdb_AuthPk_Handler,
+			Handler:    _ByteGangster_AuthPk_Handler,
 		},
 		{
 			MethodName: "AuthKb",
-			Handler:    _Cmdb_AuthKb_Handler,
+			Handler:    _ByteGangster_AuthKb_Handler,
 		},
 		{
 			MethodName: "FetchAsset",
-			Handler:    _Cmdb_FetchAsset_Handler,
+			Handler:    _ByteGangster_FetchAsset_Handler,
 		},
 		{
 			MethodName: "FetchAssetSshConfig",
-			Handler:    _Cmdb_FetchAssetSshConfig_Handler,
+			Handler:    _ByteGangster_FetchAssetSshConfig_Handler,
 		},
 		{
 			MethodName: "WebXtermSsh",
-			Handler:    _Cmdb_WebXtermSsh_Handler,
+			Handler:    _ByteGangster_WebXtermSsh_Handler,
 		},
 		{
 			MethodName: "WebXtermPod",
-			Handler:    _Cmdb_WebXtermPod_Handler,
+			Handler:    _ByteGangster_WebXtermPod_Handler,
 		},
 		{
 			MethodName: "SaveLogSshSession",
-			Handler:    _Cmdb_SaveLogSshSession_Handler,
+			Handler:    _ByteGangster_SaveLogSshSession_Handler,
 		},
 		{
 			MethodName: "SaveLogAuth",
-			Handler:    _Cmdb_SaveLogAuth_Handler,
+			Handler:    _ByteGangster_SaveLogAuth_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

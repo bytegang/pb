@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for bytegang
+ * @fileoverview gRPC-Web generated client stub for ByteGangster
  * @enhanceable
  * @public
  */
@@ -16,7 +16,7 @@ const grpc = {};
 grpc.web = require('grpc-web');
 
 const proto = {};
-proto.bytegang = require('./bastion_pb.js');
+proto.ByteGangster = require('./bastion_pb.js');
 
 /**
  * @param {string} hostname
@@ -26,7 +26,7 @@ proto.bytegang = require('./bastion_pb.js');
  * @struct
  * @final
  */
-proto.bytegang.CmdbClient =
+proto.ByteGangster.ByteGangsterClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -52,7 +52,7 @@ proto.bytegang.CmdbClient =
  * @struct
  * @final
  */
-proto.bytegang.CmdbPromiseClient =
+proto.ByteGangster.ByteGangsterPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -73,722 +73,722 @@ proto.bytegang.CmdbPromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.bytegang.ReqAuthPassword,
- *   !proto.bytegang.User>}
+ *   !proto.ByteGangster.ReqAuthPassword,
+ *   !proto.ByteGangster.User>}
  */
-const methodDescriptor_Cmdb_AuthPw = new grpc.web.MethodDescriptor(
-  '/bytegang.Cmdb/AuthPw',
+const methodDescriptor_ByteGangster_AuthPw = new grpc.web.MethodDescriptor(
+  '/ByteGangster.ByteGangster/AuthPw',
   grpc.web.MethodType.UNARY,
-  proto.bytegang.ReqAuthPassword,
-  proto.bytegang.User,
+  proto.ByteGangster.ReqAuthPassword,
+  proto.ByteGangster.User,
   /**
-   * @param {!proto.bytegang.ReqAuthPassword} request
+   * @param {!proto.ByteGangster.ReqAuthPassword} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bytegang.User.deserializeBinary
+  proto.ByteGangster.User.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.bytegang.ReqAuthPassword,
- *   !proto.bytegang.User>}
+ *   !proto.ByteGangster.ReqAuthPassword,
+ *   !proto.ByteGangster.User>}
  */
-const methodInfo_Cmdb_AuthPw = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.bytegang.User,
+const methodInfo_ByteGangster_AuthPw = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.ByteGangster.User,
   /**
-   * @param {!proto.bytegang.ReqAuthPassword} request
+   * @param {!proto.ByteGangster.ReqAuthPassword} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bytegang.User.deserializeBinary
+  proto.ByteGangster.User.deserializeBinary
 );
 
 
 /**
- * @param {!proto.bytegang.ReqAuthPassword} request The
+ * @param {!proto.ByteGangster.ReqAuthPassword} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.bytegang.User)}
+ * @param {function(?grpc.web.Error, ?proto.ByteGangster.User)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.bytegang.User>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.ByteGangster.User>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bytegang.CmdbClient.prototype.authPw =
+proto.ByteGangster.ByteGangsterClient.prototype.authPw =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bytegang.Cmdb/AuthPw',
+      '/ByteGangster.ByteGangster/AuthPw',
       request,
       metadata || {},
-      methodDescriptor_Cmdb_AuthPw,
+      methodDescriptor_ByteGangster_AuthPw,
       callback);
 };
 
 
 /**
- * @param {!proto.bytegang.ReqAuthPassword} request The
+ * @param {!proto.ByteGangster.ReqAuthPassword} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.bytegang.User>}
+ * @return {!Promise<!proto.ByteGangster.User>}
  *     Promise that resolves to the response
  */
-proto.bytegang.CmdbPromiseClient.prototype.authPw =
+proto.ByteGangster.ByteGangsterPromiseClient.prototype.authPw =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bytegang.Cmdb/AuthPw',
+      '/ByteGangster.ByteGangster/AuthPw',
       request,
       metadata || {},
-      methodDescriptor_Cmdb_AuthPw);
+      methodDescriptor_ByteGangster_AuthPw);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.bytegang.ReqAuthPublicKey,
- *   !proto.bytegang.User>}
+ *   !proto.ByteGangster.ReqAuthPublicKey,
+ *   !proto.ByteGangster.User>}
  */
-const methodDescriptor_Cmdb_AuthPk = new grpc.web.MethodDescriptor(
-  '/bytegang.Cmdb/AuthPk',
+const methodDescriptor_ByteGangster_AuthPk = new grpc.web.MethodDescriptor(
+  '/ByteGangster.ByteGangster/AuthPk',
   grpc.web.MethodType.UNARY,
-  proto.bytegang.ReqAuthPublicKey,
-  proto.bytegang.User,
+  proto.ByteGangster.ReqAuthPublicKey,
+  proto.ByteGangster.User,
   /**
-   * @param {!proto.bytegang.ReqAuthPublicKey} request
+   * @param {!proto.ByteGangster.ReqAuthPublicKey} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bytegang.User.deserializeBinary
+  proto.ByteGangster.User.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.bytegang.ReqAuthPublicKey,
- *   !proto.bytegang.User>}
+ *   !proto.ByteGangster.ReqAuthPublicKey,
+ *   !proto.ByteGangster.User>}
  */
-const methodInfo_Cmdb_AuthPk = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.bytegang.User,
+const methodInfo_ByteGangster_AuthPk = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.ByteGangster.User,
   /**
-   * @param {!proto.bytegang.ReqAuthPublicKey} request
+   * @param {!proto.ByteGangster.ReqAuthPublicKey} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bytegang.User.deserializeBinary
+  proto.ByteGangster.User.deserializeBinary
 );
 
 
 /**
- * @param {!proto.bytegang.ReqAuthPublicKey} request The
+ * @param {!proto.ByteGangster.ReqAuthPublicKey} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.bytegang.User)}
+ * @param {function(?grpc.web.Error, ?proto.ByteGangster.User)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.bytegang.User>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.ByteGangster.User>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bytegang.CmdbClient.prototype.authPk =
+proto.ByteGangster.ByteGangsterClient.prototype.authPk =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bytegang.Cmdb/AuthPk',
+      '/ByteGangster.ByteGangster/AuthPk',
       request,
       metadata || {},
-      methodDescriptor_Cmdb_AuthPk,
+      methodDescriptor_ByteGangster_AuthPk,
       callback);
 };
 
 
 /**
- * @param {!proto.bytegang.ReqAuthPublicKey} request The
+ * @param {!proto.ByteGangster.ReqAuthPublicKey} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.bytegang.User>}
+ * @return {!Promise<!proto.ByteGangster.User>}
  *     Promise that resolves to the response
  */
-proto.bytegang.CmdbPromiseClient.prototype.authPk =
+proto.ByteGangster.ByteGangsterPromiseClient.prototype.authPk =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bytegang.Cmdb/AuthPk',
+      '/ByteGangster.ByteGangster/AuthPk',
       request,
       metadata || {},
-      methodDescriptor_Cmdb_AuthPk);
+      methodDescriptor_ByteGangster_AuthPk);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.bytegang.ReqSshUser,
- *   !proto.bytegang.UserKb>}
+ *   !proto.ByteGangster.ReqSshUser,
+ *   !proto.ByteGangster.UserKb>}
  */
-const methodDescriptor_Cmdb_AuthKb = new grpc.web.MethodDescriptor(
-  '/bytegang.Cmdb/AuthKb',
+const methodDescriptor_ByteGangster_AuthKb = new grpc.web.MethodDescriptor(
+  '/ByteGangster.ByteGangster/AuthKb',
   grpc.web.MethodType.UNARY,
-  proto.bytegang.ReqSshUser,
-  proto.bytegang.UserKb,
+  proto.ByteGangster.ReqSshUser,
+  proto.ByteGangster.UserKb,
   /**
-   * @param {!proto.bytegang.ReqSshUser} request
+   * @param {!proto.ByteGangster.ReqSshUser} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bytegang.UserKb.deserializeBinary
+  proto.ByteGangster.UserKb.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.bytegang.ReqSshUser,
- *   !proto.bytegang.UserKb>}
+ *   !proto.ByteGangster.ReqSshUser,
+ *   !proto.ByteGangster.UserKb>}
  */
-const methodInfo_Cmdb_AuthKb = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.bytegang.UserKb,
+const methodInfo_ByteGangster_AuthKb = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.ByteGangster.UserKb,
   /**
-   * @param {!proto.bytegang.ReqSshUser} request
+   * @param {!proto.ByteGangster.ReqSshUser} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bytegang.UserKb.deserializeBinary
+  proto.ByteGangster.UserKb.deserializeBinary
 );
 
 
 /**
- * @param {!proto.bytegang.ReqSshUser} request The
+ * @param {!proto.ByteGangster.ReqSshUser} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.bytegang.UserKb)}
+ * @param {function(?grpc.web.Error, ?proto.ByteGangster.UserKb)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.bytegang.UserKb>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.ByteGangster.UserKb>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bytegang.CmdbClient.prototype.authKb =
+proto.ByteGangster.ByteGangsterClient.prototype.authKb =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bytegang.Cmdb/AuthKb',
+      '/ByteGangster.ByteGangster/AuthKb',
       request,
       metadata || {},
-      methodDescriptor_Cmdb_AuthKb,
+      methodDescriptor_ByteGangster_AuthKb,
       callback);
 };
 
 
 /**
- * @param {!proto.bytegang.ReqSshUser} request The
+ * @param {!proto.ByteGangster.ReqSshUser} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.bytegang.UserKb>}
+ * @return {!Promise<!proto.ByteGangster.UserKb>}
  *     Promise that resolves to the response
  */
-proto.bytegang.CmdbPromiseClient.prototype.authKb =
+proto.ByteGangster.ByteGangsterPromiseClient.prototype.authKb =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bytegang.Cmdb/AuthKb',
+      '/ByteGangster.ByteGangster/AuthKb',
       request,
       metadata || {},
-      methodDescriptor_Cmdb_AuthKb);
+      methodDescriptor_ByteGangster_AuthKb);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.bytegang.ReqAssetsQuery,
- *   !proto.bytegang.AssetList>}
+ *   !proto.ByteGangster.ReqAssetsQuery,
+ *   !proto.ByteGangster.AssetList>}
  */
-const methodDescriptor_Cmdb_FetchAsset = new grpc.web.MethodDescriptor(
-  '/bytegang.Cmdb/FetchAsset',
+const methodDescriptor_ByteGangster_FetchAsset = new grpc.web.MethodDescriptor(
+  '/ByteGangster.ByteGangster/FetchAsset',
   grpc.web.MethodType.UNARY,
-  proto.bytegang.ReqAssetsQuery,
-  proto.bytegang.AssetList,
+  proto.ByteGangster.ReqAssetsQuery,
+  proto.ByteGangster.AssetList,
   /**
-   * @param {!proto.bytegang.ReqAssetsQuery} request
+   * @param {!proto.ByteGangster.ReqAssetsQuery} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bytegang.AssetList.deserializeBinary
+  proto.ByteGangster.AssetList.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.bytegang.ReqAssetsQuery,
- *   !proto.bytegang.AssetList>}
+ *   !proto.ByteGangster.ReqAssetsQuery,
+ *   !proto.ByteGangster.AssetList>}
  */
-const methodInfo_Cmdb_FetchAsset = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.bytegang.AssetList,
+const methodInfo_ByteGangster_FetchAsset = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.ByteGangster.AssetList,
   /**
-   * @param {!proto.bytegang.ReqAssetsQuery} request
+   * @param {!proto.ByteGangster.ReqAssetsQuery} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bytegang.AssetList.deserializeBinary
+  proto.ByteGangster.AssetList.deserializeBinary
 );
 
 
 /**
- * @param {!proto.bytegang.ReqAssetsQuery} request The
+ * @param {!proto.ByteGangster.ReqAssetsQuery} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.bytegang.AssetList)}
+ * @param {function(?grpc.web.Error, ?proto.ByteGangster.AssetList)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.bytegang.AssetList>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.ByteGangster.AssetList>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bytegang.CmdbClient.prototype.fetchAsset =
+proto.ByteGangster.ByteGangsterClient.prototype.fetchAsset =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bytegang.Cmdb/FetchAsset',
+      '/ByteGangster.ByteGangster/FetchAsset',
       request,
       metadata || {},
-      methodDescriptor_Cmdb_FetchAsset,
+      methodDescriptor_ByteGangster_FetchAsset,
       callback);
 };
 
 
 /**
- * @param {!proto.bytegang.ReqAssetsQuery} request The
+ * @param {!proto.ByteGangster.ReqAssetsQuery} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.bytegang.AssetList>}
+ * @return {!Promise<!proto.ByteGangster.AssetList>}
  *     Promise that resolves to the response
  */
-proto.bytegang.CmdbPromiseClient.prototype.fetchAsset =
+proto.ByteGangster.ByteGangsterPromiseClient.prototype.fetchAsset =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bytegang.Cmdb/FetchAsset',
+      '/ByteGangster.ByteGangster/FetchAsset',
       request,
       metadata || {},
-      methodDescriptor_Cmdb_FetchAsset);
+      methodDescriptor_ByteGangster_FetchAsset);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.bytegang.ReqAssetUser,
- *   !proto.bytegang.AssetSshAccount>}
+ *   !proto.ByteGangster.ReqAssetUser,
+ *   !proto.ByteGangster.AssetSshAccount>}
  */
-const methodDescriptor_Cmdb_FetchAssetSshConfig = new grpc.web.MethodDescriptor(
-  '/bytegang.Cmdb/FetchAssetSshConfig',
+const methodDescriptor_ByteGangster_FetchAssetSshConfig = new grpc.web.MethodDescriptor(
+  '/ByteGangster.ByteGangster/FetchAssetSshConfig',
   grpc.web.MethodType.UNARY,
-  proto.bytegang.ReqAssetUser,
-  proto.bytegang.AssetSshAccount,
+  proto.ByteGangster.ReqAssetUser,
+  proto.ByteGangster.AssetSshAccount,
   /**
-   * @param {!proto.bytegang.ReqAssetUser} request
+   * @param {!proto.ByteGangster.ReqAssetUser} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bytegang.AssetSshAccount.deserializeBinary
+  proto.ByteGangster.AssetSshAccount.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.bytegang.ReqAssetUser,
- *   !proto.bytegang.AssetSshAccount>}
+ *   !proto.ByteGangster.ReqAssetUser,
+ *   !proto.ByteGangster.AssetSshAccount>}
  */
-const methodInfo_Cmdb_FetchAssetSshConfig = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.bytegang.AssetSshAccount,
+const methodInfo_ByteGangster_FetchAssetSshConfig = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.ByteGangster.AssetSshAccount,
   /**
-   * @param {!proto.bytegang.ReqAssetUser} request
+   * @param {!proto.ByteGangster.ReqAssetUser} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bytegang.AssetSshAccount.deserializeBinary
+  proto.ByteGangster.AssetSshAccount.deserializeBinary
 );
 
 
 /**
- * @param {!proto.bytegang.ReqAssetUser} request The
+ * @param {!proto.ByteGangster.ReqAssetUser} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.bytegang.AssetSshAccount)}
+ * @param {function(?grpc.web.Error, ?proto.ByteGangster.AssetSshAccount)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.bytegang.AssetSshAccount>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.ByteGangster.AssetSshAccount>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bytegang.CmdbClient.prototype.fetchAssetSshConfig =
+proto.ByteGangster.ByteGangsterClient.prototype.fetchAssetSshConfig =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bytegang.Cmdb/FetchAssetSshConfig',
+      '/ByteGangster.ByteGangster/FetchAssetSshConfig',
       request,
       metadata || {},
-      methodDescriptor_Cmdb_FetchAssetSshConfig,
+      methodDescriptor_ByteGangster_FetchAssetSshConfig,
       callback);
 };
 
 
 /**
- * @param {!proto.bytegang.ReqAssetUser} request The
+ * @param {!proto.ByteGangster.ReqAssetUser} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.bytegang.AssetSshAccount>}
+ * @return {!Promise<!proto.ByteGangster.AssetSshAccount>}
  *     Promise that resolves to the response
  */
-proto.bytegang.CmdbPromiseClient.prototype.fetchAssetSshConfig =
+proto.ByteGangster.ByteGangsterPromiseClient.prototype.fetchAssetSshConfig =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bytegang.Cmdb/FetchAssetSshConfig',
+      '/ByteGangster.ByteGangster/FetchAssetSshConfig',
       request,
       metadata || {},
-      methodDescriptor_Cmdb_FetchAssetSshConfig);
+      methodDescriptor_ByteGangster_FetchAssetSshConfig);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.bytegang.ReqWebXterm,
- *   !proto.bytegang.ResWebXterm>}
+ *   !proto.ByteGangster.ReqWebXterm,
+ *   !proto.ByteGangster.ResWebXterm>}
  */
-const methodDescriptor_Cmdb_WebXtermSsh = new grpc.web.MethodDescriptor(
-  '/bytegang.Cmdb/WebXtermSsh',
+const methodDescriptor_ByteGangster_WebXtermSsh = new grpc.web.MethodDescriptor(
+  '/ByteGangster.ByteGangster/WebXtermSsh',
   grpc.web.MethodType.UNARY,
-  proto.bytegang.ReqWebXterm,
-  proto.bytegang.ResWebXterm,
+  proto.ByteGangster.ReqWebXterm,
+  proto.ByteGangster.ResWebXterm,
   /**
-   * @param {!proto.bytegang.ReqWebXterm} request
+   * @param {!proto.ByteGangster.ReqWebXterm} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bytegang.ResWebXterm.deserializeBinary
+  proto.ByteGangster.ResWebXterm.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.bytegang.ReqWebXterm,
- *   !proto.bytegang.ResWebXterm>}
+ *   !proto.ByteGangster.ReqWebXterm,
+ *   !proto.ByteGangster.ResWebXterm>}
  */
-const methodInfo_Cmdb_WebXtermSsh = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.bytegang.ResWebXterm,
+const methodInfo_ByteGangster_WebXtermSsh = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.ByteGangster.ResWebXterm,
   /**
-   * @param {!proto.bytegang.ReqWebXterm} request
+   * @param {!proto.ByteGangster.ReqWebXterm} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bytegang.ResWebXterm.deserializeBinary
+  proto.ByteGangster.ResWebXterm.deserializeBinary
 );
 
 
 /**
- * @param {!proto.bytegang.ReqWebXterm} request The
+ * @param {!proto.ByteGangster.ReqWebXterm} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.bytegang.ResWebXterm)}
+ * @param {function(?grpc.web.Error, ?proto.ByteGangster.ResWebXterm)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.bytegang.ResWebXterm>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.ByteGangster.ResWebXterm>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bytegang.CmdbClient.prototype.webXtermSsh =
+proto.ByteGangster.ByteGangsterClient.prototype.webXtermSsh =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bytegang.Cmdb/WebXtermSsh',
+      '/ByteGangster.ByteGangster/WebXtermSsh',
       request,
       metadata || {},
-      methodDescriptor_Cmdb_WebXtermSsh,
+      methodDescriptor_ByteGangster_WebXtermSsh,
       callback);
 };
 
 
 /**
- * @param {!proto.bytegang.ReqWebXterm} request The
+ * @param {!proto.ByteGangster.ReqWebXterm} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.bytegang.ResWebXterm>}
+ * @return {!Promise<!proto.ByteGangster.ResWebXterm>}
  *     Promise that resolves to the response
  */
-proto.bytegang.CmdbPromiseClient.prototype.webXtermSsh =
+proto.ByteGangster.ByteGangsterPromiseClient.prototype.webXtermSsh =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bytegang.Cmdb/WebXtermSsh',
+      '/ByteGangster.ByteGangster/WebXtermSsh',
       request,
       metadata || {},
-      methodDescriptor_Cmdb_WebXtermSsh);
+      methodDescriptor_ByteGangster_WebXtermSsh);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.bytegang.ReqWebXterm,
- *   !proto.bytegang.ResWebXterm>}
+ *   !proto.ByteGangster.ReqWebXterm,
+ *   !proto.ByteGangster.ResWebXterm>}
  */
-const methodDescriptor_Cmdb_WebXtermPod = new grpc.web.MethodDescriptor(
-  '/bytegang.Cmdb/WebXtermPod',
+const methodDescriptor_ByteGangster_WebXtermPod = new grpc.web.MethodDescriptor(
+  '/ByteGangster.ByteGangster/WebXtermPod',
   grpc.web.MethodType.UNARY,
-  proto.bytegang.ReqWebXterm,
-  proto.bytegang.ResWebXterm,
+  proto.ByteGangster.ReqWebXterm,
+  proto.ByteGangster.ResWebXterm,
   /**
-   * @param {!proto.bytegang.ReqWebXterm} request
+   * @param {!proto.ByteGangster.ReqWebXterm} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bytegang.ResWebXterm.deserializeBinary
+  proto.ByteGangster.ResWebXterm.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.bytegang.ReqWebXterm,
- *   !proto.bytegang.ResWebXterm>}
+ *   !proto.ByteGangster.ReqWebXterm,
+ *   !proto.ByteGangster.ResWebXterm>}
  */
-const methodInfo_Cmdb_WebXtermPod = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.bytegang.ResWebXterm,
+const methodInfo_ByteGangster_WebXtermPod = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.ByteGangster.ResWebXterm,
   /**
-   * @param {!proto.bytegang.ReqWebXterm} request
+   * @param {!proto.ByteGangster.ReqWebXterm} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bytegang.ResWebXterm.deserializeBinary
+  proto.ByteGangster.ResWebXterm.deserializeBinary
 );
 
 
 /**
- * @param {!proto.bytegang.ReqWebXterm} request The
+ * @param {!proto.ByteGangster.ReqWebXterm} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.bytegang.ResWebXterm)}
+ * @param {function(?grpc.web.Error, ?proto.ByteGangster.ResWebXterm)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.bytegang.ResWebXterm>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.ByteGangster.ResWebXterm>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bytegang.CmdbClient.prototype.webXtermPod =
+proto.ByteGangster.ByteGangsterClient.prototype.webXtermPod =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bytegang.Cmdb/WebXtermPod',
+      '/ByteGangster.ByteGangster/WebXtermPod',
       request,
       metadata || {},
-      methodDescriptor_Cmdb_WebXtermPod,
+      methodDescriptor_ByteGangster_WebXtermPod,
       callback);
 };
 
 
 /**
- * @param {!proto.bytegang.ReqWebXterm} request The
+ * @param {!proto.ByteGangster.ReqWebXterm} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.bytegang.ResWebXterm>}
+ * @return {!Promise<!proto.ByteGangster.ResWebXterm>}
  *     Promise that resolves to the response
  */
-proto.bytegang.CmdbPromiseClient.prototype.webXtermPod =
+proto.ByteGangster.ByteGangsterPromiseClient.prototype.webXtermPod =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bytegang.Cmdb/WebXtermPod',
+      '/ByteGangster.ByteGangster/WebXtermPod',
       request,
       metadata || {},
-      methodDescriptor_Cmdb_WebXtermPod);
+      methodDescriptor_ByteGangster_WebXtermPod);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.bytegang.ReqSshdData,
- *   !proto.bytegang.ResStatus>}
+ *   !proto.ByteGangster.ReqSshdData,
+ *   !proto.ByteGangster.ResStatus>}
  */
-const methodDescriptor_Cmdb_SaveLogSshSession = new grpc.web.MethodDescriptor(
-  '/bytegang.Cmdb/SaveLogSshSession',
+const methodDescriptor_ByteGangster_SaveLogSshSession = new grpc.web.MethodDescriptor(
+  '/ByteGangster.ByteGangster/SaveLogSshSession',
   grpc.web.MethodType.UNARY,
-  proto.bytegang.ReqSshdData,
-  proto.bytegang.ResStatus,
+  proto.ByteGangster.ReqSshdData,
+  proto.ByteGangster.ResStatus,
   /**
-   * @param {!proto.bytegang.ReqSshdData} request
+   * @param {!proto.ByteGangster.ReqSshdData} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bytegang.ResStatus.deserializeBinary
+  proto.ByteGangster.ResStatus.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.bytegang.ReqSshdData,
- *   !proto.bytegang.ResStatus>}
+ *   !proto.ByteGangster.ReqSshdData,
+ *   !proto.ByteGangster.ResStatus>}
  */
-const methodInfo_Cmdb_SaveLogSshSession = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.bytegang.ResStatus,
+const methodInfo_ByteGangster_SaveLogSshSession = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.ByteGangster.ResStatus,
   /**
-   * @param {!proto.bytegang.ReqSshdData} request
+   * @param {!proto.ByteGangster.ReqSshdData} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bytegang.ResStatus.deserializeBinary
+  proto.ByteGangster.ResStatus.deserializeBinary
 );
 
 
 /**
- * @param {!proto.bytegang.ReqSshdData} request The
+ * @param {!proto.ByteGangster.ReqSshdData} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.bytegang.ResStatus)}
+ * @param {function(?grpc.web.Error, ?proto.ByteGangster.ResStatus)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.bytegang.ResStatus>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.ByteGangster.ResStatus>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bytegang.CmdbClient.prototype.saveLogSshSession =
+proto.ByteGangster.ByteGangsterClient.prototype.saveLogSshSession =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bytegang.Cmdb/SaveLogSshSession',
+      '/ByteGangster.ByteGangster/SaveLogSshSession',
       request,
       metadata || {},
-      methodDescriptor_Cmdb_SaveLogSshSession,
+      methodDescriptor_ByteGangster_SaveLogSshSession,
       callback);
 };
 
 
 /**
- * @param {!proto.bytegang.ReqSshdData} request The
+ * @param {!proto.ByteGangster.ReqSshdData} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.bytegang.ResStatus>}
+ * @return {!Promise<!proto.ByteGangster.ResStatus>}
  *     Promise that resolves to the response
  */
-proto.bytegang.CmdbPromiseClient.prototype.saveLogSshSession =
+proto.ByteGangster.ByteGangsterPromiseClient.prototype.saveLogSshSession =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bytegang.Cmdb/SaveLogSshSession',
+      '/ByteGangster.ByteGangster/SaveLogSshSession',
       request,
       metadata || {},
-      methodDescriptor_Cmdb_SaveLogSshSession);
+      methodDescriptor_ByteGangster_SaveLogSshSession);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.bytegang.ReqAuthLog,
- *   !proto.bytegang.ResStatus>}
+ *   !proto.ByteGangster.ReqAuthLog,
+ *   !proto.ByteGangster.ResStatus>}
  */
-const methodDescriptor_Cmdb_SaveLogAuth = new grpc.web.MethodDescriptor(
-  '/bytegang.Cmdb/SaveLogAuth',
+const methodDescriptor_ByteGangster_SaveLogAuth = new grpc.web.MethodDescriptor(
+  '/ByteGangster.ByteGangster/SaveLogAuth',
   grpc.web.MethodType.UNARY,
-  proto.bytegang.ReqAuthLog,
-  proto.bytegang.ResStatus,
+  proto.ByteGangster.ReqAuthLog,
+  proto.ByteGangster.ResStatus,
   /**
-   * @param {!proto.bytegang.ReqAuthLog} request
+   * @param {!proto.ByteGangster.ReqAuthLog} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bytegang.ResStatus.deserializeBinary
+  proto.ByteGangster.ResStatus.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.bytegang.ReqAuthLog,
- *   !proto.bytegang.ResStatus>}
+ *   !proto.ByteGangster.ReqAuthLog,
+ *   !proto.ByteGangster.ResStatus>}
  */
-const methodInfo_Cmdb_SaveLogAuth = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.bytegang.ResStatus,
+const methodInfo_ByteGangster_SaveLogAuth = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.ByteGangster.ResStatus,
   /**
-   * @param {!proto.bytegang.ReqAuthLog} request
+   * @param {!proto.ByteGangster.ReqAuthLog} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bytegang.ResStatus.deserializeBinary
+  proto.ByteGangster.ResStatus.deserializeBinary
 );
 
 
 /**
- * @param {!proto.bytegang.ReqAuthLog} request The
+ * @param {!proto.ByteGangster.ReqAuthLog} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.bytegang.ResStatus)}
+ * @param {function(?grpc.web.Error, ?proto.ByteGangster.ResStatus)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.bytegang.ResStatus>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.ByteGangster.ResStatus>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bytegang.CmdbClient.prototype.saveLogAuth =
+proto.ByteGangster.ByteGangsterClient.prototype.saveLogAuth =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bytegang.Cmdb/SaveLogAuth',
+      '/ByteGangster.ByteGangster/SaveLogAuth',
       request,
       metadata || {},
-      methodDescriptor_Cmdb_SaveLogAuth,
+      methodDescriptor_ByteGangster_SaveLogAuth,
       callback);
 };
 
 
 /**
- * @param {!proto.bytegang.ReqAuthLog} request The
+ * @param {!proto.ByteGangster.ReqAuthLog} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.bytegang.ResStatus>}
+ * @return {!Promise<!proto.ByteGangster.ResStatus>}
  *     Promise that resolves to the response
  */
-proto.bytegang.CmdbPromiseClient.prototype.saveLogAuth =
+proto.ByteGangster.ByteGangsterPromiseClient.prototype.saveLogAuth =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bytegang.Cmdb/SaveLogAuth',
+      '/ByteGangster.ByteGangster/SaveLogAuth',
       request,
       metadata || {},
-      methodDescriptor_Cmdb_SaveLogAuth);
+      methodDescriptor_ByteGangster_SaveLogAuth);
 };
 
 
-module.exports = proto.bytegang;
+module.exports = proto.ByteGangster;
 

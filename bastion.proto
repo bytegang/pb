@@ -2,13 +2,12 @@ syntax = "proto3";
 
 option go_package = ".;pb";
 //option java_multiple_files = true;
-//option java_package = "github.com.mojocn.bastionp";
-//option java_outer_classname = "Bastionp";
+//option java_package = "github.com.bytegang.pb";
+//option java_outer_classname = "ByteGangster";
 
-package bytegang;
+package ByteGangster;
 
-// The greeting service definition.
-service Cmdb {
+service ByteGangster {
   rpc AuthPw (ReqAuthPassword) returns (User) {}                               //sshd-auth-password
   rpc AuthPk (ReqAuthPublicKey) returns (User) {}                              //sshd-auth-public-key
   rpc AuthKb (ReqSshUser) returns (UserKb) {}                                  //sshd-auth-keyboard
