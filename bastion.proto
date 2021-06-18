@@ -11,17 +11,36 @@ service ByteGangster {
   rpc AuthPw (ReqAuthPassword) returns (User) {}                               //sshd-auth-password
   rpc AuthPk (ReqAuthPublicKey) returns (User) {}                              //sshd-auth-public-key
   rpc AuthKb (ReqSshUser) returns (UserKb) {}                                  //sshd-auth-keyboard
-  rpc FetchAsset(ReqAssetsQuery)returns(AssetList){}                           //根据用户获取用户的资产
-  rpc FetchAssetSshConfig(ReqAssetUser)returns(AssetSshAccount){}              //查询资产的ssh管理帐号
-  rpc WebXtermSsh(ReqWebXterm)returns(ResWebXterm){}                           //网页版xterm-ssh-terminal链接参数
-  rpc WebXtermPod(ReqWebXterm)returns(ResWebXterm){}                           //网页版xterm-ssh-terminal链接参数
+  rpc FetchAsset(ReqAssetsQuery)returns(AssetList){}                           //sshd:根据用户获取用户的资产
+  rpc FetchAssetSshConfig(ReqAssetUser)returns(ResSshConnCfg){}              //sshd:查询资产的ssh管理帐号
+
+
+  rpc WebXtermSsh(ReqToken)returns(ResSshConnCfg){}                           //网页版 SSH-xterm-terminal链接参数
+  rpc WebXtermPod(ReqToken)returns(ResSshConnCfg){}                           //网页版 SSH-xterm-terminal链接参数
+  rpc Guacamole(ReqToken)returns(ResGuacamole){}                            //网页版 RDP/VNC todo:::::
+
+
+
   rpc SaveLogSshSession(ReqSshdData)returns(ResStatus){}                       //保存 sshd ssh session log
-  rpc SaveLogAuth(ReqAuthLog)returns(ResStatus){}                              //sshd-用户认证日志 todo:::::
+  rpc SaveLogAuth(ReqAuthLog)returns(ResStatus){}                              //todo::sshd-用户认证日志 todo:::::
+
+
 }
 
-message ReqWebXterm {
+message ReqToken {
   string token = 3;//the payload of token is up to gRPC server, gRPC caller just uses it as string.
 }
+
+message ResGuacamole {
+  string protocol = 1;   //RDP , VNC
+  string host = 2;       //asset host(addr)
+  string port = 3;       //asset port
+  string user = 4;       //asset user name
+  string password = 5;   //asset user's password
+  uint32 width = 6;      //screen width pixel
+  uint32 height = 7;     //screen height pixel
+}
+
 
 message sshConn {
   string addr = 1;
@@ -31,7 +50,7 @@ message sshConn {
   string privateKeyPassword = 5;
 }
 
-message ResWebXterm {
+message ResSshConnCfg {
   string uuid = 1;       //设置会话的uuid,方便和callback日志做好一一对应
   sshConn assetConn = 2; //资产ssh连接配置信息
   sshConn proxyConn = 3; //代理跳板ssh配置,主要用于不同集群网络不通的问题,可以为nil
@@ -229,7 +248,8 @@ message recordFrame {
   string data = 1;
   uint32 cols = 2;
   uint32 rows = 3;
-  MsgOperation operation = 4;
+  uint64 ts = 4; //timestamp of unix second
+  MsgOperation operation = 5;
 }
 
 message ReqSshdData {

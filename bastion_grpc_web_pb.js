@@ -394,13 +394,13 @@ proto.ByteGangster.ByteGangsterPromiseClient.prototype.fetchAsset =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.ByteGangster.ReqAssetUser,
- *   !proto.ByteGangster.AssetSshAccount>}
+ *   !proto.ByteGangster.ResSshConnCfg>}
  */
 const methodDescriptor_ByteGangster_FetchAssetSshConfig = new grpc.web.MethodDescriptor(
   '/ByteGangster.ByteGangster/FetchAssetSshConfig',
   grpc.web.MethodType.UNARY,
   proto.ByteGangster.ReqAssetUser,
-  proto.ByteGangster.AssetSshAccount,
+  proto.ByteGangster.ResSshConnCfg,
   /**
    * @param {!proto.ByteGangster.ReqAssetUser} request
    * @return {!Uint8Array}
@@ -408,7 +408,7 @@ const methodDescriptor_ByteGangster_FetchAssetSshConfig = new grpc.web.MethodDes
   function(request) {
     return request.serializeBinary();
   },
-  proto.ByteGangster.AssetSshAccount.deserializeBinary
+  proto.ByteGangster.ResSshConnCfg.deserializeBinary
 );
 
 
@@ -416,10 +416,10 @@ const methodDescriptor_ByteGangster_FetchAssetSshConfig = new grpc.web.MethodDes
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.ByteGangster.ReqAssetUser,
- *   !proto.ByteGangster.AssetSshAccount>}
+ *   !proto.ByteGangster.ResSshConnCfg>}
  */
 const methodInfo_ByteGangster_FetchAssetSshConfig = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.ByteGangster.AssetSshAccount,
+  proto.ByteGangster.ResSshConnCfg,
   /**
    * @param {!proto.ByteGangster.ReqAssetUser} request
    * @return {!Uint8Array}
@@ -427,7 +427,7 @@ const methodInfo_ByteGangster_FetchAssetSshConfig = new grpc.web.AbstractClientB
   function(request) {
     return request.serializeBinary();
   },
-  proto.ByteGangster.AssetSshAccount.deserializeBinary
+  proto.ByteGangster.ResSshConnCfg.deserializeBinary
 );
 
 
@@ -436,9 +436,9 @@ const methodInfo_ByteGangster_FetchAssetSshConfig = new grpc.web.AbstractClientB
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.ByteGangster.AssetSshAccount)}
+ * @param {function(?grpc.web.Error, ?proto.ByteGangster.ResSshConnCfg)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.ByteGangster.AssetSshAccount>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.ByteGangster.ResSshConnCfg>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.ByteGangster.ByteGangsterClient.prototype.fetchAssetSshConfig =
@@ -457,7 +457,7 @@ proto.ByteGangster.ByteGangsterClient.prototype.fetchAssetSshConfig =
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.ByteGangster.AssetSshAccount>}
+ * @return {!Promise<!proto.ByteGangster.ResSshConnCfg>}
  *     Promise that resolves to the response
  */
 proto.ByteGangster.ByteGangsterPromiseClient.prototype.fetchAssetSshConfig =
@@ -473,52 +473,52 @@ proto.ByteGangster.ByteGangsterPromiseClient.prototype.fetchAssetSshConfig =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.ByteGangster.ReqWebXterm,
- *   !proto.ByteGangster.ResWebXterm>}
+ *   !proto.ByteGangster.ReqToken,
+ *   !proto.ByteGangster.ResSshConnCfg>}
  */
 const methodDescriptor_ByteGangster_WebXtermSsh = new grpc.web.MethodDescriptor(
   '/ByteGangster.ByteGangster/WebXtermSsh',
   grpc.web.MethodType.UNARY,
-  proto.ByteGangster.ReqWebXterm,
-  proto.ByteGangster.ResWebXterm,
+  proto.ByteGangster.ReqToken,
+  proto.ByteGangster.ResSshConnCfg,
   /**
-   * @param {!proto.ByteGangster.ReqWebXterm} request
+   * @param {!proto.ByteGangster.ReqToken} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.ByteGangster.ResWebXterm.deserializeBinary
+  proto.ByteGangster.ResSshConnCfg.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.ByteGangster.ReqWebXterm,
- *   !proto.ByteGangster.ResWebXterm>}
+ *   !proto.ByteGangster.ReqToken,
+ *   !proto.ByteGangster.ResSshConnCfg>}
  */
 const methodInfo_ByteGangster_WebXtermSsh = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.ByteGangster.ResWebXterm,
+  proto.ByteGangster.ResSshConnCfg,
   /**
-   * @param {!proto.ByteGangster.ReqWebXterm} request
+   * @param {!proto.ByteGangster.ReqToken} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.ByteGangster.ResWebXterm.deserializeBinary
+  proto.ByteGangster.ResSshConnCfg.deserializeBinary
 );
 
 
 /**
- * @param {!proto.ByteGangster.ReqWebXterm} request The
+ * @param {!proto.ByteGangster.ReqToken} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.ByteGangster.ResWebXterm)}
+ * @param {function(?grpc.web.Error, ?proto.ByteGangster.ResSshConnCfg)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.ByteGangster.ResWebXterm>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.ByteGangster.ResSshConnCfg>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.ByteGangster.ByteGangsterClient.prototype.webXtermSsh =
@@ -533,11 +533,11 @@ proto.ByteGangster.ByteGangsterClient.prototype.webXtermSsh =
 
 
 /**
- * @param {!proto.ByteGangster.ReqWebXterm} request The
+ * @param {!proto.ByteGangster.ReqToken} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.ByteGangster.ResWebXterm>}
+ * @return {!Promise<!proto.ByteGangster.ResSshConnCfg>}
  *     Promise that resolves to the response
  */
 proto.ByteGangster.ByteGangsterPromiseClient.prototype.webXtermSsh =
@@ -553,52 +553,52 @@ proto.ByteGangster.ByteGangsterPromiseClient.prototype.webXtermSsh =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.ByteGangster.ReqWebXterm,
- *   !proto.ByteGangster.ResWebXterm>}
+ *   !proto.ByteGangster.ReqToken,
+ *   !proto.ByteGangster.ResSshConnCfg>}
  */
 const methodDescriptor_ByteGangster_WebXtermPod = new grpc.web.MethodDescriptor(
   '/ByteGangster.ByteGangster/WebXtermPod',
   grpc.web.MethodType.UNARY,
-  proto.ByteGangster.ReqWebXterm,
-  proto.ByteGangster.ResWebXterm,
+  proto.ByteGangster.ReqToken,
+  proto.ByteGangster.ResSshConnCfg,
   /**
-   * @param {!proto.ByteGangster.ReqWebXterm} request
+   * @param {!proto.ByteGangster.ReqToken} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.ByteGangster.ResWebXterm.deserializeBinary
+  proto.ByteGangster.ResSshConnCfg.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.ByteGangster.ReqWebXterm,
- *   !proto.ByteGangster.ResWebXterm>}
+ *   !proto.ByteGangster.ReqToken,
+ *   !proto.ByteGangster.ResSshConnCfg>}
  */
 const methodInfo_ByteGangster_WebXtermPod = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.ByteGangster.ResWebXterm,
+  proto.ByteGangster.ResSshConnCfg,
   /**
-   * @param {!proto.ByteGangster.ReqWebXterm} request
+   * @param {!proto.ByteGangster.ReqToken} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.ByteGangster.ResWebXterm.deserializeBinary
+  proto.ByteGangster.ResSshConnCfg.deserializeBinary
 );
 
 
 /**
- * @param {!proto.ByteGangster.ReqWebXterm} request The
+ * @param {!proto.ByteGangster.ReqToken} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.ByteGangster.ResWebXterm)}
+ * @param {function(?grpc.web.Error, ?proto.ByteGangster.ResSshConnCfg)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.ByteGangster.ResWebXterm>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.ByteGangster.ResSshConnCfg>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.ByteGangster.ByteGangsterClient.prototype.webXtermPod =
@@ -613,11 +613,11 @@ proto.ByteGangster.ByteGangsterClient.prototype.webXtermPod =
 
 
 /**
- * @param {!proto.ByteGangster.ReqWebXterm} request The
+ * @param {!proto.ByteGangster.ReqToken} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.ByteGangster.ResWebXterm>}
+ * @return {!Promise<!proto.ByteGangster.ResSshConnCfg>}
  *     Promise that resolves to the response
  */
 proto.ByteGangster.ByteGangsterPromiseClient.prototype.webXtermPod =
@@ -627,6 +627,86 @@ proto.ByteGangster.ByteGangsterPromiseClient.prototype.webXtermPod =
       request,
       metadata || {},
       methodDescriptor_ByteGangster_WebXtermPod);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ByteGangster.ReqToken,
+ *   !proto.ByteGangster.ResGuacamole>}
+ */
+const methodDescriptor_ByteGangster_Guacamole = new grpc.web.MethodDescriptor(
+  '/ByteGangster.ByteGangster/Guacamole',
+  grpc.web.MethodType.UNARY,
+  proto.ByteGangster.ReqToken,
+  proto.ByteGangster.ResGuacamole,
+  /**
+   * @param {!proto.ByteGangster.ReqToken} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ByteGangster.ResGuacamole.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.ByteGangster.ReqToken,
+ *   !proto.ByteGangster.ResGuacamole>}
+ */
+const methodInfo_ByteGangster_Guacamole = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.ByteGangster.ResGuacamole,
+  /**
+   * @param {!proto.ByteGangster.ReqToken} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ByteGangster.ResGuacamole.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ByteGangster.ReqToken} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.ByteGangster.ResGuacamole)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ByteGangster.ResGuacamole>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ByteGangster.ByteGangsterClient.prototype.guacamole =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ByteGangster.ByteGangster/Guacamole',
+      request,
+      metadata || {},
+      methodDescriptor_ByteGangster_Guacamole,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ByteGangster.ReqToken} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ByteGangster.ResGuacamole>}
+ *     Promise that resolves to the response
+ */
+proto.ByteGangster.ByteGangsterPromiseClient.prototype.guacamole =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ByteGangster.ByteGangster/Guacamole',
+      request,
+      metadata || {},
+      methodDescriptor_ByteGangster_Guacamole);
 };
 
 

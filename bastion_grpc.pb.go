@@ -22,9 +22,10 @@ type ByteGangsterClient interface {
 	AuthPk(ctx context.Context, in *ReqAuthPublicKey, opts ...grpc.CallOption) (*User, error)
 	AuthKb(ctx context.Context, in *ReqSshUser, opts ...grpc.CallOption) (*UserKb, error)
 	FetchAsset(ctx context.Context, in *ReqAssetsQuery, opts ...grpc.CallOption) (*AssetList, error)
-	FetchAssetSshConfig(ctx context.Context, in *ReqAssetUser, opts ...grpc.CallOption) (*AssetSshAccount, error)
-	WebXtermSsh(ctx context.Context, in *ReqWebXterm, opts ...grpc.CallOption) (*ResWebXterm, error)
-	WebXtermPod(ctx context.Context, in *ReqWebXterm, opts ...grpc.CallOption) (*ResWebXterm, error)
+	FetchAssetSshConfig(ctx context.Context, in *ReqAssetUser, opts ...grpc.CallOption) (*ResSshConnCfg, error)
+	WebXtermSsh(ctx context.Context, in *ReqToken, opts ...grpc.CallOption) (*ResSshConnCfg, error)
+	WebXtermPod(ctx context.Context, in *ReqToken, opts ...grpc.CallOption) (*ResSshConnCfg, error)
+	Guacamole(ctx context.Context, in *ReqToken, opts ...grpc.CallOption) (*ResGuacamole, error)
 	SaveLogSshSession(ctx context.Context, in *ReqSshdData, opts ...grpc.CallOption) (*ResStatus, error)
 	SaveLogAuth(ctx context.Context, in *ReqAuthLog, opts ...grpc.CallOption) (*ResStatus, error)
 }
@@ -73,8 +74,8 @@ func (c *byteGangsterClient) FetchAsset(ctx context.Context, in *ReqAssetsQuery,
 	return out, nil
 }
 
-func (c *byteGangsterClient) FetchAssetSshConfig(ctx context.Context, in *ReqAssetUser, opts ...grpc.CallOption) (*AssetSshAccount, error) {
-	out := new(AssetSshAccount)
+func (c *byteGangsterClient) FetchAssetSshConfig(ctx context.Context, in *ReqAssetUser, opts ...grpc.CallOption) (*ResSshConnCfg, error) {
+	out := new(ResSshConnCfg)
 	err := c.cc.Invoke(ctx, "/ByteGangster.ByteGangster/FetchAssetSshConfig", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -82,8 +83,8 @@ func (c *byteGangsterClient) FetchAssetSshConfig(ctx context.Context, in *ReqAss
 	return out, nil
 }
 
-func (c *byteGangsterClient) WebXtermSsh(ctx context.Context, in *ReqWebXterm, opts ...grpc.CallOption) (*ResWebXterm, error) {
-	out := new(ResWebXterm)
+func (c *byteGangsterClient) WebXtermSsh(ctx context.Context, in *ReqToken, opts ...grpc.CallOption) (*ResSshConnCfg, error) {
+	out := new(ResSshConnCfg)
 	err := c.cc.Invoke(ctx, "/ByteGangster.ByteGangster/WebXtermSsh", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -91,9 +92,18 @@ func (c *byteGangsterClient) WebXtermSsh(ctx context.Context, in *ReqWebXterm, o
 	return out, nil
 }
 
-func (c *byteGangsterClient) WebXtermPod(ctx context.Context, in *ReqWebXterm, opts ...grpc.CallOption) (*ResWebXterm, error) {
-	out := new(ResWebXterm)
+func (c *byteGangsterClient) WebXtermPod(ctx context.Context, in *ReqToken, opts ...grpc.CallOption) (*ResSshConnCfg, error) {
+	out := new(ResSshConnCfg)
 	err := c.cc.Invoke(ctx, "/ByteGangster.ByteGangster/WebXtermPod", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *byteGangsterClient) Guacamole(ctx context.Context, in *ReqToken, opts ...grpc.CallOption) (*ResGuacamole, error) {
+	out := new(ResGuacamole)
+	err := c.cc.Invoke(ctx, "/ByteGangster.ByteGangster/Guacamole", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -126,9 +136,10 @@ type ByteGangsterServer interface {
 	AuthPk(context.Context, *ReqAuthPublicKey) (*User, error)
 	AuthKb(context.Context, *ReqSshUser) (*UserKb, error)
 	FetchAsset(context.Context, *ReqAssetsQuery) (*AssetList, error)
-	FetchAssetSshConfig(context.Context, *ReqAssetUser) (*AssetSshAccount, error)
-	WebXtermSsh(context.Context, *ReqWebXterm) (*ResWebXterm, error)
-	WebXtermPod(context.Context, *ReqWebXterm) (*ResWebXterm, error)
+	FetchAssetSshConfig(context.Context, *ReqAssetUser) (*ResSshConnCfg, error)
+	WebXtermSsh(context.Context, *ReqToken) (*ResSshConnCfg, error)
+	WebXtermPod(context.Context, *ReqToken) (*ResSshConnCfg, error)
+	Guacamole(context.Context, *ReqToken) (*ResGuacamole, error)
 	SaveLogSshSession(context.Context, *ReqSshdData) (*ResStatus, error)
 	SaveLogAuth(context.Context, *ReqAuthLog) (*ResStatus, error)
 	mustEmbedUnimplementedByteGangsterServer()
@@ -150,14 +161,17 @@ func (UnimplementedByteGangsterServer) AuthKb(context.Context, *ReqSshUser) (*Us
 func (UnimplementedByteGangsterServer) FetchAsset(context.Context, *ReqAssetsQuery) (*AssetList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FetchAsset not implemented")
 }
-func (UnimplementedByteGangsterServer) FetchAssetSshConfig(context.Context, *ReqAssetUser) (*AssetSshAccount, error) {
+func (UnimplementedByteGangsterServer) FetchAssetSshConfig(context.Context, *ReqAssetUser) (*ResSshConnCfg, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FetchAssetSshConfig not implemented")
 }
-func (UnimplementedByteGangsterServer) WebXtermSsh(context.Context, *ReqWebXterm) (*ResWebXterm, error) {
+func (UnimplementedByteGangsterServer) WebXtermSsh(context.Context, *ReqToken) (*ResSshConnCfg, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method WebXtermSsh not implemented")
 }
-func (UnimplementedByteGangsterServer) WebXtermPod(context.Context, *ReqWebXterm) (*ResWebXterm, error) {
+func (UnimplementedByteGangsterServer) WebXtermPod(context.Context, *ReqToken) (*ResSshConnCfg, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method WebXtermPod not implemented")
+}
+func (UnimplementedByteGangsterServer) Guacamole(context.Context, *ReqToken) (*ResGuacamole, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Guacamole not implemented")
 }
 func (UnimplementedByteGangsterServer) SaveLogSshSession(context.Context, *ReqSshdData) (*ResStatus, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SaveLogSshSession not implemented")
@@ -269,7 +283,7 @@ func _ByteGangster_FetchAssetSshConfig_Handler(srv interface{}, ctx context.Cont
 }
 
 func _ByteGangster_WebXtermSsh_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReqWebXterm)
+	in := new(ReqToken)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -281,13 +295,13 @@ func _ByteGangster_WebXtermSsh_Handler(srv interface{}, ctx context.Context, dec
 		FullMethod: "/ByteGangster.ByteGangster/WebXtermSsh",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ByteGangsterServer).WebXtermSsh(ctx, req.(*ReqWebXterm))
+		return srv.(ByteGangsterServer).WebXtermSsh(ctx, req.(*ReqToken))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _ByteGangster_WebXtermPod_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReqWebXterm)
+	in := new(ReqToken)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -299,7 +313,25 @@ func _ByteGangster_WebXtermPod_Handler(srv interface{}, ctx context.Context, dec
 		FullMethod: "/ByteGangster.ByteGangster/WebXtermPod",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ByteGangsterServer).WebXtermPod(ctx, req.(*ReqWebXterm))
+		return srv.(ByteGangsterServer).WebXtermPod(ctx, req.(*ReqToken))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ByteGangster_Guacamole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReqToken)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ByteGangsterServer).Guacamole(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ByteGangster.ByteGangster/Guacamole",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ByteGangsterServer).Guacamole(ctx, req.(*ReqToken))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -374,6 +406,10 @@ var ByteGangster_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "WebXtermPod",
 			Handler:    _ByteGangster_WebXtermPod_Handler,
+		},
+		{
+			MethodName: "Guacamole",
+			Handler:    _ByteGangster_Guacamole_Handler,
 		},
 		{
 			MethodName: "SaveLogSshSession",
